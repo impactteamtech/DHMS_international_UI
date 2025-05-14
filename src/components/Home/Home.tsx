@@ -6,7 +6,7 @@ import Banner from '../Banner/Banner'
 
 const Home: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pt-36 md:pt-28 lg:pt-24">
       <main className="flex-grow">
         <Hero />
         <Categories />

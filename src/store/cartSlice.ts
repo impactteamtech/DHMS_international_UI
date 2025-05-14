@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// Define the type for a single cart item
 interface CartItem {
   id: number;
   name: string;
@@ -13,21 +12,18 @@ interface CartItem {
   rating: number;
 }
 
-// Define the type for the cart state
 interface CartState {
   itemsList: CartItem[];
   totalQuantity: number;
   showCart: boolean;
 }
-
-// Initial state with type
+const savedCartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
 const initialState: CartState = {
-  itemsList: [],
-  totalQuantity: 0,
+  itemsList: savedCartItems,
+  totalQuantity: savedCartItems.reduce((total: number, item: any) => total + item.quantity, 0),
   showCart: false,
 };
 
-// Create the cart slice with proper types
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -45,9 +41,10 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
         });
       }
-      const totalQuantity = state.itemsList.reduce((total, item) => total + item.quantity, 0);
-      state.totalQuantity = totalQuantity;
+      state.totalQuantity = state.itemsList.reduce((total, item) => total + item.quantity, 0);
+      localStorage.setItem('cartItems', JSON.stringify(state.itemsList));
     },
+
     removeFromCart(state, action: PayloadAction<{ id: number }>) {
       const findItem = state.itemsList.find((item) => item.id === Number(action.payload.id));
       if (findItem) {
@@ -55,27 +52,30 @@ const cartSlice = createSlice({
           state.itemsList = state.itemsList.filter((item) => item.id !== Number(action.payload.id));
         } else {
           findItem.quantity--;
-          findItem.totalPrice -= findItem.price;
+          findItem.totalPrice = findItem.quantity * findItem.price;
         }
       }
-      const totalQuantity = state.itemsList.reduce((total, item) => total + item.quantity, 0);
-      state.totalQuantity = totalQuantity;
-
+      state.totalQuantity = state.itemsList.reduce((total, item) => total + item.quantity, 0);
+      localStorage.setItem('cartItems', JSON.stringify(state.itemsList));
     },
-    updateQty: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
-        const item = state.itemsList.find((i) => i.id === action.payload.id);
-        if (item) {
-          item.quantity = action.payload.quantity;
-        }
-        const totalQuantity = state.itemsList.reduce((total, item) => total + item.quantity, 0);
-        state.totalQuantity = totalQuantity;
-      },
+
+    updateQty(state, action: PayloadAction<{ id: number; quantity: number }>) {
+      const item = state.itemsList.find((i) => i.id === action.payload.id);
+      if (item) {
+        item.quantity = action.payload.quantity;
+        item.totalPrice = item.quantity * item.price;
+      }
+      state.totalQuantity = state.itemsList.reduce((total, item) => total + item.quantity, 0);
+
+      // Sync to localStorage
+      localStorage.setItem('cartItems', JSON.stringify(state.itemsList));
+    },
+
     setShowCart(state) {
       state.showCart = !state.showCart;
     },
   },
 });
 
-// Export actions and reducer
 export const { addToCart, removeFromCart, updateQty, setShowCart } = cartSlice.actions;
 export default cartSlice.reducer;

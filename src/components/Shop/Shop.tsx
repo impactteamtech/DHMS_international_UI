@@ -10,16 +10,23 @@ const Shop: React.FC = () => {
   const [availabilityFilter, setAvailabilityFilter] = React.useState<string[]>([])
 
   return (
-    <div className="flex  gap-4 p-4 min-h-screen bg-black mt-32">
+    <div className="flex flex-col md:flex-row gap-4 p-4 min-h-screen mt-5 bg-black pt-36 md:pt-28 lg:pt-24">
       {/* Sidebar */}
-      <div className=" bg-black text-white p-4">
-        <Sidebar selectedCategory={selectedCategory}
+      <div className="bg-black text-white p-4 w-full md:w-1/4">
+        <Sidebar
+          selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
-          selectedBrand={selectedBrand} setSelectedBrand={setSelectedBrand}
-          selectRating={selectRating} setSelectRating={setSelectRating}
-          priceRange={priceRange} setPriceRange={setPriceRange}
-          availabilityFilter={availabilityFilter} setAvailabilityFilter={setAvailabilityFilter} />
+          selectedBrand={selectedBrand}
+          setSelectedBrand={setSelectedBrand}
+          selectRating={selectRating}
+          setSelectRating={setSelectRating}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          availabilityFilter={availabilityFilter}
+          setAvailabilityFilter={setAvailabilityFilter}
+        />
       </div>
+
       {/* Main content */}
       <div className="flex-1 p-4">
         <ProductContent

@@ -11,7 +11,8 @@ const Header = () => {
   return (
     // w-full bg-black text-gray-200 p-4 flex justify-between items-center fixed top-0 left-0 right-0 shadow-md px-8 z-50
     <div className='w-full bg-black fixed top-0 left-0 right-0 shadow-md px-8 z-50'>
-      <div className='p-4 flex justify-between items-center'>
+      <div className='p-4 flex flex-col items-center space-y-4 md:flex-row md:justify-between md:items-center md:space-y-0'>
+
         <div className='flex items-center space-x-2'>
           <img
             src={logo}
@@ -29,7 +30,7 @@ const Header = () => {
         </div>
 
         {/* Search bar */}
-        <div className='w-80 mx-8 flex-1 flex justify-center'>
+        <div className='w-full md:w-150 flex justify-center'>
           <SearchBar />
         </div>
 
@@ -56,7 +57,7 @@ const Header = () => {
       </div>
 
       {/* Bottom navigation links */}
-      <div className='pb-4 flex justify-center'>
+      <div className='w-full flex justify-center pb-4'>
         <NavigationMenuBeauty />
       </div>
     </div>
