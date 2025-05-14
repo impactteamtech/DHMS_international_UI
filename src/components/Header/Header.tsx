@@ -1,4 +1,4 @@
-import React from 'react'
+
 import logo from '../../../public/logo.png'
 import SearchBar from './SearchBar'
 import { User, ShoppingCart } from 'lucide-react'

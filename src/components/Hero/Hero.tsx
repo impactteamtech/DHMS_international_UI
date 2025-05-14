@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { HeroImg } from './HeroImg';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
