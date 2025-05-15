@@ -3,8 +3,8 @@ import logo from '../../../public/logo.png'
 import SearchBar from './SearchBar'
 import { User, ShoppingCart } from 'lucide-react'
 import NavigationMenuBeauty from './HeaderLinks'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import OffsetLink from '../Handler/OffsetLink'
 const Header = () => {
   const quantity = useSelector((state: any) => state.cart.totalQuantity)
 
@@ -37,7 +37,7 @@ const Header = () => {
         {/* Icons */}
         <div className='flex items-center space-x-4 text-white'>
           <button className='relative flex flex-col items-center cursor-pointer space-x-1 hover:scale-105'>
-            <Link to='/cart' className='flex flex-col items-center'>
+            <OffsetLink to='/cart' className='flex flex-col items-center'>
               <ShoppingCart />
               <span className='text-[#f3cb50]'>My Cart</span>
               {/* Quantity indicator */}
@@ -46,7 +46,7 @@ const Header = () => {
                 {quantity}
               </span>
               )}
-            </Link>
+            </OffsetLink>
           </button>
 
           <button className='flex flex-col items-center cursor-pointer space-x-1 hover:scale-105'>

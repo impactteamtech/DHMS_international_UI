@@ -23,7 +23,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ScrollDownButton onClick={handleScroll} />
+     <ScrollDownButton onClick={handleScroll} />
+
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />

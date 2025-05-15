@@ -8,11 +8,11 @@ const Shop: React.FC = () => {
   const [selectRating, setSelectRating] = React.useState<number>(0)
   const [priceRange, setPriceRange] = React.useState<number>(30.00)
   const [availabilityFilter, setAvailabilityFilter] = React.useState<string[]>([])
-
+   const [isDesktopOpen, setIsDesktopOpen] = React.useState(true);
   return (
-    <div className="flex flex-col md:flex-row gap-4 p-4 min-h-screen mt-5 bg-black pt-36 md:pt-28 lg:pt-24">
+    <section id='shop' className="flex flex-col md:flex-row gap-4 p-4 min-h-screen mt-5 bg-black pt-36 md:pt-28 lg:pt-24">
       {/* Sidebar */}
-      <div className="bg-black text-white p-4 w-full md:w-1/4">
+      <div className={`bg-black text-white p-4 w-full ${isDesktopOpen ? 'md:w-1/4' : 'hidden'} `}>
         <Sidebar
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
@@ -24,6 +24,8 @@ const Shop: React.FC = () => {
           setPriceRange={setPriceRange}
           availabilityFilter={availabilityFilter}
           setAvailabilityFilter={setAvailabilityFilter}
+          setIsDesktopOpen={setIsDesktopOpen}
+          isDesktopOpen={isDesktopOpen}
         />
       </div>
 
@@ -35,9 +37,11 @@ const Shop: React.FC = () => {
           selectRating={selectRating}
           priceRange={priceRange}
           availabilityFilter={availabilityFilter}
+          setIsDesktopOpen={setIsDesktopOpen}
+          isDesktopOpen={isDesktopOpen}
         />
       </div>
-    </div>
+    </section>
   )
 }
 

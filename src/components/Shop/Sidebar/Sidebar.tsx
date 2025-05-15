@@ -13,6 +13,8 @@ interface SidebarProps {
   setPriceRange: React.Dispatch<React.SetStateAction<number>>;
   availabilityFilter: string[];
   setAvailabilityFilter: React.Dispatch<React.SetStateAction<string[]>>;
+  setIsDesktopOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isDesktopOpen: boolean;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -20,10 +22,12 @@ const Sidebar: React.FC<SidebarProps> = ({
   selectedBrand, setSelectedBrand,
   selectRating, setSelectRating,
   priceRange, setPriceRange,
-  availabilityFilter, setAvailabilityFilter
+  availabilityFilter, setAvailabilityFilter,
+  setIsDesktopOpen,
+  isDesktopOpen
 }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isDesktopOpen, setIsDesktopOpen] = useState(true);
+
 
   const hideDesktopSidebar = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent reopening immediately
@@ -110,22 +114,25 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       {/* PRICE RANGE */}
       <div className="space-y-2 mb-4">
-        <h4 className="font-semibold text-sm">PRICE RANGE</h4>
-        <div className="flex justify-between text-sm">
+        <h4 className="font-semibold text-sm text-white">Price Range</h4>
+        <div className="flex justify-between text-xs text-gray-400">
           <span>$0</span>
-          <span>${priceRange.toFixed(2)}</span>
+          <span>Up to ${priceRange.toFixed(2)}</span>
           <span>$100</span>
         </div>
-        <input
-          type="range"
-          min={8.99}
-          max={100}
-          step={1}
+        <select
           value={priceRange}
           onChange={(e) => setPriceRange(parseFloat(e.target.value))}
-          className="w-full accent-yellow-500"
-        />
+          className="w-full p-2 rounded bg-white text-black border border-gray-300 focus:ring-2 focus:ring-[#f3cb50] focus:outline-none"
+        >
+          <option value={100}>All Prices</option>
+          <option value={25}>Under $25</option>
+          <option value={50}>Under $50</option>
+          <option value={75}>Under $75</option>
+          <option value={100}>Under $100</option>
+        </select>
       </div>
+
 
       {/* RATING */}
       <div className="space-y-2 mb-4">
@@ -182,14 +189,14 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Mobile Toggle */}
       <button
         onClick={toggleMobileSidebar}
-        className="block md:hidden fixed top-24 left-4 z-50 p-2 bg-[#f3cb50] text-black rounded shadow"
+        className="block md:hidden fixed top-4 left-4  z-50 p-2 bg-[#f3cb50] text-black rounded shadow"
       >
         <Menu className="w-6 h-6" />
       </button>
 
       {/* Mobile Sidebar Overlay */}
       {isMobileOpen && (
-        <div className="fixed inset-0 z-40 bg-black bg-opacity-80 flex">
+        <div className="fixed inset-0 z-40 bg-black bg-opacity-80  mt-32 pt-32 flex">
           <div className="w-64">
             <SidebarContent />
           </div>

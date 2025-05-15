@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-
+import OffsetLink from '@/components/Handler/OffsetLink'
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -16,9 +16,9 @@ export default function NavigationMenuBeauty() {
       <NavigationMenuList className='text-white text-md'>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link to="/" className='hover:bg-[#f3cb50] rounded-full px-3 py-1'>
+            <OffsetLink to="/#top" className='hover:bg-[#f3cb50] rounded-full px-3 py-1'>
               Home
-            </Link>
+            </OffsetLink>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
@@ -54,17 +54,17 @@ export default function NavigationMenuBeauty() {
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link to="/shop" className=' rounded-full px-3 py-1'>
+            <OffsetLink to="/shop#top" className=' rounded-full px-3 py-1'>
               Shop
-            </Link>
+            </OffsetLink>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link to="/contact" className=' rounded-full px-3 py-1'>
+            <OffsetLink to="/contact#top" className=' rounded-full px-3 py-1'>
               Contact
-            </Link>
+            </OffsetLink>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>

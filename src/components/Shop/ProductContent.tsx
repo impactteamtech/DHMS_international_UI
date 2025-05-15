@@ -17,6 +17,8 @@ interface ProductProps {
   selectRating: number;
   priceRange: number;
   availabilityFilter: string[];
+  setIsDesktopOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isDesktopOpen: boolean;
 }
 
 const ProductContent: React.FC<ProductProps> = ({
@@ -25,6 +27,7 @@ const ProductContent: React.FC<ProductProps> = ({
   selectRating,
   priceRange,
   availabilityFilter,
+  isDesktopOpen,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -80,7 +83,7 @@ const ProductContent: React.FC<ProductProps> = ({
   
 
   return (
-    <div className="flex flex-col items-center justify-center bg-black px-2 md:px-6">
+    <div className={`flex flex-col items-center justify-center ${isDesktopOpen ? 'md:3/4' : 'w-full'} bg-black px-2 md:px-6`}>
       <h1 className="text-3xl sm:text-4xl font-raleway text-yellow-500 py-4 text-center">Shop Your Care</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 w-full max-w-8xl">
@@ -98,17 +101,17 @@ const ProductContent: React.FC<ProductProps> = ({
               <img
                 src={product.imageUrl}
                 alt={product.name}
-                className="w-full h-40 sm:h-48 object-cover rounded-md mb-2 sm:mb-3"
+                className="w-full   p-3 object-top rounded-md mb-2 sm:mb-3"
               />
-              <h2 className="text-base sm:text-lg font-semibold text-center">{product.name}</h2>
-              <p className="text-xs sm:text-sm text-gray-600">{product.category}</p>
-              <p className="text-yellow-500 text-sm mb-1">{"★".repeat(product.rating)}</p>
+              <h2 className="text-base text-lg sm:text-lg font-semibold text-center">{product.name}</h2>
+              <p className="text-sm sm:text-sm text-gray-600">{product.category}</p>
+              <p className="text-yellow-500 text-md mb-1">{"★".repeat(product.rating)}</p>
               <p className="text-black font-medium text-sm sm:text-base">${product.price.toFixed(2)}</p>
               <button onClick={() => pushToCart(product)} className="bg-[#ccb068] text-white cursor-pointer px-3 sm:px-4 py-2 rounded-lg mt-2 sm:mt-3 hover:scale-105 transition-transform flex items-center">
                 <ShoppingBag className="w-4 h-4 mr-2" />
                 Add to Cart
               </button>
-              <p className="text-xs text-red-500 mt-1">In Store Pick Up</p>
+              <p className="text-sm text-red-500 mt-1">In Store Pick Up</p>
             </div>
           ))
         )}

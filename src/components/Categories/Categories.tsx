@@ -1,9 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import WhyChooseDHMS from './Accordion'
 import { ChevronDown } from 'lucide-react'
-
+import OffsetLink from '../Handler/OffsetLink'
 interface CategoryItem {
   name: string
   image: string
@@ -35,13 +34,14 @@ const Category = () => {
 
   return (
     <motion.section
+        id='categories'
       className='w-full bg-black px-4 sm:px-6 md:px-8 py-16 relative'
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true }}
     >
-      <h2 id="categories" className='text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#f3cb50] mb-12 font-serif tracking-wide'>
+      <h2  className='text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#f3cb50] mb-12 font-serif tracking-wide'>
         Explore Our Categories
       </h2>
 
@@ -60,9 +60,9 @@ const Category = () => {
             <p className='text-xl sm:text-2xl leading-relaxed text-center font-semibold font-raleway'>
               EVERYTHING YOU NEED <br /> TO FEEL BEAUTIFUL, EVERY DAY.
             </p>
-            <Link to='/shop' className='mt-6 bg-white text-black rounded-full p-4 w-14 h-14 flex items-center justify-center hover:scale-110 transition'>
+            <OffsetLink to='/shop#top' className='mt-6 bg-white text-black rounded-full p-4 w-14 h-14 flex items-center justify-center hover:scale-110 transition'>
               →
-            </Link>
+            </OffsetLink>
           </div>
 
           <div className='text-white rounded-lg p-6 text-center shadow-md'>

@@ -1,7 +1,7 @@
 
 import { HeroImg } from './HeroImg';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import  OffsetLink  from '@/components/Handler/OffsetLink';
 
 const Hero = () => {
   // Framer Motion variants for text
@@ -52,9 +52,9 @@ const Hero = () => {
         <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-raleway leading-tight">
           WHERE CULTURE MEETS <br className="hidden sm:block" /> BEAUTY
         </h1>
-        <Link to="/shop" className="text-base mt-8 rounded-xl sm:text-lg px-6 sm:px-8 py-2 bg-white text-black font-raleway cursor-pointer hover:scale-105">
+        <OffsetLink to="/shop#top" className="text-base mt-8 rounded-xl sm:text-lg px-6 sm:px-8 py-2 bg-white text-black font-raleway cursor-pointer hover:scale-105">
           Shop Now
-        </Link>
+        </OffsetLink>
       </motion.div>
     </motion.section>
   );
