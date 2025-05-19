@@ -66,7 +66,7 @@ const Category = () => {
           </div>
 
           <div className='text-white rounded-lg p-6 text-center shadow-md'>
-            <span className='text-2xl uppercase font-raleway'>Why Choose Us?</span>
+            <span className='text-2xl uppercase font-raleway'>What Makes Us Unique</span>
             <WhyChooseDHMS />
           </div>
 

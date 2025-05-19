@@ -73,7 +73,7 @@ const ProductContent: React.FC<ProductProps> = ({
       name: product.name,
       price: product.price,
       image: product.imageUrl,
-      description: product.description, // add more if needed
+      description: product.description, 
       category: product.category,
       rating: product.rating,
       quantity: 1,

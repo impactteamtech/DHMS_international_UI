@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="p-2 rounded bg-white text-black w-full"
+                className="p-2 rounded bg-white text-black w-md"
               />
             </div>
           </div>

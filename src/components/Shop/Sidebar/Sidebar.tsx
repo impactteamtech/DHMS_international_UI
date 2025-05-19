@@ -113,24 +113,22 @@ const Sidebar: React.FC<SidebarProps> = ({
       </div>
 
       {/* PRICE RANGE */}
-      <div className="space-y-2 mb-4">
+      <div className="space-y-2 mb-4 border border-white rounded p-4 bg-transparent">
         <h4 className="font-semibold text-sm text-white">Price Range</h4>
-        <div className="flex justify-between text-xs text-gray-400">
+        <div className="flex justify-between text-xs text-gray-400 mb-2">
           <span>$0</span>
-          <span>Up to ${priceRange.toFixed(2)}</span>
+          <span>${priceRange.toFixed(2)}</span>
           <span>$100</span>
         </div>
-        <select
+        <input
+          type="range"
+          min={0}
+          max={100}
+          step={1}
           value={priceRange}
           onChange={(e) => setPriceRange(parseFloat(e.target.value))}
-          className="w-full p-2 rounded bg-white text-black border border-gray-300 focus:ring-2 focus:ring-[#f3cb50] focus:outline-none"
-        >
-          <option value={100}>All Prices</option>
-          <option value={25}>Under $25</option>
-          <option value={50}>Under $50</option>
-          <option value={75}>Under $75</option>
-          <option value={100}>Under $100</option>
-        </select>
+          className="w-full h-2 bg-white rounded-lg appearance-none cursor-pointer"
+        />
       </div>
 
 

@@ -6,6 +6,7 @@ module.exports = {
           satisfy: ['"Satisfy"', 'cursive'],
           raleway: ['Raleway', 'sans-serif'],
           raleway: ['Play', 'sans-serif'],
+          play: ['Cinzel', 'serif']
         },
       },
     },
