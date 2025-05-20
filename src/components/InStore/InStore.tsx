@@ -55,15 +55,6 @@ const InStore: React.FC = () => {
         </p>
       </div>
 
-      {/* Store Image (optional) */}
-      {/* <div className="relative z-10 flex justify-center mb-12">
-        <img
-          src="/images/store-pickup.jpg"
-          alt="In-Store Pickup"
-          className="w-full max-w-md rounded-2xl shadow-2xl border-4 border-[#f3cb50]"
-        />
-      </div> */}
-
       {/* Product Cards */}
       <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-semibold text-center text-white mb-8">
@@ -114,7 +105,7 @@ const InStore: React.FC = () => {
           Walk-ins welcome • Pickup hours: Mon–Sat, 10am – 6pm
         </p>
         <p className="text-sm text-gray-500 mt-1">
-          Visit us at our Fayetteville location.
+          Visit us at our Spotsylvania Mall location.
         </p>
       </div>
     </div>

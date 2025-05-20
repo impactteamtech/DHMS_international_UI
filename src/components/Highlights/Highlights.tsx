@@ -6,7 +6,7 @@ const Highlights: React.FC = () => {
       {/* Hero Heading */}
       <div className="text-center mb-12 max-w-3xl">
         <h2 className="text-4xl sm:text-5xl font-extrabold font-play leading-tight tracking-tight">
-          DHMS — Your Africa at Your Fingertips
+          DHMS — Africa at Your Fingertips
         </h2>
         <p className="text-base sm:text-lg mt-4 font-medium text-black">
           Rooted in tradition. Elevated for today. Explore handpicked African beauty, wellness, and fashion — crafted to celebrate your glow, your roots, and your rhythm.

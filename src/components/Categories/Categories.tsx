@@ -15,6 +15,8 @@ const categories: CategoryItem[] = [
   { name: 'Supplements', image: '/supplements.png', description: 'Nourish your beauty from within with premium supplements designed to support melanin-rich skin, strong hair, and vibrant energy.' },
   { name: 'Designer Bags', image: '/designer_bag.png', description: 'Bold, statement-making designer bags to elevate your style — carry your culture, confidence, and power on your shoulder.' },
   { name: 'Braiding Hair', image: '/braiding_hair.png', description: 'Vibrant braiding hair for the ultimate protective styles — celebrate African heritage with every twist, braid, and bead.' },
+  { name: 'Braiding Hair', image: '/braiding_hair.png', description: 'Vibrant braiding hair for the ultimate protective styles — celebrate African heritage with every twist, braid, and bead.' },
+  { name: 'Jewelry', image: '/jewelry.png', description: 'Dazzling jewelry pieces inspired by African royalty — adorn yourself with earrings, rings, and necklaces fit for a goddess.' },
   { name: 'Jewelry', image: '/jewelry.png', description: 'Dazzling jewelry pieces inspired by African royalty — adorn yourself with earrings, rings, and necklaces fit for a goddess.' },
   { name: 'Dress', image: '/dress.jpg', description: 'Fierce and fabulous dresses that make you feel unstoppable — channeling African prints, bold colors, and effortless glam.' },
 ]
@@ -34,14 +36,14 @@ const Category = () => {
 
   return (
     <motion.section
-        id='categories'
+      id='categories'
       className='w-full bg-black px-4 sm:px-6 md:px-8 py-16 relative'
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true }}
     >
-      <h2  className='text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#f3cb50] mb-12 font-serif tracking-wide'>
+      <h2 className='text-center text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#f3cb50] mb-12 font-serif tracking-wide'>
         Explore Our Categories
       </h2>
 
@@ -93,29 +95,30 @@ const Category = () => {
           {categories.map((cat, index) => (
             <motion.div
               key={index}
-              className='group relative flex flex-col items-center justify-center cursor-pointer rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:scale-105 bg-white'
-              initial={{ opacity: 0, y: 50, rotate: -5, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
-              transition={{ type: 'spring', stiffness: 80, damping: 12, delay: index * 0.1 }}
+              className="group relative flex flex-col items-center justify-center rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5, ease: 'easeOut' }}
             >
+              {/* Image */}
               <img
                 src={cat.image}
                 alt={cat.name}
-                className='w-full h-full object-cover transition duration-500 group-hover:opacity-0'
+                className="w-full h-84 object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className='absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center p-4'>
-                <p className='text-white text-center font-serif text-sm sm:text-base'>
-                  {cat.description}
-                </p>
+
+              {/* Glass Overlay */}
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-4">
+                <h3 className="text-lg sm:text-xl text-white font-bold drop-shadow-md mb-1">{cat.name}</h3>
+                <p className="text-sm text-white font-light drop-shadow-md">{cat.description}</p>
+                <button className="mt-3 px-4 py-2 text-sm text-white border border-white rounded-full hover:bg-white/20 cursor-pointer transition">
+                  View More
+                </button>
               </div>
-              <div className='absolute top-3 right-3 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm z-10'>
-                +
-              </div>
-              <span className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-white font-serif text-base sm:text-lg font-bold shadow-md'>
-                {cat.name}
-              </span>
             </motion.div>
           ))}
+
+
         </div>
       </div>
     </motion.section>
