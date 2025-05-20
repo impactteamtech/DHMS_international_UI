@@ -108,7 +108,7 @@ const Category = () => {
               />
 
               {/* Glass Overlay */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-4">
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center px-4">
                 <h3 className="text-lg sm:text-xl text-white font-bold drop-shadow-md mb-1">{cat.name}</h3>
                 <p className="text-sm text-white font-light drop-shadow-md">{cat.description}</p>
                 <button className="mt-3 px-4 py-2 text-sm text-white border border-white rounded-full hover:bg-white/20 cursor-pointer transition">
