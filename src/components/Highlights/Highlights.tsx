@@ -2,7 +2,7 @@ import React from 'react';
 
 const Highlights: React.FC = () => {
   return (
-    <div className="bg-[#f3cb50] text-black px-6 py-12 flex flex-col items-center max-w-8xl font-play">
+    <div id="Highlights" className="bg-[#f3cb50] text-black px-6 py-12 flex flex-col items-center max-w-8xl font-play">
       {/* Hero Heading */}
       <div className="text-center mb-12 max-w-3xl">
         <h2 className="text-4xl sm:text-5xl font-extrabold font-play leading-tight tracking-tight">
