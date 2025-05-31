@@ -1,51 +1,51 @@
 export const ProductsDb = [
   {
     id: 1,
-    name: "Shea Butter Hair Cream",
-    price: 10.99,
+    name: "Blue African Kente Shirt",
+    price: 10.00,
     category: "Hair",
     brand: "Shea Butter",
-    imageUrl: "/butter1.webp",
+    imageUrl: "/blue african shirt.png", 
     rating: 3,
     inStock: true,
     inStore: true,
-    description: "Nourish and hydrate dry hair with this rich shea butter cream, perfect for daily moisturizing."
+    description: "Celebrate heritage and style with this vibrant African shirt, showcasing traditional geometric patterns in rich shades of blue, teal, and magenta."
   },
   {
     id: 2,
-    name: "Shea Moisture Body Lotion",
+    name: "Orange African Kente Shirt",
     price: 12.99,
     category: "Skincare",
     brand: "Shea Moisture",
-    imageUrl: "/moisture.png",
+    imageUrl: "/african-print-shirt.png",
     rating: 4,
     inStock: false,
     inStore: false,
-    description: "Deeply moisturizing body lotion infused with shea butter to soften and smooth skin."
+    description: "Kente cloth is handwoven and characterized by its vibrant, multicolored patterns and geometric shapes. Each color and shape carries symbolic meaning."
   },
   {
     id: 3,
-    name: "Mielle Curl Defining Gel",
+    name: "Mini Satchel",
     price: 15.99,
     category: "Hair",
     brand: "Mielle",
-    imageUrl: "/mielle.webp",
+    imageUrl: "/black-bag.png",
     rating: 5,
     inStock: true,
     inStore: true,
-    description: "Defines curls with a soft hold and enhances shine without stiffness or flaking."
+    description: "Single top handle wrapped with a decorative scarf or fabric tie, which adds a personalized and stylish touch."
   },
   {
     id: 4,
-    name: "Olive Oil Nail Strengthener",
+    name: "African print vest for men",
     price: 8.99,
     category: "Nail Art",
     brand: "Olive Oil",
-    imageUrl: "/olive.webp",
+    imageUrl: "/blue-vest.png",
     rating: 2,
     inStock: true,
     inStore: false,
-    description: "Strengthens and conditions nails with the power of olive oil for healthier growth."
+    description: ". Made from vibrant Ankara fabric, it features bold patterns and rich colors that celebrate African heritage."
   },
   {
     id: 5,
@@ -121,15 +121,15 @@ export const ProductsDb = [
   },
   {
     id: 11,
-    name: "Organics Facial Cleanser",
+    name: "Burgundy Bag",
     price: 14.99,
     category: "Skincare",
     brand: "Organics",
-    imageUrl: "/clean.jpg",
+    imageUrl: "/burgundy-bag.png",
     rating: 3,
     inStock: false,
     inStore: true,
-    description: "Gentle foaming cleanser that removes impurities while keeping skin soft and balanced."
+    description: "Designed for both style and function, it features a rich, deep hue that adds a touch of elegance to any outfit."
   },
   {
     id: 12,
