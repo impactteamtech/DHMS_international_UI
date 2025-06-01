@@ -41,7 +41,7 @@ const inStoreItems = [
 
 const InStore: React.FC = () => {
   return (
-    <div className="w-full bg-black px-4 sm:px-6 md:px-8 py-20 relative text-white font-raleway overflow-hidden">
+    <div id="InStore" className="w-full bg-black px-4 sm:px-6 md:px-8 py-20 relative text-white font-raleway overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('/textures/african-pattern.png')] bg-cover bg-center"></div>
 

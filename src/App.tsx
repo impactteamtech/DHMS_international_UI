@@ -7,7 +7,7 @@ import Shop from './components/Shop/Shop'
 import Cart from './components/Cart/Cart'
 import SignIn from './components/SignIn/SignIn'
 
-const sectionIds = ['hero', 'categories', 'banner', 'testimonials']
+const sectionIds = ['hero','banner', 'categories', 'Highlights', 'InStore','testimonials',]
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
