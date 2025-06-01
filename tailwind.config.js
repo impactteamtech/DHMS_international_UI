@@ -3,7 +3,8 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          satisfy: ['"Satisfy"', 'cursive'],
+          satisfy: ['Satisfy', 'cursive'],
+          cederville: ['Cedarville Cursive', 'cursive'],
           raleway: ['Raleway', 'sans-serif'],
           raleway: ['Play', 'sans-serif'],
           play: ['Cinzel', 'serif']

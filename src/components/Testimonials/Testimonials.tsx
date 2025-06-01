@@ -37,7 +37,7 @@ const Testimonials: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   return (
-    <motion.section  id='testimonials' className="w-full bg-black text-white py-10">
+    <motion.section  id='testimonials' className="w-full  bg-black text-white py-10">
       <div className="max-w-8xl px-8 items-center text-center mx-auto px-4">
         <h1 className="text-6xl font-bold mb-4 text-yellow-500">Testimonials</h1>
         <div className="border-b-2 border-yellow-700  mx-auto w-1/4 mb-8"></div>

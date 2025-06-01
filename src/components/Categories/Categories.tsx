@@ -37,7 +37,7 @@ const Category = () => {
   return (
     <motion.section
       id='categories'
-      className='w-full bg-black px-4 sm:px-6 md:px-8 py-16 relative'
+      className=' w-full bg-black sm:px-6 md:px-8 py-16 relative'
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}

@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout'
 import Home from './components/Home/Home'
 import Shop from './components/Shop/Shop'
 import Cart from './components/Cart/Cart'
+import SignIn from './components/SignIn/SignIn'
 
 const sectionIds = ['hero', 'categories', 'banner', 'testimonials']
 
@@ -30,6 +31,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='shop' element={<Shop/>}/>
           <Route path='cart' element={<Cart/>}/>
+          <Route path='signin' element={<SignIn/>} />
         </Route>
       </Routes>
     </BrowserRouter>

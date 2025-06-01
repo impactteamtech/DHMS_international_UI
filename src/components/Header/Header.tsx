@@ -5,6 +5,7 @@ import { User, ShoppingCart } from 'lucide-react'
 import NavigationMenuBeauty from './HeaderLinks'
 import { useSelector } from 'react-redux'
 import OffsetLink from '../Handler/OffsetLink'
+import { Link } from 'react-router-dom'
 const Header = () => {
   const quantity = useSelector((state: any) => state.cart.totalQuantity)
 
@@ -51,7 +52,9 @@ const Header = () => {
 
           <button className='flex flex-col items-center cursor-pointer space-x-1 hover:scale-105'>
             <User />
+            <Link to='/signin' className='text-[#f3cb50]'>
             <span className='text-[#f3cb50]'>Sign In</span>
+            </Link>
           </button>
         </div>
       </div>
