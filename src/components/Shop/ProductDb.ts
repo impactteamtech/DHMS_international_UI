@@ -133,11 +133,11 @@ export const ProductsDb = [
   },
   {
     id: 12,
-    name: "Dextol Antibacterial Wipes",
+    name: "Yellow Men Shirt",
     price: 6.99,
     category: "Body Care",
     brand: "Dextol",
-    imageUrl: "/wipes.jpg",
+    imageUrl: "/yellow-red-shirt.png",
     rating: 4,
     inStock: true,
     inStore: false,
