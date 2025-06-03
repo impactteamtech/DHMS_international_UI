@@ -30,7 +30,7 @@ const Cart: React.FC = () => {
                 ) : (
                 cartItems.map((item: any, index: number) => (
                     <div key={index} className='grid grid-cols-4 items-center text-center p-4 border-b'>
-                    <img src={item.image} alt='Product' className='w-16 h-16 mx-auto' />
+                    <img src={item.image} alt='Product' className='w-16 h-16 mx-auto  rounded' />
                     <div className='flex items-center justify-center gap-2'>
                         <button 
                         onClick={() => dispatch(updateQty({ id: item.id, quantity: Math.max(item.quantity - 1, 1) }))}
