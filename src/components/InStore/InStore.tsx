@@ -64,7 +64,7 @@ const InStore: React.FC = () => {
           {inStoreItems.map((item, index) => (
             <div
               key={index}
-              className="bg-white text-black rounded-3xl shadow-xl hover:scale-105 transition-transform flex flex-col items-center text-center p-6 w-full max-w-xs mx-auto relative"
+              className="bg-white text-black rounded-3xl shadow-xl hover:scale-105 transition-transform flex flex-col items-center text-center p-6 w-full mx-auto relative"
             >
               {/* Badge */}
               {item.badge && (
@@ -88,7 +88,7 @@ const InStore: React.FC = () => {
               </span>
 
               {/* Reserve CTA (optional) */}
-              <button className="mt-4 px-4 py-2 bg-[#f3cb50] text-black text-sm rounded-full hover:brightness-110 transition">
+              <button className="mt-4 px-4 cursor-pointer py-2 bg-[#f3cb50] text-black text-sm rounded-full hover:brightness-110 hover:scale-105 transition">
                 Reserve for Pickup
               </button>
             </div>
