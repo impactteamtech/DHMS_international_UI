@@ -52,7 +52,7 @@ const SignIn: React.FC = () => {
                                 <div className='flex items-center justify-center space-x-2 text-gray-400'>
                                     <Mail className='w-6 h-6 text-yellow-500' />
                                     <button className='p-2 bg-yellow-500 cursor-pointer text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200'>
-                                        or Sign In with Google
+                                         Sign in with Google
                                     </button>
                                 </div>
                             </div>

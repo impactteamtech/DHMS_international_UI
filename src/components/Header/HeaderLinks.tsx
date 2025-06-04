@@ -35,12 +35,12 @@ export default function NavigationMenuBeauty() {
               </li>
               <li className=' rounded-full px-3 py-1'>
                 <NavigationMenuLink asChild>
-                  <Link to="/categories/kente shirts">Kente Shirts</Link>
+                  <Link to="/categories/kente shirts">Shirts</Link>
                 </NavigationMenuLink>
               </li>
               <li className=' rounded-full px-3 py-1'>
                 <NavigationMenuLink asChild>
-                  <Link to="/categories/kaftan">Kaftan Dresses</Link>
+                  <Link to="/categories/kaftan">Dresses</Link>
                 </NavigationMenuLink>
               </li>
               <li className=' rounded-full px-3 py-1'>
