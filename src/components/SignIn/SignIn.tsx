@@ -1,13 +1,47 @@
 import React from 'react';
+import { useState } from 'react';
 import signinpng from '../../../public/signin1.jpg';
+import {useForm} from 'react-hook-form'
+import {userLogin} from '../AuthFolder/AuthFiles'
 import { Mail } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
+
+interface FormData{
+    email:string,
+    password:string
+}
 
 const SignIn: React.FC = () => {
+
+    const {register, handleSubmit, formState: { errors }} = useForm<FormData>();
+    const [error, setError] = useState<string>();
+    const navigate = useNavigate();
+
+
+    {/* this is our onSubmit logic for form submission */}
+    const onSubmit = async (data: FormData) => {
+        setError("")
+        try{
+            const response = await userLogin(data);
+            if (response.status === 200) {
+                const user = response.data
+                localStorage.setItem("email", user.email);
+                localStorage.setItem("password", user.password); 
+                navigate('/home')
+            }
+            else{
+                setError("Unable to login")
+            }
+        }
+        catch (error) {
+            console.log("error has occured", error)
+        }
+    }
+
     return (
         <>
            
-
             <div className='relative w-full  text-white font-raleway px-6 py-30 mt-8 bg-black rounded-lg shadow-lg'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto'>
                     <div className='flex flex-col justify-center items-center space-y-6'>
@@ -25,21 +59,25 @@ const SignIn: React.FC = () => {
                         <p className='text-lg text-white'>
                             Welcome back! Please enter your credentials to access your account.
                         </p>
-                        <form className='w-full max-w-sm text-center space-y-4'>
+                        <form 
+                            onSubmit={handleSubmit(onSubmit)}
+                            className='w-full max-w-sm text-center space-y-4'>
                             <div className='text-left flex flex-col space-y-8 text-lg font-semibold text-[#f3cb50] mb-2'>
                                 <input
+                                    {...register("email", {required:"email is required!" })}
                                     type='email'
                                     placeholder='Email Address'
                                     className='w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500'
                                 />
                                 <input
+                                    {...register("password", {required: "password is required!"})}
                                     type='password'
                                     placeholder='Password'
                                     className='w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500'
                                 />
                                 <button
                                     type='submit'
-                                    className='w-full py-3 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200'
+                                    className='w-full py-3 cursor-pointer bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200'
                                 >
                                     Sign In
                                 </button>
