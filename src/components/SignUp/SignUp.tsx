@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { userRegister } from '../AuthFolder/AuthFiles';
 import { Eye, EyeOff, Mail } from 'lucide-react';
 import signupng from '../../assets/signup.jpg'
-import signinVID from '../../assets/signin.mp4';
+
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 interface FormData {
   email: string;
@@ -82,7 +82,7 @@ const SignUp: React.FC = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-[-1] blur-sm brightness-30"
       >
-        <source src={signinVID} type="video/mp4" />
+        <source src='../../../public/videos/signin.MP4' type="video/mp4" />
       </video>
 
       <div className="relative flex items-center justify-center min-h-screen w-full mt-8 px-4 sm:px-6 lg:px-8">

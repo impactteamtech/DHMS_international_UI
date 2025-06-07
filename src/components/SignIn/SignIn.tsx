@@ -5,7 +5,7 @@ import { userLogin } from '../AuthFolder/AuthFiles';
 import { Mail } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
-import signinVID from '../../assets/signin.mp4';
+
 import { useAuth } from '../Context/AuthContext';
 import { useDispatch } from 'react-redux';
 import { fetchCart} from '../../store/cartSlice';
@@ -69,7 +69,7 @@ const SignIn: React.FC = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-[-1] blur-sm brightness-30"
       >
-        <source src={signinVID} type="video/mp4" />
+        <source src='../../../public/videos/signin.MP4' type="video/mp4" />
       </video>
 
       {/* Overlay Content */}
