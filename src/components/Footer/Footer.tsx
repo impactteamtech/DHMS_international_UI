@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-[#e3c981] text-sm uppercase font-bold">Quick Links</h3>
             <ul className="space-y-2 text-sm mt-2">
-              <li><HashLink to="/#hero" scroll={scrollWithOffset} className="hover:text-[#f3cb50]">Home</HashLink></li>
+              <li><HashLink to="/home#top" scroll={scrollWithOffset} className="hover:text-[#f3cb50]">Home</HashLink></li>
               <li><HashLink to="/shop#top" className="hover:text-[#f3cb50]">Shop</HashLink></li>
               <li><HashLink to="/#testimonials" scroll={scrollWithOffset} className="hover:text-[#f3cb50]">Testimonials</HashLink></li>
             </ul>

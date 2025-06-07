@@ -1,6 +1,6 @@
 export const scrollWithOffset = (el: HTMLElement, duration = 600) => {
     const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-    const yOffset = -85; // header height offset
+    const yOffset = -80; // header height offset
   
     const startY = window.scrollY;
     const targetY = yCoordinate + yOffset;

@@ -7,26 +7,15 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL;
 
 // User login authentication
-export const userLogin = async (FormData:any) => {
-    try {
-        const response = await axios.post(`${API_URL}/login`, FormData, {
-            headers: { 'Content-Type': 'application/json' }
-        });
-        return response.data;
-    } catch (error: any) {
-        // Better error handling
-        return error.response?.data || { message: 'Login failed.' };
-    }
+export const userLogin = async (FormData: any) => {
+  return axios.post(`${API_URL}/login`, FormData, {
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 // User registration authentication
-export const userRegister = async (formData: any) => {
-    try {
-        const response = await axios.post(`${API_URL}/register`, FormData, {
-            headers: { 'Content-Type': 'application/json' }
-        });
-        return response.data;
-    } catch (error: any) {
-        return error.response?.data || { message: 'Registration failed.' };
-    }
+export const userRegister = async (FormData: any) => {
+  return axios.post(`${API_URL}/register`, FormData, {
+    headers: { "Content-Type": "application/json" },
+  });
 };
