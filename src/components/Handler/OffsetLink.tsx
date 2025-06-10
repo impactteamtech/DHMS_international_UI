@@ -8,9 +8,10 @@ interface OffsetLinkProps {
   to: string;
   children: React.ReactNode;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
-const OffsetLink: React.FC<OffsetLinkProps> = ({ to, children, className }) => {
+const OffsetLink: React.FC<OffsetLinkProps> = ({ to, children, className, onClick }) => {
   const location = useLocation();
 
   // Normalize the pathname (ignore hash if needed)
@@ -23,7 +24,7 @@ const OffsetLink: React.FC<OffsetLinkProps> = ({ to, children, className }) => {
   );
 
   return (
-    <HashLink to={to} scroll={scrollWithOffset} className={combinedClassName}>
+    <HashLink to={to} scroll={scrollWithOffset} className={combinedClassName} onClick={onClick}>
       {children}
     </HashLink>
   );

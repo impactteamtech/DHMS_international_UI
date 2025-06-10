@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import OffsetLink from '@/components/Handler/OffsetLink';
 import {
   NavigationMenu,
@@ -9,16 +9,29 @@ import {
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
 import { useAuth } from '../Context/AuthContext';
-// import { useState } from 'react';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
+import { useState, useEffect } from 'react';
 
 export default function NavigationMenuBeauty() {
   const { isAuthenticated } = useAuth(); 
-  //  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false);
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const location = useLocation();
+
+  // Stop animation when route changes
+  useEffect(() => {
+    if (loadingAnimation) {
+      const timeout = setTimeout(() => setLoadingAnimation(false), 800); // Delay to let animation play
+      return () => clearTimeout(timeout);
+    }
+  }, [location]);
+
+  const handleClick = () => {
+    setLoadingAnimation(true);
+  };
 
   return (
     <NavigationMenu>
-      {loadingAnimation && <LoadingAnimation/>}
+      {loadingAnimation && <LoadingAnimation />}
       <NavigationMenuList className="text-white text-md">
 
         {/* Home */}
@@ -26,7 +39,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/home#top"
-              
+              onClick={handleClick}
               className="hover:bg-[#f3cb50] rounded-full px-3 py-1 transition"
             >
               Home
@@ -52,7 +65,9 @@ export default function NavigationMenuBeauty() {
                   className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
                 >
                   <NavigationMenuLink asChild>
-                    <Link to={item.to}>{item.label}</Link>
+                    <Link to={item.to} onClick={handleClick}>
+                      {item.label}
+                    </Link>
                   </NavigationMenuLink>
                 </li>
               ))}
@@ -65,6 +80,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/shop#top"
+              onClick={handleClick}
               className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
             >
               Shop
@@ -77,6 +93,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/contact#top"
+              onClick={handleClick}
               className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
             >
               Contact
@@ -84,13 +101,13 @@ export default function NavigationMenuBeauty() {
           </NavigationMenuLink>
         </NavigationMenuItem>
 
-        {/* Optional: Show profile or logout if authenticated */}
-        
+        {/* Dashboard (if authenticated) */}
         {isAuthenticated && (
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <OffsetLink
                 to="/dashboard#top"
+                onClick={handleClick}
                 className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
               >
                 Dashboard
@@ -98,7 +115,7 @@ export default function NavigationMenuBeauty() {
             </NavigationMenuLink>
           </NavigationMenuItem>
         )}
-        
+
       </NavigationMenuList>
     </NavigationMenu>
   );
