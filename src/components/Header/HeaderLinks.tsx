@@ -9,12 +9,16 @@ import {
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
 import { useAuth } from '../Context/AuthContext';
+// import { useState } from 'react';
+import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 
 export default function NavigationMenuBeauty() {
-  const { isAuthenticated } = useAuth(); // You can use this to conditionally show/hide links
+  const { isAuthenticated } = useAuth(); 
+  //  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false);
 
   return (
     <NavigationMenu>
+      {loadingAnimation && <LoadingAnimation/>}
       <NavigationMenuList className="text-white text-md">
 
         {/* Home */}
@@ -22,6 +26,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/home#top"
+              
               className="hover:bg-[#f3cb50] rounded-full px-3 py-1 transition"
             >
               Home

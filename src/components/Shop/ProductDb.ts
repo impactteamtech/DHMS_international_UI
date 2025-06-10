@@ -1,4 +1,5 @@
 export const ProductsDb = [
+  // this will only be for clothing 
   {
     id: 1,
     name: "",
@@ -35,6 +36,7 @@ export const ProductsDb = [
     inStore: true,
     description: "Single top handle wrapped with a decorative scarf or fabric tie, which adds a personalized and stylish touch."
   },
+  
   {
     id: 4,
     name: "",
@@ -195,8 +197,8 @@ export const ProductsDb = [
     id: 17,
     name: "Yellow & Blue Kaftan Dress",
     price: 24.99,
-    category: "Dresses",
-    brand: "Dress",
+    category: "Rae",
+    brand: "Rae",
     imageUrl: "/yellow kaftan.png",
     rating: 3,
     inStock: true,

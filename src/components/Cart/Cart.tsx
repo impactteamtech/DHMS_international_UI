@@ -20,7 +20,7 @@ const Cart: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className='min-h-screen bg-black flex flex-col items-center justify-center px-2 md:px-6 py-10 mt-28 pt-36 md:pt-28 lg:pt-24'>
+    <div className='bg-black flex flex-col items-center justify-center px-2 md:px-6 py-10 mt-28 pt-36 md:pt-28 lg:pt-24'>
       <h1 className='text-[#f3cb50] text-3xl font-bold mb-8'>YOUR CART</h1>
 
       <div className='bg-white max-w-6xl rounded-xl p-6 w-full flex flex-col md:flex-row gap-6'>

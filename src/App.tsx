@@ -11,6 +11,7 @@ import { AuthProvider } from './components/Context/AuthContext'
 import { ToastContainer } from "react-toastify";
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
+import Contact from './components/Contact/Contact'
 
 const sectionIds = ['hero', 'banner', 'categories', 'Highlights', 'InStore', 'testimonials',]
 
@@ -34,14 +35,15 @@ function App() {
         <ScrollDownButton onClick={handleScroll} />
 
         <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
+          <Route  element={<Layout />}>
+            <Route path='home' element={<Home />} />
             <Route path='shop' element={<Shop />} />
             <Route path='cart' element={<Cart />} />
             <Route path='login' element={<SignIn />} />
             <Route path='register' element={<SignUp />} />
+            <Route path='contact' element={<Contact />} />
             <Route
-              path="/dashboard"
+              path="dashboard"
               element={
                 <ProtectedRoute>
                   <Dashboard />

@@ -7,6 +7,7 @@ import {
   ShoppingBag,
   TrendingUp,
   LayoutDashboard,
+  ShoppingCart,
 } from 'lucide-react';
 
 const Dashboard = () => {
@@ -30,25 +31,29 @@ const Dashboard = () => {
         </div>
 
         <nav className="space-y-5">
-          <Link to="overview" className="flex items-center space-x-2 hover:text-[#f3cb50] transition">
+          <Link to="overview" className="flex items-center space-x-2 hover:text-black hover:bg-white hover:px-4 hover:py-2 hover:rounded-md cursor-pointer transition duration-200 ease-in-out">
             <LayoutDashboard size={18} />
             <span>Overview</span>
           </Link>
-          <Link to="orders" className="flex items-center space-x-2 hover:text-[#f3cb50] transition">
+          <Link to="/shop#top" className="flex items-center space-x-2 hover:text-[#000] hover:bg-white hover:px-4 hover:py-2 hover:rounded-md cursor-pointer transition duration-200 ease-in-out">
+            <ShoppingCart size={18} />
+            <span>Shop Now</span>
+          </Link>
+          <Link to="orders" className="flex items-center space-x-2 hover:text-[#000] hover:bg-white hover:px-4 hover:py-2 hover:rounded-md cursor-pointer transition duration-200 ease-in-out">
             <ShoppingBag size={18} />
             <span>Order History</span>
           </Link>
-          <Link to="trending" className="flex items-center space-x-2 hover:text-[#f3cb50] transition">
+          <Link to="trending" className="flex items-center space-x-2 hover:text-black hover:bg-white hover:px-4 hover:py-2 hover:rounded-md cursor-pointer transition duration-200 ease-in-out">
             <TrendingUp size={18} />
             <span>Trending Orders</span>
           </Link>
-          <Link to="profile" className="flex items-center space-x-2 hover:text-[#f3cb50] transition">
+          <Link to="profile" className="flex items-center space-x-2 hover:text-black hover:bg-white hover:px-4 hover:py-2 hover:rounded-md cursor-pointer transition duration-200 ease-in-out">
             <User size={18} />
             <span>Account Info</span>
           </Link>
           <button
             onClick={handleLogout}
-            className="flex items-center space-x-2 text-red-400 hover:text-red-600 transition mt-6"
+            className="flex items-center space-x-2 hover:text-black hover:bg-white hover:px-4 hover:py-2 hover:rounded-md cursor-pointer transition duration-200 ease-in-out mt-2"
           >
             <LogOut size={18} />
             <span>Sign Out</span>
