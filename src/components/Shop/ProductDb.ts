@@ -1,4 +1,5 @@
 export const ProductsDb = [
+  // this will only be for clothing 
   {
     id: 1,
     name: "Handmade Kente Bag",
@@ -35,6 +36,7 @@ export const ProductsDb = [
     inStore: true,
     description: "Elevate your everyday look with this stylish bucket shoulder bag, designed in a timeless tan and brown color palette."
   },
+  
   {
     id: 4,
     name: "Black Animal Print",

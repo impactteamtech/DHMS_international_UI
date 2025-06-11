@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ProductsDb } from './ProductDb';
-import { ShoppingBag } from 'lucide-react';
+import { Dialog } from '@headlessui/react';
+import {fetchProducts }  from '../AuthFolder/AuthFiles';
+import { ShoppingBag, X } from 'lucide-react';
 import {
   Pagination,
   PaginationContent,
@@ -9,8 +10,10 @@ import {
   PaginationPrevious,
   PaginationNext,
 } from '@/components/ui/pagination';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '@/store/cartSlice';
+import { toast } from 'react-hot-toast'
+import axios from 'axios';
+import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
+
 interface ProductProps {
   selectedCategory: string[];
   selectedBrand: string[];
@@ -21,147 +24,243 @@ interface ProductProps {
   isDesktopOpen: boolean;
 }
 
+interface Product{
+  id: string | number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  category: string;
+  rating: number;
+  brand?: any;
+  inStore?: boolean;
+  colors?: string[];
+}
+
 const ProductContent: React.FC<ProductProps> = ({
   selectedCategory,
   selectedBrand,
   selectRating,
   priceRange,
-  availabilityFilter,
-  isDesktopOpen,
+  availabilityFilter
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
-  const dispatch = useDispatch();
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedColor, setSelectedColor] = useState('');
+  const itemsPerPage = 10;
+  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [productsDb, setProductsDb] = useState<Product[]>();
+  //fetching products 
 
+    useEffect(()=>{
+      const fetchData = async ()=>{
+        setError("");
+        setLoadingAnimation(true);
+        try{
+          const response = await fetchProducts()
+          if (response.status === 200 ) {
+            setProductsDb(response.data)
+    
+          }
+          else{
+            setError("unable to retrieve products try again")
+          }
+        }
+        catch (err: any){
+          console.log("uh oh! an error occured", err);
+          setError(err.message || "cannot get products" )
+        }
+        finally{
+          setLoadingAnimation(false)
+        }
+
+      }
+      fetchData()
+    },[])
+  
+  
   useEffect(() => {
-    setCurrentPage(1); // Reset to page 1 when filters change
+    setCurrentPage(1);
   }, [selectedCategory, selectedBrand, selectRating, priceRange, availabilityFilter]);
 
-  const filteredProducts = ProductsDb.filter((product) => {
-    const isCategoryMatch =
-      selectedCategory.length === 0 || selectedCategory.includes(product.category);
-
-    const isBrandMatch =
-      selectedBrand.length === 0 || selectedBrand.includes(product.brand);
-
-    const isRatingMatch =
-      selectRating === 0 || product.rating >= selectRating;
-
+  const filteredProducts = (productsDb ?? []).filter((product) => {
+    const isCategoryMatch = selectedCategory.length === 0 || selectedCategory.includes(product.category);
+    const isBrandMatch = selectedBrand.length === 0 || selectedBrand.includes(product.brand);
+    const isRatingMatch = selectRating === 0 || product.rating >= selectRating;
     const isPriceMatch = product.price <= priceRange;
-
-    const isAvailabilityMatch =
-      availabilityFilter.length === 0 ||
-      availabilityFilter.includes(product.inStore ? 'In Stock' : 'Online');
-
-    return (
-      isCategoryMatch &&
-      isBrandMatch &&
-      isRatingMatch &&
-      isPriceMatch &&
-      isAvailabilityMatch
-    );
+    const isAvailabilityMatch = availabilityFilter.length === 0 || availabilityFilter.includes(product.inStore ? 'In Stock' : 'Online');
+    return isCategoryMatch && isBrandMatch && isRatingMatch && isPriceMatch && isAvailabilityMatch;
   });
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-  const pushToCart = (product: any) => {
-    dispatch(addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.imageUrl,
-      description: product.description, 
-      category: product.category,
-      rating: product.rating,
-      quantity: 1,
-      totalPrice: product.price,
-    }));
+  const paginatedProducts = filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  const userEmail = localStorage.getItem("email")
+  const openModal = (product: any) => {
+    setSelectedProduct(product);
+    setSelectedColor(product.colors?.[0] || '');
   };
-  
 
-  return (
-    <div className={`flex flex-col items-center justify-center ${isDesktopOpen ? 'md:3/4' : 'w-full'} bg-black px-2 md:px-6`}>
-      <h1 className="text-3xl sm:text-4xl font-raleway text-yellow-500 py-4 text-center">Shop Your Care</h1>
+  const closeModal = () => {
+    setSelectedProduct(null);
+  };
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 w-full max-w-8xl">
-        {paginatedProducts.length === 0 ? (
-          <div className="col-span-full bg-white text-black p-8 rounded-lg text-center">
-            <h2 className="text-2xl font-bold">No Products Found</h2>
-            <p>Please adjust your filters.</p>
-          </div>
-        ) : (
-          paginatedProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white text-black p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md flex flex-col items-center transition"
-            >
+  const handleAddToCart = async () => {
+  if (selectedProduct) {
+    if (!userEmail)return 
+    try {
+      await axios.post(
+        'http://localhost:8080/cart/add',
+        {
+          productId: selectedProduct.id,
+          name: selectedProduct.name,
+          price: selectedProduct.price,
+          image: selectedProduct.imageUrl,
+          category: selectedProduct.category,
+          rating: selectedProduct.rating,
+          color: selectedColor,
+          quantity: 1,
+          totalPrice: selectedProduct.price,
+        },
+        { withCredentials: true }
+      );
+
+      toast.success('Item added to cart');
+      closeModal();
+    } catch (error) {
+      toast.error('Failed to add to cart');
+      console.error(error);
+      closeModal()
+    }
+  }
+};
+    return (
+      <div className="bg-black px-4 md:px-10 py-10 text-white">
+
+         {error && <p className="text-red-500 text-sm">{error}</p>}
+        {loadingAnimation && <LoadingAnimation/>}
+        <h1 className="text-3xl font-semibold text-yellow-500 text-center mb-6">Shop Your Care</h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {paginatedProducts.map((product) => (
+            <div key={product.id} className="relative group rounded overflow-hidden shadow-lg bg-white text-black">
               <img
                 src={product.imageUrl}
                 alt={product.name}
-                className="w-full   p-3 object-top rounded-md mb-2 sm:mb-3"
+                className="w-full h-96 object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <h2 className="text-base text-lg sm:text-lg font-semibold text-center">{product.name}</h2>
-              <p className="text-sm sm:text-sm text-gray-600">{product.category}</p>
-              <p className="text-yellow-500 text-md mb-1">{"★".repeat(product.rating)}</p>
-              <p className="text-black font-medium text-sm sm:text-base">${product.price.toFixed(2)}</p>
-              <button onClick={() => pushToCart(product)} className="bg-[#ccb068] text-white cursor-pointer px-3 sm:px-4 py-2 rounded-lg mt-2 sm:mt-3 hover:scale-105 transition-transform flex items-center">
-                <ShoppingBag className="w-4 h-4 mr-2" />
-                Add to Cart
-              </button>
-              <p className="text-sm text-red-500 mt-1">In Store Pick Up</p>
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <button
+                  onClick={() => openModal(product)}
+                  className="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-500 hover:scale-105 cursor-pointer transition"
+                >
+                  Quick View
+                </button>
+              </div>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
 
-      {/* Pagination Controls */}
-      {totalPages > 1 && (
-        <div className="mt-6 w-full flex justify-between">
-          <Pagination>
-            <PaginationContent className="text-[#ccb068] flex items-center justify-center gap-2">
-              <PaginationItem>
-                <PaginationPrevious
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentPage((prev) => Math.max(prev - 1, 1));
-                  }}
-                />
-              </PaginationItem>
-
-              {Array.from({ length: totalPages }, (_, index) => (
-                <PaginationItem key={index}>
-                  <PaginationLink
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="mt-6 w-full flex justify-center">
+            <Pagination>
+              <PaginationContent className="text-yellow-500 flex items-center justify-center gap-2">
+                <PaginationItem>
+                  <PaginationPrevious
                     href="#"
-                    isActive={currentPage === index + 1}
                     onClick={(e) => {
                       e.preventDefault();
-                      setCurrentPage(index + 1);
+                      setCurrentPage((prev) => Math.max(prev - 1, 1));
                     }}
-                  >
-                    {index + 1}
-                  </PaginationLink>
+                  />
                 </PaginationItem>
-              ))}
 
-              <PaginationItem>
-                <PaginationNext
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-                  }}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div>
-      )}
-    </div>
-  );
-};
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <PaginationItem key={index}>
+                    <PaginationLink
+                      href="#"
+                      isActive={currentPage === index + 1}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentPage(index + 1);
+                      }}
+                    >
+                      {index + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
 
-export default ProductContent;
+                <PaginationItem>
+                  <PaginationNext
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+                    }}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          </div>
+        )}
+
+        {/* Modal */}
+        <Dialog open={!!selectedProduct} onClose={closeModal} className="fixed z-50 inset-0 overflow-y-auto">
+          <div className="flex items-center justify-center w-full h-screen px-4">
+            <div className="fixed inset-0 bg-black bg-opacity-70" />
+            <div className="bg-white rounded-lg shadow-xl max-w-8xl w-full h-screen z-50 p-6 relative text-black">
+              <button onClick={closeModal} className="absolute top-3 right-3 text-black cursor-pointer hover:text-red-500">
+                <X size={32} />
+              </button>
+
+              {selectedProduct && (
+                <div className="flex flex-col md:flex-row p-3 gap-6">
+                  <img
+                    src={selectedProduct.imageUrl}
+                    alt={selectedProduct.name}
+                    className="w-full md:w-1/2 h-64 xl:h-150 object-contain rounded"
+                  />
+                  <div className="flex flex-col justify-between space-y-4 md:w-1/2">
+                    <div>
+                      <h2 className="text-2xl font-bold">{selectedProduct.name}</h2>
+                      <p className="text-yellow-600">{"★".repeat(selectedProduct.rating)}</p>
+                      <p className="text-gray-700">{selectedProduct.category}</p>
+                      <p className="text-lg font-semibold mt-2">${selectedProduct.price.toFixed(2)}</p>
+                    </div>
+
+                    {selectedProduct.colors && (
+                      <div>
+                        <label className="block mb-1 font-medium">Select Color:</label>
+                        <div className="flex gap-2 flex-wrap">
+                          {selectedProduct.colors.map((color: string) => (
+                            <button
+                              key={color}
+                              onClick={() => setSelectedColor(color)}
+                              className={`px-3 py-1 rounded border ${selectedColor === color ? 'bg-yellow-500 text-white' : 'bg-gray-200'}`}
+                            >
+                              {color}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <button
+                      onClick={handleAddToCart}
+                      className="mt-4 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-500 transition flex items-center justify-center"
+                    >
+                      <ShoppingBag className="w-4 h-4 mr-2" />
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </Dialog>
+      </div>
+    );
+  };
+
+  export default ProductContent;
