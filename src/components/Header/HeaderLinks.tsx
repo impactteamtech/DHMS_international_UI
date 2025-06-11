@@ -30,22 +30,22 @@ export default function NavigationMenuBeauty() {
             <ul className="grid gap-2 p-2 w-48">
               <li className=' rounded-full px-3 py-1'>
                 <NavigationMenuLink asChild>
-                  <Link to="/categories/handbags">Handbags</Link>
+                  <Link to="/categories/handbags">Handbag</Link>
                 </NavigationMenuLink>
               </li>
               <li className=' rounded-full px-3 py-1'>
                 <NavigationMenuLink asChild>
-                  <Link to="/categories/kente shirts">Shirts</Link>
+                  <Link to="/categories/kente shirts">Clothing</Link>
                 </NavigationMenuLink>
               </li>
               <li className=' rounded-full px-3 py-1'>
                 <NavigationMenuLink asChild>
-                  <Link to="/categories/kaftan">Dresses</Link>
+                  <Link to="/categories/kaftan">Body Oil</Link>
                 </NavigationMenuLink>
               </li>
               <li className=' rounded-full px-3 py-1'>
                 <NavigationMenuLink asChild>
-                  <Link to="/categories/body oil">Body Oil</Link>
+                  <Link to="/categories/body oil">Fragrances</Link>
                 </NavigationMenuLink>
               </li>
             </ul>
