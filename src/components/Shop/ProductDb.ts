@@ -1,6 +1,7 @@
 export const ProductsDb = [
   // this will only be for clothing 
-  {
+ 
+     {
     id: 1,
     name: "Handmade Kente Bag",
     price: 10.00,
@@ -36,7 +37,6 @@ export const ProductsDb = [
     inStore: true,
     description: "Elevate your everyday look with this stylish bucket shoulder bag, designed in a timeless tan and brown color palette."
   },
-  
   {
     id: 4,
     name: "Black Animal Print",
@@ -248,7 +248,7 @@ export const ProductsDb = [
     name: "Women's Black Legging",
     price: 24.99,
     category: "Clothing",
-    brand: "",
+    brand: "Ankara",
     imageUrl: "/black-leggings.png",
     rating: 3,
     inStock: true,
@@ -332,7 +332,7 @@ export const ProductsDb = [
     name: "Traditional African Dress",
     price: 24.99,
     category: "Clothing",
-    brand: "",
+    brand: "Ankara",
     imageUrl: "/green-african dress.png",
     rating: 3,
     inStock: true,
@@ -344,13 +344,14 @@ export const ProductsDb = [
     name: "Traditional African Dress",
     price: 24.99,
     category: "Clothing",
-    brand: "",
+    brand: "Ankara",
     imageUrl: "/green-african dress.png",
     rating: 3,
     inStock: true,
     inStore: true,
     description: "Traditional African wear with green patterns and matching headwrap ."
-  },
+  }
+
 
 
 ];

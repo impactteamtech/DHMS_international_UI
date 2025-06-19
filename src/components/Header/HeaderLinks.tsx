@@ -32,7 +32,7 @@ export default function NavigationMenuBeauty() {
   return (
     <NavigationMenu>
       {loadingAnimation && <LoadingAnimation />}
-      <NavigationMenuList className="text-white text-md">
+      <NavigationMenuList className="text-white text-xs">
 
         {/* Home */}
         <NavigationMenuItem>
@@ -62,7 +62,7 @@ export default function NavigationMenuBeauty() {
               ].map((item) => (
                 <li
                   key={item.to}
-                  className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
+                  className="rounded-full px-3 py-1  transition"
                 >
                   <NavigationMenuLink asChild>
                     <Link to={item.to} onClick={handleClick}>

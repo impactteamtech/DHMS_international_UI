@@ -4,11 +4,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import { userRegister } from '../AuthFolder/AuthFiles';
 import { Eye, EyeOff, Mail } from 'lucide-react';
 import signupng from '../../assets/signup.jpg'
-
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 interface FormData {
   email: string;
   password: string;
+  username: string;
   confirmPassword: string;
   shippingAddress: string;
 }
@@ -99,6 +99,12 @@ const SignUp: React.FC = () => {
 
               <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm text-center space-y-4">
                 <div className="text-left flex flex-col space-y-6 text-lg font-semibold text-[#f3cb50] mb-2">
+                  <input
+                    {...register('username', { required: 'username is required!' })}
+                    type="name"
+                    placeholder="username"
+                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  />
                   <input
                     {...register('email', { required: 'Email is required!' })}
                     type="email"

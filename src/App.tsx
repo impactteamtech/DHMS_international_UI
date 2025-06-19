@@ -8,7 +8,7 @@ import Cart from './components/Cart/Cart'
 import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
 import { AuthProvider } from './components/Context/AuthContext'
-import { ToastContainer } from "react-toastify";
+import { Toaster } from 'react-hot-toast';
 import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 import Contact from './components/Contact/Contact'
@@ -31,7 +31,7 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <ToastContainer position="top-center" autoClose={2500} />
+        <Toaster position="top-center"/>
         <ScrollDownButton onClick={handleScroll} />
 
         <Routes>
