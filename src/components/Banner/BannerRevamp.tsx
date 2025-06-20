@@ -1,7 +1,7 @@
 import React from 'react';
-import bodyOil from '../../assets/body.jpg';
-import Bonnet from '../../assets/bonnet.jpg';
-import Clothes from '../../assets/clothingWomen.jpeg';
+import bodyOil from '/body.jpg';
+import Bonnet from '/bonnet.jpg';
+import Clothes from '/clothingWomen.jpeg';
 import Jewelry from '../../assets/jewelry.png'; 
 const categories = [
   {
