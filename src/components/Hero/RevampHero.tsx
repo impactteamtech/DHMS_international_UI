@@ -4,37 +4,36 @@ import heroPic from '../../assets/hero.png';
 
 const RevampHero: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 w-full mx-auto bg-[#d5a86b] p-8 max-w-8xl items-center">
+    <section className="w-full bg-[#d5a86b] mt-12 px-6 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center max-w-8xl mx-auto font-raleway">
       
-      {/* Left Column - Text Content */}
-      <div className="flex flex-col items-center justify-center space-y-4 text-center px-4 ">
-        <div className='space-y-4 flex pl-32 text-center text-nowrap flex-col items-center'>
-        <h1 className="text-5xl md:text-7xl font-[satisfy] text-white">
-          Where Culture Meets Beauty
-        </h1>
-        <p className="text-lg text-white max-w-md">
-          Unearth timeless fashion, luminous beauty, and care inspired by heritage
-        </p>
-        <OffsetLink 
-          to="/shop#top" 
-          className="text-base mt-4 rounded-xl sm:text-lg px-6 sm:px-8 py-2 bg-white border border-white text-black font-raleway cursor-pointer hover:scale-105 transition-transform"
-        >
-          Shop Now
-        </OffsetLink>
-
+      {/* Left Column - Text */}
+      <div className="flex flex-col items-center md:items-end justify-center text-center md:text-right px-4 space-y-6">
+        <div className="max-w-md">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[satisfy] text-white leading-tight">
+            Where Culture Meets Beauty
+          </h1>
+          <p className="text-md sm:text-lg text-white mt-4">
+            Unearth timeless fashion, luminous beauty, and care inspired by heritage.
+          </p>
+          <OffsetLink 
+            to="/shop#top"
+            className="inline-block mt-6 px-6 py-2 rounded-xl bg-white text-black text-sm sm:text-base font-semibold border border-white hover:scale-105 transition-transform"
+          >
+            Shop Now
+          </OffsetLink>
         </div>
       </div>
 
-      {/* Right Column - Image */}
-      <div className="flex justify-center items-center mt-10 md:mt-0 mask-b-from-50% mask-radial-[50%_90%] mask-radial-from-80%">
+      {/* Right Column - Hero Image */}
+      <div className="flex justify-center items-center mt-12 md:mt-0">
         <img 
           src={heroPic} 
           alt="hero" 
-          className="w-80 h-130 md:w-[26rem] border-none object-contain"
+          className="w-64 sm:w-80 md:w-[26rem] object-contain"
         />
       </div>
-
-    </div>
+      
+    </section>
   );
 };
 
