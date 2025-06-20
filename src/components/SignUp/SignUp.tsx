@@ -90,8 +90,8 @@ const SignUp: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-white">
             <div className="flex flex-col justify-center items-center mt-6 md:mt-0 text-center space-y-4">
               <h1 className="text-5xl font-[satisfy] text-[#f3cb50]">Your journey starts here</h1>
-              <img src={signupng} alt="Sign up" className="w-80 rounded-md mx-auto shadow-lg object-contain mb-6" />
-            </div>
+             
+            </div> <img src={signupng} alt="Sign up" className="w-80 rounded-md mx-auto shadow-lg object-contain mb-6" />
 
             <div className="flex flex-col justify-center items-center space-y-4">
               <h2 className="text-2xl sm:text-4xl font-extrabold text-[#f3cb50]">Become a member</h2>

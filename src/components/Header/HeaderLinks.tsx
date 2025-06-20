@@ -49,10 +49,10 @@ export default function NavigationMenuBeauty() {
 
         {/* Categories Dropdown */}
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="rounded-full bg-black text-md">
+          <NavigationMenuTrigger className="rounded-full px-3 py-1 bg-[#d5a86b] transition">
             Categories
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-black text-white">
+          <NavigationMenuContent className=" bg-[#d5a86b] text-white">
             <ul className="grid gap-2 p-2 w-48">
               {[
                 { to: '/categories/handbags', label: 'Handbags' },
