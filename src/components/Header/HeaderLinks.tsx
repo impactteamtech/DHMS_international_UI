@@ -1,5 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
-import OffsetLink from '@/components/Handler/OffsetLink';
+import { Link } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -9,29 +8,21 @@ import {
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
 import { useAuth } from '../Context/AuthContext';
-import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
-import { useState, useEffect } from 'react';
+import OffsetLink from '../Handler/OffsetLink';
+// import { useState } from 'react';
+
 
 export default function NavigationMenuBeauty() {
   const { isAuthenticated } = useAuth(); 
-  const [loadingAnimation, setLoadingAnimation] = useState(false);
-  const location = useLocation();
+  function handleClick(event: any): void {
+    throw new Error('Function not implemented.');
+  }
 
-  // Stop animation when route changes
-  useEffect(() => {
-    if (loadingAnimation) {
-      const timeout = setTimeout(() => setLoadingAnimation(false), 800); // Delay to let animation play
-      return () => clearTimeout(timeout);
-    }
-  }, [location]);
-
-  const handleClick = () => {
-    setLoadingAnimation(true);
-  };
+  //  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false);
 
   return (
     <NavigationMenu>
-      {loadingAnimation && <LoadingAnimation />}
+   
       <NavigationMenuList className="text-white text-xs">
 
         {/* Home */}
@@ -39,7 +30,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/home#top"
-              onClick={handleClick}
+              
               className="hover:bg-[#f3cb50] rounded-full px-3 py-1 transition"
             >
               Home
@@ -56,9 +47,9 @@ export default function NavigationMenuBeauty() {
             <ul className="grid gap-2 p-2 w-48">
               {[
                 { to: '/categories/handbags', label: 'Handbags' },
-                { to: '/categories/kente shirts', label: 'Shirts' },
-                { to: '/categories/kaftan', label: 'Dresses' },
-                { to: '/categories/body oil', label: 'Body Oil' },
+                { to: '/categories/kente shirts', label: 'Men Shirts' },
+                { to: '/categories/kaftan', label: 'Women Dresses' },
+                { to: '/categories/body oil', label: 'Body Products' },
               ].map((item) => (
                 <li
                   key={item.to}
@@ -80,7 +71,6 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/shop#top"
-              onClick={handleClick}
               className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
             >
               Shop
