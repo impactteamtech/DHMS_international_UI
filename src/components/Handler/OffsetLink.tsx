@@ -5,12 +5,13 @@ import { useLocation } from 'react-router-dom';
 import clsx from 'clsx'; // Optional, for clean class merging
 
 interface OffsetLinkProps {
+  onClick: React.MouseEventHandler;
   to: string;
   children: React.ReactNode;
   className?: string;
 }
 
-const OffsetLink: React.FC<OffsetLinkProps> = ({ to, children, className }) => {
+const OffsetLink: React.FC<OffsetLinkProps> = ({onClick, to, children, className }) => {
   const location = useLocation();
 
   // Normalize the pathname (ignore hash if needed)
@@ -23,7 +24,7 @@ const OffsetLink: React.FC<OffsetLinkProps> = ({ to, children, className }) => {
   );
 
   return (
-    <HashLink to={to} scroll={scrollWithOffset} className={combinedClassName}>
+    <HashLink onClick={onClick} to={to} scroll={scrollWithOffset} className={combinedClassName}>
       {children}
     </HashLink>
   );
