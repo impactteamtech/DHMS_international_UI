@@ -14,7 +14,7 @@ import OffsetLink from '../Handler/OffsetLink';
 
 export default function NavigationMenuBeauty() {
   const { isAuthenticated } = useAuth(); 
-  function handleClick(event: any): void {
+  function handleClick(_event: any): void {
     throw new Error('Function not implemented.');
   }
 
