@@ -71,7 +71,7 @@ const SignIn: React.FC = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-[-1] blur-sm brightness-30"
       >
-        <source src='../../../public/videos/signin.MP4' type="video/mp4" />
+        <source src="/videos/signin.MP4" type="video/mp4" />
       </video>
 
       {/* Overlay Content */}
