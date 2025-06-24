@@ -7,8 +7,8 @@ const RevampHero: React.FC = () => {
     <section className="w-full bg-[#d5a86b] px-4 sm:px-6 py-12 sm:py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center max-w-8xl mx-auto font-raleway">
       
       {/* Left Column - Text */}
-      <div className="flex flex-col items-center md:items-start justify-center text-center mt-16 md:text-left space-y-4 sm:space-y-6 px-2 sm:px-4">
-        <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[90px] font-[satisfy] text-white leading-tight tracking-tight">
+      <div className="flex flex-col items-center md:items-center justify-center text-center mt-16 md:text-center space-y-4 sm:space-y-6 px-2 sm:px-4">
+        <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[8rem] font-[satisfy] text-white leading-tight tracking-tight">
           Where Culture Meets Beauty
         </h1>
         <p className="text-sm sm:text-base md:text-lg text-white max-w-md sm:max-w-lg">
@@ -27,7 +27,8 @@ const RevampHero: React.FC = () => {
         <img 
           src={heroPic} 
           alt="hero"
-          className="w-56 sm:w-72 md:w-[26rem] object-cover mask-b-from-20% mask-b-to-80%"
+          className="w-64 sm:w-80 md:w-[30rem] lg:w-[36rem] object-cover mask-b-from-20% mask-b-to-80%"
+
         />
       </div>
 
