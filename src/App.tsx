@@ -13,6 +13,7 @@ import Dashboard from './components/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 import Contact from './components/Contact/Contact'
 
+
 const sectionIds = ['hero', 'banner', 'categories', 'Highlights', 'InStore', 'testimonials',]
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <AuthProvider>
+  
       <BrowserRouter>
         <Toaster position="top-center"/>
         <ScrollDownButton onClick={handleScroll} />
@@ -55,6 +57,8 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+
+
     </AuthProvider>
   )
 }

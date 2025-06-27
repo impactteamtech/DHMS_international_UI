@@ -46,10 +46,10 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuContent className=" bg-[#d5a86b] text-white">
             <ul className="grid gap-2 p-2 w-48">
               {[
-                { to: '/shop', label: 'Handbag' },
-                { to: '/shop', label: 'Men Shirts' },
-                { to: '/shop', label: 'Women Dresses' },
-                { to: '/shop', label: 'Body Products' },
+                { to: '/shop#top', label: 'Handbag' },
+                { to: '/shop#top', label: 'Men Shirts' },
+                { to: '/shop#top', label: 'Women Dresses' },
+                { to: '/shop#top', label: 'Body Products' },
               ].map(({ to, label }) => (
                 <li
                   key={label}

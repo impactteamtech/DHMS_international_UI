@@ -1,19 +1,20 @@
 import React from 'react';
-import bodyOil from '/body.jpg';
-import Bonnet from '/bonnet.jpg';
-import Clothes from '/clothes.png';
-import Jewelry from '../../assets/jewelry.png'; 
+import bodyOil from '/body.png';
+import Bonnet from '/Kente bag.png';
+import Clothes from '/clothing.png';
+import Jewelry from '/jewlery.png'; 
+import { Link } from 'react-router-dom';
 const categories = [
   {
     title: 'Clothing',
     image: Clothes,
   },
   {
-    title: 'Hair Care',
+    title: 'Handbang',
     image: Bonnet,
   },
   {
-    title: 'Body Care',
+    title: 'Body Products',
     image: bodyOil,
   },
   {
@@ -34,11 +35,11 @@ const BannerRevamp: React.FC = () => {
       </div>
 
       {/* Category Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 max-w-7xl w-full px-4">
+      <div className="grid grid-cols-1 md:grid-col-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 max-w-7xl w-full px-4">
         {categories.map(({ title, image }, i) => (
-          <div key={i} className="flex flex-col items-center">
-            <h2 className="font-[satisfy] text-2xl text-[#2f2a28] mb-4">{title}</h2>
-            <div className="relative group w-72 h-[400px] rounded-xl shadow-md overflow-hidden">
+          <div key={i} className="flex flex-col  justify-between items-center">
+            <h2 className="font-[satisfy] text-3xl text-[#2f2a28] mb-4">{title}</h2>
+            <div className="relative group sm:w-64 md:w-72 lg:w-70 h-[400px] sm:h-[450px] md:h-[500px]  rounded-xl shadow-md overflow-hidden">
               <img
                 src={image}
                 alt={title}
@@ -46,9 +47,9 @@ const BannerRevamp: React.FC = () => {
               />
               <div className="absolute inset-0 bg-white/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center px-4">
                 <h3 className="text-xl text-[#2f2a28] font-bold drop-shadow mb-2">{title}</h3>
-                <button className="mt-2 px-4 py-2 text-sm cursor-pointer text-white border border-white rounded-full hover:bg-white/20 transition">
+                <Link to="/shop#top" className="mt-2 px-4 py-2 text-sm cursor-pointer text-white border border-white rounded-full hover:bg-white/20 transition">
                   View More
-                </button>
+                </Link>
               </div>
             </div>
           </div>
