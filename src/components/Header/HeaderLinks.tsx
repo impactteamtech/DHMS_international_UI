@@ -13,7 +13,7 @@ import OffsetLink from '../Handler/OffsetLink';
 
 
 export default function NavigationMenuBeauty() {
-  const { isAuthenticated } = useAuth(); 
+  const { isAuthenticated } = useAuth();
   function handleClick(_event: any): void {
     throw new Error('Function not implemented.');
   }
@@ -22,7 +22,7 @@ export default function NavigationMenuBeauty() {
 
   return (
     <NavigationMenu>
-   
+
       <NavigationMenuList className="text-white text-xs">
 
         {/* Home */}
@@ -30,7 +30,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuLink asChild>
             <OffsetLink
               to="/home#top"
-              
+
               className="hover:bg-[#f3cb50] rounded-full px-3 py-1 transition"
             >
               Home
@@ -46,18 +46,18 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuContent className=" bg-[#d5a86b] text-white">
             <ul className="grid gap-2 p-2 w-48">
               {[
-                { to: '/categories/handbags', label: 'Handbags' },
-                { to: '/categories/kente shirts', label: 'Men Shirts' },
-                { to: '/categories/kaftan', label: 'Women Dresses' },
-                { to: '/categories/body oil', label: 'Body Products' },
-              ].map((item) => (
+                { to: '/shop', label: 'Handbag' },
+                { to: '/shop', label: 'Men Shirts' },
+                { to: '/shop', label: 'Women Dresses' },
+                { to: '/shop', label: 'Body Products' },
+              ].map(({ to, label }) => (
                 <li
-                  key={item.to}
+                  key={label}
                   className="rounded-full px-3 py-1  transition"
                 >
                   <NavigationMenuLink asChild>
-                    <Link to={item.to} onClick={handleClick}>
-                      {item.label}
+                    <Link to={to}  state={{ category: label }}>
+                      {label}
                     </Link>
                   </NavigationMenuLink>
                 </li>

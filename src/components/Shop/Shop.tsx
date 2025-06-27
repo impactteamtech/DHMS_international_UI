@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductContent from './ProductContent'
-
+import { useLocation } from 'react-router-dom'
 
 const Shop: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = React.useState<string[]>([])
@@ -9,6 +9,14 @@ const Shop: React.FC = () => {
   const [priceRange, setPriceRange] = React.useState<number>(30.00)
   const [availabilityFilter, setAvailabilityFilter] = React.useState<string[]>([])
    const [isDesktopOpen, setIsDesktopOpen] = React.useState(true);
+   const location = useLocation()
+   const categoryFromHeader = location.state?.category;
+
+   useEffect(()=> {
+    if (categoryFromHeader){
+      setSelectedCategory([categoryFromHeader])
+    }
+   }, [categoryFromHeader])
   return (
     <section id='shop' className="p-4 min-h-screen mt-12 bg-[#fdf9f3] pt-36 md:pt-28 lg:pt-24">
       {/* Main content */}
