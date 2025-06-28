@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import {toast} from 'react-hot-toast'
+import api from '../setUpAxios';
+
 
 const API_URL = import.meta.env.VITE_API_URL;
 const CartContext = createContext<any>(null);
@@ -11,7 +13,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     const fetchCart = async () => {
         try {
-            const res = await axios.get(`${API_URL}/cart`, { withCredentials: true });
+            const res = await api.get(`${API_URL}/cart`, { withCredentials: true });
             setCart(res.data.cart);
             
         } catch (err) {

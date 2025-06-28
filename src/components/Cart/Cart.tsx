@@ -21,10 +21,11 @@ const Cart: React.FC = () => {
   }, [fetchCart]);
 
   return (
-    <div className='bg-black min-h-screen px-4 py-10 md:px-10 mt-28 pt-36 md:pt-28 lg:pt-24 text-white'>
-      <h1 className='text-[#f3cb50] text-3xl font-bold text-center mb-8'>Your Cart</h1>
+    <div className='bg-[#fdf9f3] min-h-screen px-4 py-10 md:px-10 mt-28 pt-36 md:pt-28 lg:pt-24 text-white'>
+      <h1 className='text-[#f3cb50] text-5xl sm:text-8xl font-[satisfy] text-center mb-8'>Your Cart</h1>
 
-      <div className='bg-white rounded-xl p-6 text-black max-w-6xl mx-auto flex flex-col md:flex-row gap-8'>
+     <div className='bg-white rounded-xl p-6 text-black max-w-6xl mx-auto flex flex-col md:flex-row gap-8 shadow-lg'>
+
         {/* Cart Items */}
         <div className='w-full md:w-2/3 space-y-4'>
           <div className='hidden md:grid grid-cols-5 font-semibold border-b pb-2'>
@@ -41,7 +42,7 @@ const Cart: React.FC = () => {
             cartItems.map((item: any, index: number) => (
               <div key={item._id || index} className='grid grid-cols-2 md:grid-cols-5 items-center text-center border-b py-3'>
                 <img src={item.image} alt={item.name} className='w-16 h-16 object-cover rounded mx-auto' />
-                <span className='md:block hidden'>{item.name}</span>
+                <span className='md:block'>{item.name}</span>
 
                 <div className='flex justify-center items-center gap-2'>
                   <button
@@ -54,7 +55,7 @@ const Cart: React.FC = () => {
                         toast.success("Removed item");
                       }
                     }}
-                    className='px-2 py-1 bg-gray-200 rounded'
+                    className='px-2 py-1 bg-gray-200 cursor-pointer hover:scale-105 active:scale-105 rounded'
                   >
                     -
                   </button>
@@ -67,7 +68,7 @@ const Cart: React.FC = () => {
                         toast.success("Quantity increased");
                       }
                     }}
-                    className='px-2 py-1 bg-gray-200 rounded'
+                    className='px-2 py-1 bg-gray-200 cursor-pointer hover:scale-105 active:scale-105 rounded'
                   >
                     +
                   </button>
@@ -77,7 +78,7 @@ const Cart: React.FC = () => {
 
                 <button
                   onClick={() => removeFromCart(item._id)}
-                  className='text-red-500 hover:text-red-700 mx-auto'
+                  className='text-red-500 cursor-pointer hover:scale-105 hover:text-red-700 mx-auto'
                 >
                   <Trash2 className='w-5 h-5' />
                 </button>

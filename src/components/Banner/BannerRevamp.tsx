@@ -28,7 +28,7 @@ const BannerRevamp: React.FC = () => {
     <div className="relative bg-[#fdf9f3] text-[#2f2a28] flex flex-col justify-center items-center p-8 font-raleway">
       {/* Heading */}
       <div className="text-center mb-10">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#d5a86b]">Explore Our Categories</h1>
+        <h1 className=" text-5xl sm:text-8xl font-extrabold font-[satisfy] text-[#d5a86b]">Explore Our Categories</h1>
         <p className="text-md text-[#7d726a] mt-2">
           Curated collections inspired by African beauty, wellness, and tradition.
         </p>
@@ -38,7 +38,7 @@ const BannerRevamp: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-col-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 max-w-7xl w-full px-4">
         {categories.map(({ title, image }, i) => (
           <div key={i} className="flex flex-col  justify-between items-center">
-            <h2 className="font-[satisfy] text-3xl text-[#2f2a28] mb-4">{title}</h2>
+            <h2 className="font-[satisfy] text-5xl sm:text-4xl text-[#2f2a28] mb-4">{title}</h2>
             <div className="relative group sm:w-64 md:w-72 lg:w-70 h-[400px] sm:h-[450px] md:h-[500px]  rounded-xl shadow-md overflow-hidden">
               <img
                 src={image}
