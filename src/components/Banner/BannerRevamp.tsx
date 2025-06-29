@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const categories = [
   {
-    title: "Women's Clothing",
+    title: "Women Dresses",
     image: Clothes,
   },
   {
@@ -19,7 +19,7 @@ const categories = [
     image: bodyOil,
   },
   {
-    title: "Men's Clothing",
+    title: "Men Shirts",
     image: Men,
   },
 ];
@@ -52,7 +52,8 @@ const BannerRevamp: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm flex flex-col items-center justify-end p-6">
                 <Link
-                  to="/shop#top"
+                  to="/shop"
+                  state={{ category: title }}
                   className="mt-4 px-6 py-2 text-sm tracking-wide uppercase text-white border border-white rounded-full hover:bg-white/20 transition duration-300"
                 >
                   View More

@@ -2,7 +2,7 @@ import { createContext, useContext,  useState } from 'react';
 // import axios from 'axios';
 import {toast} from 'react-hot-toast'
 import api from '../setUpAxios';
-
+import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL;
 const CartContext = createContext<any>(null);
@@ -76,7 +76,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     };
     const updateQty = async (itemId: any, qty: number) => {
         try{
-            await api.patch(`
+            await axios.patch(`
             ${API_URL}/cart/update/${itemId}`,
                 { quantity: qty },
                 { withCredentials: true })
