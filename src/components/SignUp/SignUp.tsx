@@ -2,10 +2,15 @@ import React, { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { userRegister } from '../AuthFolder/AuthFiles';
-import { Eye, EyeOff, Mail } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import signupng from '../../assets/signup.jpg';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
+import { useAuth } from '../Context/AuthContext';
+import { useCart } from '../Context/CartContext';
 interface FormData {
   email: string;
   password: string;
@@ -15,6 +20,8 @@ interface FormData {
 }
 
 const SignUp: React.FC = () => {
+  const { setIsAuthenticated } = useAuth();
+  const { fetchCart } = useCart();
   const {
     register,
     handleSubmit,
@@ -176,13 +183,33 @@ const SignUp: React.FC = () => {
                   </div>
 
                   <div className="flex items-center justify-center space-x-2 text-gray-400">
-                    <Mail className="w-6 h-6 text-yellow-500" />
-                    <button
-                      type="button"
-                      className="p-2 bg-yellow-500 cursor-pointer text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200"
-                    >
-                      Sign in with Google
-                    </button>
+                    <GoogleLogin
+                      onSuccess={async (credentialResponse) => {
+                        const { credential } = credentialResponse;
+                        if (credential) {
+                          const decoded: any = jwtDecode(credential);
+                          const { email, name, sub: googleId } = decoded;
+
+                          try {
+                            await axios.post(`${import.meta.env.VITE_API_URL}/auth/google`, {
+                              email,
+                              name,
+                              googleId,
+                            }, { withCredentials: true });
+
+                            localStorage.setItem('username', name);
+                            setIsAuthenticated(true);
+                            await fetchCart();
+                            navigate('/dashboard');
+                          } catch (err) {
+                            console.error('Google login failed', err);
+                          }
+                        }
+                      }}
+                      onError={() => {
+                        console.error('Login Failed');
+                      }}
+                    />
                   </div>
                 </div>
               </form>

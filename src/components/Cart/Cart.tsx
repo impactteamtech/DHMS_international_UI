@@ -106,7 +106,7 @@ const Cart: React.FC = () => {
             <span>Total</span>
             <span>${total.toFixed(2)}</span>
           </div>
-          <button className='w-full mt-6 bg-[#f3cb50] text-black py-2 rounded-lg hover:scale-105 transition-transform'>
+          <button className='w-full mt-6 cursor-pointer bg-[#f3cb50] text-black py-2 rounded-lg hover:scale-105 transition-transform'>
             Checkout Now
           </button>
         </div>

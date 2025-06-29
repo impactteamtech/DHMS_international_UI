@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext,  useState } from 'react';
 // import axios from 'axios';
 import {toast} from 'react-hot-toast'
 import api from '../setUpAxios';
@@ -36,7 +36,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     const addToCart = async (product: Product) => {
         try {
-            await axios.post(
+            await api.post(
                 `${API_URL}/cart/add`,
                 {
                     productId: product.id,
@@ -60,9 +60,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     };
     const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
+
     const removeFromCart = async (itemId: any) => {
         try {
-            await axios.delete(
+            await api.delete(
                 `${API_URL}/cart/remove/${itemId}`, {
                 withCredentials: true
             }
@@ -75,7 +76,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     };
     const updateQty = async (itemId: any, qty: number) => {
         try{
-            await axios.patch(`
+            await api.patch(`
             ${API_URL}/cart/update/${itemId}`,
                 { quantity: qty },
                 { withCredentials: true })
@@ -84,14 +85,17 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
             console.error("error updating item", err)
         }
     }
-
-
-    useEffect(() => {
-        fetchCart();
-    }, []);
+    // clear cart on logout 
+    const clearCart = async ()=> {
+        setCart([])
+    }
+// this was causing it 
+    // useEffect(() => {
+    //     fetchCart();
+    // }, []);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, cartQuantity, removeFromCart, fetchCart, updateQty }}>
+        <CartContext.Provider value={{ cart, clearCart, addToCart, cartQuantity, removeFromCart, fetchCart, updateQty }}>
             {children}
         </CartContext.Provider>
     );

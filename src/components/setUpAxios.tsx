@@ -6,12 +6,15 @@ const api = axios.create({
   withCredentials: true, // Make sure  (cookies) are sent
 });
 
+
+
 // Handle 401 errors globally
 api.interceptors.response.use(
   response => response,
   error => {
     if (error.response?.status === 401) {
-      
+      localStorage.removeItem('username')
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }

@@ -49,14 +49,12 @@ const InStore: React.FC = () => {
   return (
     <div
       id="InStore"
-      className="w-full bg-[#fdf9f3] px-4 sm:px-6 md:px-8 py-20 relative text-[#2f2a28] font-raleway overflow-hidden"
+      className="bg-[#fdf9f3] text-[#2f2a28] px-6 py-16 flex flex-col items-center max-w-8xl font-play"
     >
-      {/* Background Texture */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none bg-[url('/textures/african-pattern.png')] bg-cover bg-center"></div>
 
       {/* Hero Text */}
       <div className="relative z-10 text-center mb-12 max-w-3xl mx-auto">
-        <h1 className="text-5xl sm:text-8xl font-[satisfy] font-extrabold text-[#d5a86b] leading-tight">
+        <h1 className="text-5xl sm:text-7xl text-wrap md:text-nowrap sm:text-nowrap font-[satisfy] text-[#d5a86b] leading-tight drop-shadow-lg">
           In Store Pick Up
         </h1>
         <p className="text-base sm:text-lg text-[#7d726a] mt-4">

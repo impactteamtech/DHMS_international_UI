@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import signinpng from '../../assets/signin1.jpg';
 import { useForm } from 'react-hook-form';
 import { userLogin } from '../AuthFolder/AuthFiles';
-import { Mail } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 import { useAuth } from '../Context/AuthContext';
 import { useCart } from '../Context/CartContext';
+import { GoogleLogin } from '@react-oauth/google';
 
-
+import axios from 'axios';
 interface FormData {
-    username: string;
-    password: string;
-    
+  username: string;
+  password: string;
+
 }
 
 const SignIn: React.FC = () => {
-  const {fetchCart} = useCart()
+  const { fetchCart } = useCart()
   const [loading, setLoading] = useState<boolean>(false);
 
-  const {setIsAuthenticated} = useAuth();
+  const { setIsAuthenticated } = useAuth();
 
   const {
     register,
@@ -28,15 +28,9 @@ const SignIn: React.FC = () => {
   } = useForm<FormData>();
   const [error, setError] = useState<string>();
   const navigate = useNavigate();
-//   const handleLoginSuccess = async () => {
-//   // After storing email/token in localStorage:
-//   const response = await axios.get('/cart', { withCredentials: true });
-//   dispatch(fetchCart(response.data.items)); // Custom Redux action
-// };
   const onSubmit = async (data: FormData) => {
     setError('');
     setLoading(true);
-    
     try {
       const response = await userLogin(data);
       if (response.status === 200) {
@@ -52,17 +46,17 @@ const SignIn: React.FC = () => {
       }
     } catch (err: any) {
       console.log('Error occurred:', err);
-      setError(err?.message || 'Sigin failed');
+      setError(err?.message || 'Sign in failed');
     }
-    finally{
-        setLoading(false);
+    finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className=" relative flex flex-col md:flex-row gap-4 p-4 min-h-screen mt-5 bg-transparent pt-36 md:pt-28 lg:pt-24">
 
-        {loading && <LoadingAnimation/>}
+      {loading && <LoadingAnimation />}
       {/* Background Video */}
       <video
         autoPlay
@@ -117,7 +111,7 @@ const SignIn: React.FC = () => {
                     <p className="text-red-500 text-sm">{errors.password.message}</p>
                   )}
 
-            
+
 
                   {error && <p className="text-red-500 text-sm">{error}</p>}
 
@@ -137,13 +131,28 @@ const SignIn: React.FC = () => {
                   </div>
 
                   <div className="flex items-center justify-center space-x-2 text-gray-400">
-                    <Mail className="w-6 h-6 text-yellow-500" />
-                    <button
-                      type="button"
-                      className="p-2 bg-yellow-500 cursor-pointer text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200"
-                    >
-                      Sign in with Google
-                    </button>
+                    <GoogleLogin
+                      onSuccess={async (credentialResponse) => {
+                        const { credential } = credentialResponse;
+
+                          try {
+                            const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/google`, {
+                              credential
+                            }, { withCredentials: true });
+
+                            localStorage.setItem('username', res.data.username);
+                            setIsAuthenticated(true);
+                            await fetchCart();
+                            navigate('/dashboard');
+                          } catch (err) {
+                            console.error('Google login failed', err);
+                          }
+            
+                      }}
+                      onError={() => {
+                        console.error('Login Failed');
+                      }}
+                    />
                   </div>
                 </div>
               </form>
