@@ -94,6 +94,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setUsername(storedUsername);
     } else {
       setUsername('');
+      setIsAuthenticated(false)
     }
   }, []);
 

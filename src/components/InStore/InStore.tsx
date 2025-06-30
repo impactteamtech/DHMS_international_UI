@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const inStoreItems = [
   {
@@ -6,14 +7,14 @@ const inStoreItems = [
     image: '/kaftan.jpg',
     description: 'Hand-stitched elegance in vibrant prints for every body.',
     badge: 'Customer Favorite',
-    category: 'Women’s Clothing',
+    category: 'Women Dresses',
   },
   {
     name: 'Body Oils',
     image: '/body_oil.png',
     description: 'Scented oils crafted for hydration and glow.',
     badge: 'Best Seller',
-    category: 'Fragrance Oils',
+    category: 'Body Products',
   },
   {
     name: 'Hair Care',
@@ -27,7 +28,7 @@ const inStoreItems = [
     image: '/blacksoap.webp',
     description: 'Gentle, natural cleansing straight from West Africa.',
     badge: 'New Arrival',
-    category: 'Body & Skincare',
+    category: 'Body Products',
   },
   {
     name: 'Headwraps & Scarves',
@@ -41,7 +42,7 @@ const inStoreItems = [
     image: '/dashiki.webp',
     description: 'Cultural pride meets modern tailoring.',
     badge: 'Hot Pick',
-    category: 'Men’s Clothing',
+    category: 'Men Shirts',
   },
 ];
 
@@ -101,9 +102,9 @@ const InStore: React.FC = () => {
               </span>
 
               {/* CTA */}
-              <button className="mt-4 px-4 py-2 cursor-pointer bg-[#d5a86b] text-[#2f2a28] text-sm font-semibold rounded-full hover:brightness-110 hover:scale-105 transition">
+              <Link to='/shop' state={{category: item.category}} className="mt-4 px-4 py-2 cursor-pointer bg-[#d5a86b] text-[#2f2a28] text-sm font-semibold rounded-full hover:brightness-110 hover:scale-105 transition">
                 View Inventory
-              </button>
+              </Link>
             </div>
           ))}
         </div>
