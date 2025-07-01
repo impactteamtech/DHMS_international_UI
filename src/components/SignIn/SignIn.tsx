@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
   const { fetchCart } = useCart()
   const {fetchSession} = useAuth()
   const [loading, setLoading] = useState<boolean>(false);
-  const [forgotPassword, setForgotPassword] = useState<boolean>(false);
+  // const [forgotPassword, setForgotPassword] = useState<boolean>(false);
 
   const { setIsAuthenticated } = useAuth();
 
@@ -31,10 +31,10 @@ const SignIn: React.FC = () => {
   const [error, setError] = useState<string>();
   const navigate = useNavigate();
 
-  const onForgotPwdClick = async ()=>{
-    setError('')
-    setForgotPassword(true);
-  }
+  // const onForgotPwdClick = async ()=>{
+  //   setError('')
+  //   setForgotPassword(true);
+  // }
   const onSubmit = async (data: FormData) => {
     setError('');
     setLoading(true);
@@ -100,7 +100,7 @@ const SignIn: React.FC = () => {
 
               <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm text-center space-y-4">
                 <div className="text-left flex flex-col space-y-6 text-lg font-semibold text-[#f3cb50] mb-2">
-                  {forgotPassword && ( 
+                  {/* {forgotPassword && ( 
                     <input
                     {...register('username', { required: 'Username is required!' })}
                     type="name"
@@ -108,7 +108,7 @@ const SignIn: React.FC = () => {
                     className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   />
                   
-                  )}
+                  )} */}
                   <input
                     {...register('username', { required: 'Username is required!' })}
                     type="name"
