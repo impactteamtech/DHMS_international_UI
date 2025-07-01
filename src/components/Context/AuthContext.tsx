@@ -30,7 +30,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState('');
+
+
   const {clearCart} = useCart()
+
+  //verify session still exist if not clear user
   const fetchSession = async () => {
     try {
       const res = await axios.get(`${API_URL}/check-session`, {
@@ -40,6 +44,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (res.status === 200) {
         console.log('found session', res.data);
         setIsAuthenticated(true);
+        setUsername(res.data.user.username);
+        localStorage.setItem('username', res.data.user.username);
       } else {
         setIsAuthenticated(false);
       }
@@ -48,6 +54,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         await logout();
         await clearCart();
         navigate('/login');
+        setIsAuthenticated(false);
       } else {
         console.error('Other error:', error);
       }

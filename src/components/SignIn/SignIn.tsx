@@ -17,7 +17,9 @@ interface FormData {
 
 const SignIn: React.FC = () => {
   const { fetchCart } = useCart()
+  const {fetchSession} = useAuth()
   const [loading, setLoading] = useState<boolean>(false);
+  const [forgotPassword, setForgotPassword] = useState<boolean>(false);
 
   const { setIsAuthenticated } = useAuth();
 
@@ -28,6 +30,11 @@ const SignIn: React.FC = () => {
   } = useForm<FormData>();
   const [error, setError] = useState<string>();
   const navigate = useNavigate();
+
+  const onForgotPwdClick = async ()=>{
+    setError('')
+    setForgotPassword(true);
+  }
   const onSubmit = async (data: FormData) => {
     setError('');
     setLoading(true);
@@ -93,6 +100,15 @@ const SignIn: React.FC = () => {
 
               <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm text-center space-y-4">
                 <div className="text-left flex flex-col space-y-6 text-lg font-semibold text-[#f3cb50] mb-2">
+                  {forgotPassword && ( 
+                    <input
+                    {...register('username', { required: 'Username is required!' })}
+                    type="name"
+                    placeholder="Enter Username"
+                    className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                  />
+                  
+                  )}
                   <input
                     {...register('username', { required: 'Username is required!' })}
                     type="name"
@@ -106,7 +122,7 @@ const SignIn: React.FC = () => {
                     type="password"
                     placeholder="Password"
                     className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                  />
+                    />
                   {errors.password && (
                     <p className="text-red-500 text-sm">{errors.password.message}</p>
                   )}
@@ -119,12 +135,12 @@ const SignIn: React.FC = () => {
                     type="submit"
                     disabled={loading}
                     className="w-full py-3 cursor-pointer bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200"
-                  >
+                    >
                     {loading ? "Signing In" : "Sign in"}
                   </button>
 
                   <div className="flex gap-4 justify-center text-sm text-gray-400">
-                    <p className="hover:underline cursor-pointer">Forgot password?</p>
+                    <button className="hover:underline cursor-pointer">Forgot password?</button>
                     <Link to="/register" className="hover:underline cursor-pointer">
                       Create an account
                     </Link>
@@ -136,13 +152,14 @@ const SignIn: React.FC = () => {
                         const { credential } = credentialResponse;
 
                           try {
-                            const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/google`, {
-                              credential
+                            const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/google`, {credential
                             }, { withCredentials: true });
 
                             localStorage.setItem('username', res.data.username);
+                            console.log(res.data.user.username) // debugging only
                             setIsAuthenticated(true);
                             await fetchCart();
+                            await fetchSession();
                             navigate('/dashboard');
                           } catch (err) {
                             console.error('Google login failed', err);
