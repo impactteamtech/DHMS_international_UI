@@ -13,7 +13,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     const fetchCart = async () => {
         try {
-            const res = await api.get(`${API_URL}/cart`, { withCredentials: true });
+            const res = await axios.get(`${API_URL}/cart`, { withCredentials: true });
             setCart(res.data.cart);
             
         } catch (err) {

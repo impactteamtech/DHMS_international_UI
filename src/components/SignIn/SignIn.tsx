@@ -16,12 +16,12 @@ interface FormData {
 }
 
 const SignIn: React.FC = () => {
-  const { fetchCart } = useCart()
+  const {fetchCart} = useCart()
   const {fetchSession} = useAuth()
   const [loading, setLoading] = useState<boolean>(false);
   // const [forgotPassword, setForgotPassword] = useState<boolean>(false);
 
-  const { setIsAuthenticated } = useAuth();
+  const {setIsAuthenticated} = useAuth();
 
   const {
     register,

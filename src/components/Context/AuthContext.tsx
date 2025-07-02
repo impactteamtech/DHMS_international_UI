@@ -93,12 +93,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   useEffect(() => {
-    fetchSession();
-
+    
     const storedUsername = localStorage.getItem('username');
     if (storedUsername) {
       setIsAuthenticated(true);
       setUsername(storedUsername);
+      fetchSession();
     } else {
       setUsername('');
       setIsAuthenticated(false)
