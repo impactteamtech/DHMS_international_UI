@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         console.log('found session', res.data);
         setIsAuthenticated(true);
         setUsername(res.data.user.username);
-        localStorage.setItem('username', res.data.user.username);
+        
       } else {
         setIsAuthenticated(false);
       }
@@ -93,18 +93,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   useEffect(() => {
-    fetchSession();
+  const checkAuth = async () => {
+    await fetchSession(); // This already handles logout + redirect on 401
+  };
 
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setIsAuthenticated(true);
-      setUsername(storedUsername);
-    } else {
-      setUsername('');
-      setIsAuthenticated(false)
-    }
-  }, []);
-
+  checkAuth();
+}, []);
   return (
     <AuthContext.Provider
       value={{
