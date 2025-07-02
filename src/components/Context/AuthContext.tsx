@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   //verify session still exist if not clear user
   const fetchSession = async () => {
     try {
-      const res = await axios.get(`${API_URL}/check-session`, {
+      const res = await axios.get(`${API_URL}/me`, {
         withCredentials: true,
       });
 
