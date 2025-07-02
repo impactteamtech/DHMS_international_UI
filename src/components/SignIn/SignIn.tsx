@@ -45,7 +45,7 @@ const SignIn: React.FC = () => {
         // for debugging purposes 
         console.log('here is the response')
         setIsAuthenticated(true);
-        localStorage.setItem('username', user.username);
+        localStorage.setItem('username', formData.username);
         await fetchCart();
         navigate('/dashboard');
       } else {
