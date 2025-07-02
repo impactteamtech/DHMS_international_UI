@@ -66,10 +66,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const logout = async (): Promise<void> => {
     try {
       await axios.get(`${API_URL}/logout`, { withCredentials: true });
-      localStorage.removeItem('username');
-      setIsAuthenticated(false);
-      setUsername('');
-      await clearCart();
+setIsAuthenticated(false);
+setUsername('');
+await clearCart();
     } catch (error) {
       console.error('Logout failed:', error);
     }

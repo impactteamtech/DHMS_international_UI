@@ -43,9 +43,9 @@ const SignIn: React.FC = () => {
       if (response.status === 200) {
         const user = response.data;
         // for debugging purposes 
-        console.log('here is the response')
+        console.log('here is the response', user)
         setIsAuthenticated(true);
-        localStorage.setItem('username', user.username);
+        localStorage.setItem('username', data.username);
         await fetchCart();
         navigate('/dashboard');
       } else {
