@@ -80,7 +80,7 @@ const HeaderRevamp = () => {
                 <span className='text-[#f3cb50]'>Sign Out</span>
               </button>
             ) : (
-              <Link to='/login#top' onClick={handleOnClick} className='flex flex-col items-center hover:scale-105'>
+              <Link to='/login' onClick={handleOnClick} className='flex flex-col items-center hover:scale-105'>
                 <User />
                 <span className='text-[#f3cb50]'>Sign In</span>
               </Link>

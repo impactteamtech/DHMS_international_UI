@@ -40,8 +40,8 @@ const Testimonials: React.FC = () => {
       id="testimonials"
       className="w-full bg-[#fdf9f3] text-[#2f2a28] py-16 font-raleway"
     >
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#d5a86b]">
+      <div className="max-w-xl mx-auto px-6 text-center">
+        <h1 className="text-5xl sm:text-7xl text-wrap md:text-nowrap sm:text-nowrap font-[satisfy] text-[#d5a86b] leading-tight drop-shadow-lg">
           Testimonials
         </h1>
         <div className="border-b-[3px] border-[#a67c52] w-24 mx-auto my-4"></div>

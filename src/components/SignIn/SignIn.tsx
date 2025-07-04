@@ -156,7 +156,7 @@ const SignIn: React.FC = () => {
                             }, { withCredentials: true });
 
                             localStorage.setItem('username', res.data.username);
-                            console.log(res.data.user.username) // debugging only
+                            console.log('user:',res.data.user.username) // debugging only
                             setIsAuthenticated(true);
                             await fetchCart();
                             await fetchSession();
