@@ -38,9 +38,9 @@ const Testimonials: React.FC = () => {
   return (
     <motion.section
       id="testimonials"
-      className="w-full bg-[#fdf9f3] text-[#2f2a28] py-16 font-raleway"
+      className="w-full max-w-8xl bg-[#fdf9f3] text-[#2f2a28] py-16 font-raleway"
     >
-      <div className="max-w-xl mx-auto px-6 text-center">
+      <div className="max-w-8xl mx-auto px-6 text-center">
         <h1 className="text-5xl sm:text-7xl text-wrap md:text-nowrap sm:text-nowrap font-[satisfy] text-[#d5a86b] leading-tight drop-shadow-lg">
           Testimonials
         </h1>

@@ -6,9 +6,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 import { useAuth } from '../Context/AuthContext';
 import { useCart } from '../Context/CartContext';
-import { GoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin } from '@react-oauth/google';
 
-import axios from 'axios';
+// import axios from 'axios';
 interface FormData {
   username: string;
   password: string;
@@ -17,7 +17,7 @@ interface FormData {
 
 const SignIn: React.FC = () => {
   const {fetchCart} = useCart()
-  const {fetchSession} = useAuth()
+  // const {fetchSession} = useAuth()
   const [loading, setLoading] = useState<boolean>(false);
   // const [forgotPassword, setForgotPassword] = useState<boolean>(false);
 
@@ -146,7 +146,7 @@ const SignIn: React.FC = () => {
                     </Link>
                   </div>
 
-                  <div className="flex items-center justify-center space-x-2 text-gray-400">
+                  {/* <div className="flex items-center justify-center space-x-2 text-gray-400">
                     <GoogleLogin
                       onSuccess={async (credentialResponse) => {
                         const { credential } = credentialResponse;
@@ -170,7 +170,7 @@ const SignIn: React.FC = () => {
                         console.error('Login Failed');
                       }}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </form>
             </div>
