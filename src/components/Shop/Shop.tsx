@@ -6,7 +6,7 @@ const Shop: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
   const [selectRating, setSelectRating] = useState<number>(0);
-  const [order, setOrder] = useState<string>('Price: Low to High'); // default sort
+  const [order, setOrder] = useState<string>('Price: High to Low'); // default sort
   const [availabilityFilter, setAvailabilityFilter] = useState<string[]>([]);
   const [isDesktopOpen, setIsDesktopOpen] = useState(true);
 

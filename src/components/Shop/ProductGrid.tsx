@@ -33,7 +33,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
               className="w-full  h-96 object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
-            <div className="absolute inset-0 bg-white/10 h-100 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+            <div className="absolute inset-0 bg-white/10 h-100 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 active:opacity-100  flex items-center justify-center">
               <button
                 onClick={() => onProductClick(product)}
                 className="bg-[#d5a86b]  cursor-pointer text-white px-4 py-2 rounded-full hover:brightness-110 transition"

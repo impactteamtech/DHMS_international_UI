@@ -47,7 +47,7 @@ const BannerRevamp: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-6xl font-[satisfy] text-[#d5a86b] leading-tight"
+          className="text-5xl sm:text-7xl font-[satisfy] text-[#d5a86b] leading-tight drop-shadow-lg"
         >
           Explore Our Signature Collections
         </motion.h1>
