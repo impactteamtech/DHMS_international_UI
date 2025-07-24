@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-
+import { useScroll } from '../Context/ScrollProvider';
 
 const inStoreItems = [
   {
@@ -50,8 +50,14 @@ const inStoreItems = [
 ];
 
 const InStore: React.FC = () => {
+  const ref = useRef<HTMLElement>(null)
+  const {registerSection} = useScroll();
+  useEffect(()=>{
+    registerSection(ref)
+  }, []) 
   return (
-    <div
+    <section
+      ref={ref}
       id="InStore"
       className="bg-[#fdf9f3] text-[#2f2a28] px-4 py-20 flex flex-col items-center max-w-8xl font-play overflow-hidden"
     >
@@ -137,7 +143,7 @@ const InStore: React.FC = () => {
           Visit us at our Spotsylvania Mall location.
         </p>
       </div>
-    </div>
+    </section>
   );
 };
 

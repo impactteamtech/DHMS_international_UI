@@ -5,7 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { userLogin } from '../AuthFolder/AuthFiles';
 import { useCart } from './CartContext';
@@ -25,7 +25,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -53,7 +53,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (error.response?.status === 401) {
         await logout();
         await clearCart();
-        navigate('/login');
+        // navigate('/login');
         setIsAuthenticated(false);
       } else {
         console.error('Other error:', error);

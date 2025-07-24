@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Trash2 } from 'lucide-react';
 import { useCart } from '../Context/CartContext';
 import toast from 'react-hot-toast';
@@ -19,10 +20,10 @@ const Cart: React.FC = () => {
   useEffect(() => {
     fetchCart();
   }, [fetchCart]);
-
+  const navigate = useNavigate()
   return (
     <div className='bg-[#fdf9f3] min-h-screen px-4 py-10 md:px-10 mt-28 pt-36 md:pt-28 lg:pt-24 text-white'>
-      <h1 className='text-[#f3cb50] text-5xl sm:text-8xl font-[satisfy] text-center mb-8'>Your Cart</h1>
+      <h1 className='text-6xl md:text-8xl text-center font-[satisfy] text-[#2f2a28] mb-6'>Your Cart</h1>
 
      <div className='bg-white rounded-xl p-6 text-black max-w-6xl mx-auto flex flex-col md:flex-row gap-8 shadow-lg'>
 
@@ -106,7 +107,8 @@ const Cart: React.FC = () => {
             <span>Total</span>
             <span>${total.toFixed(2)}</span>
           </div>
-          <button className='w-full mt-6 cursor-pointer bg-[#f3cb50] text-black py-2 rounded-lg hover:scale-105 transition-transform'>
+          <button onClick={()=>navigate('/checkout')}
+          className='w-full mt-6 cursor-pointer bg-[#f3cb50] text-black py-2 rounded-lg hover:scale-105 transition-transform'>
             Checkout Now
           </button>
         </div>

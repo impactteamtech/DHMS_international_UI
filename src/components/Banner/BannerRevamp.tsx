@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -9,7 +9,7 @@ import Bonnet from '/Kente bag.png';
 import Clothes from '/banner_dress.jpg';
 import Men from '/zigzag-shirt.jpg';
 import Jewelry from '/jewelry.webp';
-
+import { useScroll } from '../Context/ScrollProvider';
 const categories = [
   {
     title: 'Women Dresses',
@@ -39,8 +39,16 @@ const categories = [
 ];
 
 const BannerRevamp: React.FC = () => {
+  const ref = useRef<HTMLElement>(null);
+  const {registerSection} = useScroll();
+
+  useEffect(()=>{
+    registerSection(ref)
+  },[])
   return (
-    <section className="bg-[#fdf9f3] text-[#2f2a28] py-24 px-4 md:px-10 font-raleway overflow-hidden">
+    <section 
+    ref={ref}
+    className="bg-[#fdf9f3] text-[#2f2a28] py-24 px-4 md:px-10 font-raleway overflow-hidden">
       {/* Heading */}
       <div className="text-center mb-16 max-w-3xl mx-auto">
         <motion.h1

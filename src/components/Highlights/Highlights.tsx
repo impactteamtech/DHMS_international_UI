@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { motion } from 'framer-motion';
-
+import { useScroll } from '../Context/ScrollProvider';
 const features = [
   {
     icon: '🌿',
@@ -46,8 +46,15 @@ const fadeUp = {
 };
 
 const Highlights: React.FC = () => {
+  const ref = useRef<HTMLElement>(null);
+  const {registerSection} = useScroll();
+
+  useEffect(()=>{
+    registerSection(ref)
+  },[])
   return (
     <section
+      ref={ref}
       id="Highlights"
       className="bg-[#fdf9f3] text-[#2f2a28] px-6 py-24 flex flex-col items-center max-w-8xl font-play"
     >

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useScroll } from '../Context/ScrollProvider';
 
 interface Testimonial {
   name: string;
@@ -34,9 +35,16 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const ref = useRef<HTMLElement>(null);
+  const {registerSection} = useScroll();
+  
+  useEffect(()=>{
+    registerSection(ref)
+  }, [])
 
   return (
     <motion.section
+      ref={ref}
       id="testimonials"
       className="w-full max-w-8xl bg-[#fdf9f3] text-[#2f2a28] py-16 font-raleway"
     >

@@ -4,7 +4,7 @@ import {
   LogOut,
   User,
   ShoppingBag,
-  Heart,
+  // Heart,
   LayoutDashboard,
   ShoppingCart,
   BadgePercent,
@@ -34,9 +34,9 @@ const Dashboard = () => {
         </div>
 
         <nav className="space-y-5">
-          <Link to="overview" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
+          <Link to="/home#top" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
             <LayoutDashboard size={18} />
-            Overview
+            Home
           </Link>
           <Link to="/shop#top" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
             <ShoppingCart size={18} />
@@ -46,9 +46,9 @@ const Dashboard = () => {
             <ShoppingBag size={18} />
             Order History
           </Link>
-          <Link to="wishlist" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
-            <Heart size={18} />
-            Wishlist
+          <Link to="/cart#top" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
+            <ShoppingCart size={18} />
+            My Cart
           </Link>
           <Link to="rewards" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
             <Star size={18} />

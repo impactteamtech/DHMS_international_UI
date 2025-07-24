@@ -137,7 +137,7 @@ const ProductContent: React.FC<ProductProps> = ({
       {loadingAnimation && <LoadingAnimation />}
       {error && <p className="text-red-600 font-medium text-center">{error}</p>}
 
-      <h1 className="text-4xl font-bold text-[#d5a86b] text-center mb-10">
+      <h1 className="text-6xl md:text-8xl text-center font-[satisfy] text-[#2f2a28] mb-6">
         Shop Your Care
       </h1>
 

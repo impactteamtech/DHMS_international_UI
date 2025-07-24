@@ -21,8 +21,6 @@ interface Props {
 const ProductFilters: React.FC<Props> = ({
   selectedCategory,
   setSelectedCategory,
-  // selectedBrand,
-  // setSelectedBrand,
   selectRating,
   setSelectRating,
   order,
@@ -31,9 +29,9 @@ const ProductFilters: React.FC<Props> = ({
   setAvailabilityFilter
 }) => {
   return (
-    <div className="flex flex-wrap gap-6 mb-10 items-center justify-center bg-[#fffaf5] p-4 rounded-xl shadow">
-      {/* Categories */}
-      <div className="space-y-1">
+    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-6 mb-10 p-4 items-start sm:items-center justify-center rounded-2xl border border-gray-100 shadow-2xl">
+      {/* Category Filter */}
+      <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
         <h4 className="text-xs font-bold text-[#d5a86b] uppercase">Category</h4>
         <div className="flex flex-wrap gap-2">
           {CategoryTypes.map((cat) => (
@@ -56,8 +54,8 @@ const ProductFilters: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* Rating */}
-      <div className="space-y-1">
+      {/* Rating Filter */}
+      <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
         <h4 className="text-xs font-bold text-[#d5a86b] uppercase">Rating</h4>
         <div className="flex gap-1">
           {[5, 4, 3, 2].map((stars) => (
@@ -74,10 +72,8 @@ const ProductFilters: React.FC<Props> = ({
         </div>
       </div>
 
-     
-
       {/* Sort Order */}
-      <div className="space-y-1">
+      <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
         <h4 className="text-xs font-bold text-[#d5a86b] uppercase">Sort</h4>
         <ToggleGroup
           variant="outline"
@@ -97,7 +93,7 @@ const ProductFilters: React.FC<Props> = ({
       </div>
 
       {/* Availability */}
-      <div className="space-y-1">
+      <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
         <h4 className="text-xs font-bold text-[#d5a86b] uppercase">Availability</h4>
         <div className="flex flex-wrap gap-2">
           {['In Stock', 'Out of Stock', 'In Store Only'].map((status) => (
