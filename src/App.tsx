@@ -9,22 +9,22 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Contact from './components/Contact/Contact';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { Toaster } from 'react-hot-toast';
-import { ScrollArrows } from './components/ScrollDownButton';
-import { useScroll } from './components/Context/ScrollProvider';
+// import { ScrollArrows } from './components/ScrollDownButton';
+// import { useScroll } from './components/Context/ScrollProvider';
 // import CheckOut from './components/CheckOut/CheckOut';
 
 function App() {
-  const {sectionRefs, activeIndex} = useScroll();
+  // const {sectionRefs, activeIndex} = useScroll();
   return (
     <>
       <Toaster position="top-center" />
       <ScrollToTop />
-      <ScrollArrows
+      {/* <ScrollArrows
       sectionRefs={sectionRefs}
       currentIndex={activeIndex}
       showLabels={true}
       direction='vertical'
-      />
+      /> */}
 
       <Routes>
         <Route path="/" element={<Layout />}>
