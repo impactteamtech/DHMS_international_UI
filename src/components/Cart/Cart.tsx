@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Trash2, ShoppingBagIcon } from 'lucide-react';
+import React, { useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+import { Trash2} from 'lucide-react';
 import { useCart } from '../Context/CartContext';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -18,8 +18,8 @@ const Cart: React.FC = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const { cart, fetchCart, removeFromCart, updateQty } = useCart();
   const cartItems = cart || [];
-  const [formData, setFormData] = useState<FormData | null>(null);
-  const navigate = useNavigate();
+  // const [formData, setFormData] = useState<FormData | null>(null);
+  // const navigate = useNavigate();
 
   const subtotal: number = cartItems.reduce((acc: number, item: any) => {
     const price = parseFloat(item.price) || 0;
@@ -33,7 +33,7 @@ const Cart: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+   
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {

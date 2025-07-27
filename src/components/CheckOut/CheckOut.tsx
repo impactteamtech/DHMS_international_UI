@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useAuth } from '../Context/AuthContext';
+import React from 'react';
+// import { useAuth } from '../Context/AuthContext';
 import { useForm } from 'react-hook-form';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { useCart } from '../Context/CartContext';
+// import { useCart } from '../Context/CartContext';
 import { ShoppingBagIcon } from 'lucide-react';
 
 interface FormData {
@@ -17,9 +17,9 @@ interface FormData {
 }
 
 const CheckOut: React.FC = () => {
-  const [formData, setFormData] = useState<FormData | null>(null);
-  const { setIsAuthenticated } = useAuth();
-  const {fetchCart} = useCart();
+  // const setFormData = useState<FormData | null>(null);
+  // const { setIsAuthenticated } = useAuth();
+  // const {fetchCart} = useCart();
 
   const {
     register,
@@ -27,10 +27,10 @@ const CheckOut: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const [error, setError] = useState<string>();
+  // const [error, setError] = useState<string>();
 
   const onSubmit = (data: FormData) => {
-    setFormData(data);
+    // setFormData(data);
     console.log('Delivery Info:', data);
 
   };
