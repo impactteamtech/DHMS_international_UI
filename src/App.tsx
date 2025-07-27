@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Contact from './components/Contact/Contact';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { Toaster } from 'react-hot-toast';
+import CheckOut from './components/CheckOut/CheckOut';
 // import { ScrollArrows } from './components/ScrollDownButton';
 // import { useScroll } from './components/Context/ScrollProvider';
 // import CheckOut from './components/CheckOut/CheckOut';
@@ -36,7 +37,7 @@ function App() {
           <Route path="register" element={<SignUp />} />
           <Route path="contact" element={<Contact />} />
           <Route path="dashboard" element={<Dashboard />} />
-          {/* <Route path="checkout" element={<CheckOut/>} /> */}
+          <Route path="checkout" element={<CheckOut/>} />
         </Route>
       </Routes>
     </>

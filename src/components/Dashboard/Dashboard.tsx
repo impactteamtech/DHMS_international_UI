@@ -27,7 +27,7 @@ const Dashboard = () => {
     <div className="flex flex-col md:flex-row min-h-screen bg-[#fdf9f3]">
       
       {/* Sidebar */}
-      <aside className="w-full md:w-72 bg-gradient-to-b from-black to-gray-900 text-white p-6 shadow-xl">
+      <aside className="w-full md:w-72 bg-gradient-to-b from-black to-gray-900 mt-4 text-white p-6 shadow-xl">
         <div className="mb-12 mt-10 text-center md:text-left">
           <h1 className="text-3xl font-bold text-[#f3cb50]">DHMS Dashboard</h1>
           <p className="text-sm text-gray-300">Signed in as <span className="text-[#f3cb50]">{username}</span></p>
