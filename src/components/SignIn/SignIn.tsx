@@ -50,6 +50,7 @@ const SignIn: React.FC = () => {
         navigate('/dashboard');
       } else {
         setError('Unable to sign in');
+        
       }
     } catch (err: any) {
       console.log('Error occurred:', err);

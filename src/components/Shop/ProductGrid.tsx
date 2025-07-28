@@ -24,7 +24,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
       {products.map((product) => (
         <div
           key={product.id}
-          className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100 hover:border-[#f3cb50] hover:shadow-yellow-200 relative"
+          className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100  hover:shadow relative"
         >
           {/* Wishlist icon */}
           <button className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-[#f3cb50]/90 transition">
@@ -49,7 +49,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
             <div className="absolute inset-0 bg-black/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <button
                 onClick={() => onProductClick(product)}
-                className="bg-white text-[#2f2a28] text-xs px-4 py-1.5 rounded-full font-semibold shadow hover:bg-[#f3cb50] hover:text-black transition"
+                className="bg-white text-[#2f2a28] text-xs px-4 cursor-pointer py-1.5 rounded-full font-semibold shadow hover:bg-[#f3cb50] hover:text-black transition"
               >
                 Quick View
               </button>

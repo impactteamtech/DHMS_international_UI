@@ -86,10 +86,11 @@ const Cart: React.FC = () => {
           ) : (
             cartItems.map((item: any, index: number) => (
               <div key={item._id || index} className='grid grid-cols-2 md:grid-cols-5 items-center text-left border-b py-3'>
-                <img src={item.image} alt={item.name} className='w-16 h-16 object-cover rounded mx-auto' />
+                <img src={item.image} alt={item.name} className='w-16 h-16 object-cover text-left rounded mx-auto' />
                 <span className='md:block'>{item.name}</span>
 
                 <div className='flex justify-center items-center gap-2'>
+                  {/*sub onclick*/}
                   <button
                     onClick={() => {
                       const qty = parseInt(item.quantity);
@@ -100,11 +101,13 @@ const Cart: React.FC = () => {
                         toast.success("Removed item");
                       }
                     }}
-                    className='px-2 py-1 bg-gray-200 cursor-pointer hover:scale-105 active:scale-105 rounded'
+                    className='px-2 py-1 bg-gray-200 cursor-pointer text-left hover:scale-105 active:scale-105 rounded'
                   >
                     -
+
                   </button>
                   <span>{item.quantity}</span>
+                  {/*add onclick*/}
                   <button
                     onClick={() => {
                       const qty = parseInt(item.quantity);
@@ -120,7 +123,7 @@ const Cart: React.FC = () => {
                 </div>
 
                 <span className='hidden md:block'>${(parseFloat(item.price) || 0).toFixed(2)}</span>
-
+                  {/*Trash onclick*/}
                 <button
                   onClick={() => removeFromCart(item._id)}
                   className='text-red-500 cursor-pointer hover:scale-105 hover:text-red-700 mx-auto'
