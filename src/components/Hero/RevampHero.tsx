@@ -15,7 +15,7 @@ const RevampHero: React.FC = () => {
     <section 
     ref={ref}
 
-    className="w-full bg-[#d5a86b] px-4 mt-24 sm:px-6 py-12 sm:py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center max-w-8xl mx-auto font-raleway">
+    className="w-full bg-[#d5a86b] px-4 mt-24 sm:px-6 py-12 lg:mt-24 sm:py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 items-center max-w-8xl mx-auto font-raleway">
       
       {/* Left Column - Text */}
       <div className="flex flex-col items-center md:items-center justify-center text-center mt-16 md:text-center space-y-4 sm:space-y-6 px-2 sm:px-4">
