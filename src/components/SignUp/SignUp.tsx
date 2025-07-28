@@ -66,6 +66,7 @@ const SignUp: React.FC = () => {
       const response = await userRegister(data);
       if (response.status === 201) {
         localStorage.setItem('user', JSON.stringify(response.data));
+        localStorage.setItem('username', response.data.username);
         setIsAuthenticated(true);
         navigate('/dashboard');
       }
