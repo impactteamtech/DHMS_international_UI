@@ -20,6 +20,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     await logout();
+    localStorage.removeItem('username')
     navigate('/login');
   };
 
