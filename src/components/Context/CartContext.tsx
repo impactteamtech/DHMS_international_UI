@@ -79,7 +79,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
             ${API_URL}/cart/update/${itemId}`,
                 { quantity: qty },
                 { withCredentials: true })
-            }
+        }
         catch (err) {
             console.error("error updating item", err)
         }

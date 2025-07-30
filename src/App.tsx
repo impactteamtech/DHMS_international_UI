@@ -10,6 +10,7 @@ import Contact from './components/Contact/Contact';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { Toaster } from 'react-hot-toast';
 import CheckOut from './components/CheckOut/CheckOut';
+import SuccessPage from './components/SuccessPage/SuccessPage';
 // import { ScrollArrows } from './components/ScrollDownButton';
 // import { useScroll } from './components/Context/ScrollProvider';
 // import CheckOut from './components/CheckOut/CheckOut';
@@ -38,6 +39,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="checkout" element={<CheckOut/>} />
+          <Route path="success" element={<SuccessPage/>} />
         </Route>
       </Routes>
     </>

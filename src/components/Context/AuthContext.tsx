@@ -26,13 +26,25 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // const navigate = useNavigate();
-
+  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState('');
-
-
-  const {clearCart} = useCart()
+  
+  useEffect(() => {
+  
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setIsAuthenticated(true);
+      setUsername(storedUsername);
+      fetchSession();
+    } else {
+      setUsername('');
+      setIsAuthenticated(false)
+    }
+  }, []);
+  
+  const { clearCart } = useCart()
 
   //verify session still exist if not clear user
   const fetchSession = async () => {
@@ -66,9 +78,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const logout = async (): Promise<void> => {
     try {
       await axios.get(`${API_URL}/logout`, { withCredentials: true });
-setIsAuthenticated(false);
-setUsername('');
-await clearCart();
+      setIsAuthenticated(false);
+      setUsername('');
+      localStorage.removeItem("username")
+      await clearCart();
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -91,18 +104,6 @@ await clearCart();
     }
   };
 
-  useEffect(() => {
-    
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setIsAuthenticated(true);
-      setUsername(storedUsername);
-      fetchSession();
-    } else {
-      setUsername('');
-      setIsAuthenticated(false)
-    }
-  }, []);
 
   return (
     <AuthContext.Provider

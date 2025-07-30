@@ -86,10 +86,10 @@ const Cart: React.FC = () => {
           ) : (
             cartItems.map((item: any, index: number) => (
               <div key={item._id || index} className='grid grid-cols-2 md:grid-cols-5 items-center text-left border-b py-3'>
-                <img src={item.image} alt={item.name} className='w-16 h-16 object-cover text-left rounded mx-auto' />
+                <img src={item.image} alt={item.name} className='w-16 h-16 object-cover mb-2 rounded mx-auto' />
                 <span className='md:block'>{item.name}</span>
 
-                <div className='flex justify-center items-center gap-2'>
+                <div className='flex justify-center gap-2'>
                   {/*sub onclick*/}
                   <button
                     onClick={() => {
