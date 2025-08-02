@@ -16,6 +16,7 @@ interface Product {
   inStore?: boolean;
   colors?: string[];
   description?: string;
+  size?:  string[];
 }
 
 interface ProductModalProps {
@@ -32,7 +33,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
   username,
 }) => {
   const [selectedColor, setSelectedColor] = useState('#aabbcc');
-  const [size, setSize] = useState('xl');
+  const [size, setSize] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -75,7 +76,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
         <div className="relative z-50 bg-[#fef5e5] rounded-xl overflow-hidden shadow-4xl w-full max-w-5xl">
           {/* Banner */}
           <div className="bg-[#D4AF37] py-3 text-center">
-            <h2 className="text-4xl font-[satisfy] text-black tracking-wider">PRODUCT</h2>
+            <h2 className="text-4xl font-[satisfy] text-black tracking-wider">{product.name}</h2>
           </div>
 
           <div className="p-6 flex flex-col md:flex-row gap-6">
@@ -107,44 +108,40 @@ const ProductModal: React.FC<ProductModalProps> = ({
                 </p>
 
                 {/* Colors */}
-                <p className="text-xl font-bold text-yellow-600 mt-3">Colors</p>
-                <div className="flex gap-2 mt-2 flex-wrap">
-                  {['#d5a86b', '#2f2a28', '#f3cb50'].map((color) => (
-                    <div
+                <div className="flex flex-col gap-2 mt-2 flex-wrap">
+                  <h4 className="text-xl font-serif font-extrabold text-[#2c0e3a]">Colors</h4>
+                  {product.colors?.map((color) => (
+                    <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-                      className={`w-8 h-8 rounded-full cursor-pointer border-2 transition-all duration-200 ${
-                        selectedColor === color
-                          ? 'border-[#2c0e3a] scale-110'
+                      className={`w-8 h-8 rounded-full border-2 transition-all duration-200 ${selectedColor === color
+                          ? 'ring-2 ring-offset-2 ring-yellow-500 border-black'
                           : 'border-gray-300'
-                      }`}
+                        }`}
                       style={{ backgroundColor: color }}
                       title={color}
                     />
-                  ))}
+                  )) ?? 'No color variation for this item.'}
                 </div>
-                <p className="text-sm mt-2 text-gray-500">
-                  Selected Color: <span className="font-medium">{selectedColor}</span>
-                </p>
+
               </div>
 
               {/* Sizes */}
               <div>
                 <p className="text-xl font-bold text-yellow-600 mb-2">Sizes</p>
                 <div className="flex gap-2 flex-wrap">
-                  {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((sz) => (
+                  {product.size?.map((sz) => (
                     <button
                       key={sz}
                       onClick={() => setSize(sz.toLowerCase())}
-                      className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm font-semibold transition-all duration-200 ${
-                        size === sz.toLowerCase()
+                      className={`w-10 h-10 flex items-center justify-center rounded-full border text-sm font-semibold transition-all duration-200 ${size === sz.toLowerCase()
                           ? 'bg-[#2c0e3a] text-white border-[#2c0e3a] scale-105'
                           : 'bg-white text-[#2c0e3a] border-gray-300'
-                      }`}
+                        }`}
                     >
                       {sz}
                     </button>
-                  ))}
+                  )) ?? "No size variation for this item."}
                 </div>
                 <p className="text-sm mt-2 text-gray-500">
                   Selected Size: <span className="font-medium uppercase">{size}</span>

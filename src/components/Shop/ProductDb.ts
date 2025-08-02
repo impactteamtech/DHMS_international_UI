@@ -3,7 +3,7 @@ export const ProductsDb = [
   {
     id: 1,
     name: "Handmade Kente Bag",
-    price: 10.00,
+    price: 60.00,
     category: "Handbag",
     brand: "Ankara",
     imageUrl: "/Kente bag.png", 
@@ -15,7 +15,7 @@ export const ProductsDb = [
   {
     id: 2,
     name: "Soft Blue Tote Bag",
-    price: 2.99,
+    price: 50.00,
     category: "Handbag",
     brand: "Tote",
     imageUrl: "/faux blue coach.png",
@@ -27,43 +27,44 @@ export const ProductsDb = [
   {
     id: 3,
     name: "Classic Bucket Shoulder Bag",
-    price: 15.99,
+    price: 50.00,
     category: "Handbag",
     brand: "Shoulder Bag",
     imageUrl: "/bucket style handbag.png",
     rating: 5,
     inStock: true,
     inStore: true,
-    description: "Elevate your everyday look with this stylish bucket shoulder bag, designed in a timeless tan and brown color palette."
+    description: "Elevate your everyday look with this stylish bucket shoulder bag, designed in a timeless tan and brown color palette. Wallet included in purchase."
   },
+  
   {
     id: 4,
     name: "Black Animal Print",
-    price: 8.99,
+    price: 35.00,
     category: "Handbag",
     brand: "Crossbody",
     imageUrl: "/animal print.png",
     rating: 2,
     inStock: true,
     inStore: false,
-    description: "Make a bold statement with this compact shoulder bag featuring a sleek black base and eye-catching animal print detail."
+    description: "Make a bold statement with this compact shoulder bag featuring a sleek black base and eye-catching animal print detail. Wallet included in purchase."
   },
   {
     id: 5,
     name: "Black Mini Satchel",
-    price: 14.99,
+    price: 35.00,
     category: "Handbag",
     brand: "Satchel",
     imageUrl: "/Black bag.png",
     rating: 3,
     inStock: false,
     inStore: true,
-    description: "This mini satchel is a perfect blend of structure and style, designed with a top handle, t’s ideal for carrying just the essentials while adding a polished finish to your look."
+    description: "This mini satchel is a perfect blend of structure and style, designed with a top handle, t’s ideal for carrying just the essentials while adding a polished finish to your look. Straps included with purchase."
   },
   {
     id: 6,
     name: "Pink Reptile Bag & Wallet",
-    price: 6.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Crossbody",
     imageUrl: "/snake skin bag.png",
@@ -75,43 +76,43 @@ export const ProductsDb = [
   {
     id: 7,
     name: "Black Satchel",
-    price: 19.99,
+    price: 30.00,
     category: "Handbag",
     brand: "Satchel",
     imageUrl: "/black-bag 2.png",
     rating: 5,
     inStock: true,
     inStore: true,
-    description: "Faux letter bag perfect for the night out, black handbag with a glossy finish."
+    description: "Faux letter bag perfect for the night out, black handbag with a glossy finish. Shoulder strap included with purchase."
   },
   {
     id: 8,
     name: "Pebble Top Satchel",
-    price: 9.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Satchel",
     imageUrl: "/faux brown bag.png",
     rating: 2,
     inStock: true,
     inStore: true,
-    description: "Brown, structured handbag with a smooth textured finish. Pair with a patterned scraf to add a touch of elegance."
+    description: "Brown, structured handbag with a smooth textured finish. Pair with a patterned scraf to add a touch of elegance. Wallet and strap included with purchase."
   },
   {
     id: 9,
     name: "Black Print & Wallet",
-    price: 11.99,
+    price: 40.00,
     category: "Handbag",
     brand: "Tote",
     imageUrl: "/black-MK.png",
     rating: 4,
     inStock: false,
     inStore: false,
-    description: "A stylish and practicle choice for the fashion conscious individual. This tote keep things polished with its structured shape and sturdy handles."
+    description: "A stylish and practicle choice for the fashion conscious individual. This tote keep things polished with its structured shape and sturdy handles. Shoulder straps included in purchase."
   },
   {
     id: 10,
     name: "Blue Reptile Bag & Wallet",
-    price: 24.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Crossbody",
     imageUrl: "/blue croc satchel.jpg",
@@ -123,7 +124,7 @@ export const ProductsDb = [
   {
     id: 11,
     name: "Burgundy Satchel",
-    price: 14.99,
+    price: 30.00,
     category: "Handbag",
     brand: "Satchel",
     imageUrl: "/burgundy bag.png",
@@ -135,19 +136,19 @@ export const ProductsDb = [
   {
     id: 12,
     name: "Sunflower",
-    price: 6.99,
+    price: 70.00,
     category: "Handbag",
     brand: "Satchel",
     imageUrl: "/sunflower bag.png",
     rating: 4,
     inStock: true,
     inStore: false,
-    description: "Bright and playful,the sunflower a unqiue semi circular multi-colored handbag with a metal buckle. Finished with a black handle, perfect for days when you want your bag to do the talking."
+    description: "Bright and playful,the sunflower a unqiue semi circular multi-colored handbag with a metal buckle. Finished with a black handle, perfect for days when you want your bag to do the talking. Straps included with purchase."
   },
   {
     id: 13,
     name: "Handmade Kente ",
-    price: 19.99,
+    price: 60.00,
     category: "Handbag",
     brand: "Ankara",
     imageUrl: "/red-kente-african-bag.png",
@@ -159,7 +160,7 @@ export const ProductsDb = [
   {
     id: 14,
     name: "Stitched Color Block Patchwork",
-    price: 9.99,
+    price: 60.00,
     category: "Handbag",
     brand: "Satchel",
     imageUrl: "/stitched-color-block-satchel.png",
@@ -171,19 +172,19 @@ export const ProductsDb = [
   {
     id: 15,
     name: "Black Tote Bag",
-    price: 11.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Tote",
     imageUrl: "/black tote bag.png",
     rating: 4,
     inStock: false,
     inStore: false,
-    description: "Easygoing with a touch of edge, this bucket bag brings everyday style to a whole new level. With its flat base and wide open top, it’s perfect for tossing in your essentials and heading out."
+    description: "Easygoing with a touch of edge, this bucket bag brings everyday style to a whole new level. With its flat base and wide open top, it’s perfect for tossing in your essentials and heading out. Wallet and strap included with purchase."
   },
   {
     id: 16,
     name: "Green Ankara Bag",
-    price: 24.99,
+    price: 60.00,
     category: "Handbag",
     brand: "Ankara",
     imageUrl: "/green-african bag.png",
@@ -195,7 +196,7 @@ export const ProductsDb = [
   {
     id: 17,
     name: "Faux Reptile Bag & Wallet",
-    price: 24.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Crossbody",
     imageUrl: "/pink bag.jpg",
@@ -207,7 +208,7 @@ export const ProductsDb = [
   {
     id: 18,
     name: "Faux Reptile Bag & Wallet",
-    price: 24.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Crossbody",
     imageUrl: "/pink and blue.jpg",
@@ -219,7 +220,7 @@ export const ProductsDb = [
    {
     id: 19,
     name: "Multi-Colored Ankara",
-    price: 24.99,
+    price: 60.00,
     category: "Handbag",
     brand: "Ankara",
     imageUrl: "/multi-colored ankara bag.png",
@@ -231,7 +232,7 @@ export const ProductsDb = [
   {
     id: 20,
     name: "LV Tote Bag",
-    price: 24.99,
+    price: 45.00,
     category: "Handbag",
     brand: "Tote",
     imageUrl: "/LV brown and black bag.png",
@@ -245,7 +246,7 @@ export const ProductsDb = [
   {
     id: 21,
     name: "Women's Black Legging",
-    price: 24.99,
+    price: 12.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/black-leggings.png",
@@ -257,7 +258,7 @@ export const ProductsDb = [
   {
     id: 22,
     name: "Traditional African Dress",
-    price: 24.99,
+    price: 55.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/green-african-dress.jpg",
@@ -269,7 +270,7 @@ export const ProductsDb = [
   {
     id: 23,
     name: "Multi-Colored African Dresses",
-    price: 24.99,
+    price: 25.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/african dresses.png",
@@ -281,43 +282,43 @@ export const ProductsDb = [
   {
     id: 24,
     name: "Purple Print Kaftan",
-    price: 24.99,
+    price: 60.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/purple-kaftan.jpg",
     rating: 3,
     inStock: true,
     inStore: true,
-    description: "Drape yourself in elegance with this stunning purple kaftan dress, where comfort meets timeless beauty."
+    description: "Drape yourself in elegance with this stunning purple kaftan dress, where comfort meets timeless beauty. Headscarf included with purchase."
   },
   {
     id: 25,
     name: "Red Print Kaftan",
-    price: 24.99,
+    price: 60.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/red-kaftan-dress.jpg",
     rating: 3,
     inStock: true,
     inStore: true,
-    description: "Red silhouette kaftan dress perfect for both lounging in style and stepping out with grace."
+    description: "Red silhouette kaftan dress perfect for both lounging in style and stepping out with grace. Headscarf included with purchase."
   },
   {
     id: 26,
     name: "Nigerian Kaftan",
-    price: 24.99,
+    price: 60.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/nigerian-kaftan.jpg",
     rating: 3,
     inStock: true,
     inStore: true,
-    description: "Turn heads and lift spirits in this vibrant blue and yellow kaftan, a joyful blend of colorful colors and sunshine energy."
+    description: "Turn heads and lift spirits in this vibrant blue and yellow kaftan, a joyful blend of colorful colors and sunshine energy. Headscarf included with purchase."
   },
   {
     id: 27,
     name: "Ankara Skirt",
-    price: 24.99,
+    price: 50.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/multicolored skirts.png",
@@ -329,7 +330,7 @@ export const ProductsDb = [
   {
     id: 28,
     name: "Traditional African Dress",
-    price: 24.99,
+    price: 60.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/fall-colored-dress.jpg",
@@ -341,7 +342,7 @@ export const ProductsDb = [
   {
     id: 29,
     name: "Women's Dress",
-    price: 24.99,
+    price: 25.00,
     category: "Women Dresses",
     brand: "African",
     imageUrl: "/light-blue-dress.jpg",
@@ -354,7 +355,7 @@ export const ProductsDb = [
   {
     id: 30,
     name: "Button Down Collar Summer Shirt",
-    price: 24.99,
+    price: 30.00,
     category: "Men Shirts",
     brand: "African",
     imageUrl: "/blue stripped shirt.png",
@@ -366,7 +367,7 @@ export const ProductsDb = [
    {
     id: 31,
     name: "Men Geometric Print Dashiki Shirt",
-    price: 24.99,
+    price: 50.00,
     category: "Men Shirts",
     brand: "African",
     imageUrl: "/zigzag-shirt.jpg",
@@ -378,7 +379,7 @@ export const ProductsDb = [
   {
     id: 32,
     name: "Earth-Tone Heritage Print",
-    price: 24.99,
+    price: 60.00,
     category: "Men Shirts",
     brand: "African",
     imageUrl: "/tribal-shirt.jpg",
@@ -390,7 +391,7 @@ export const ProductsDb = [
   {
     id: 33,
     name: "Men's Ankara Dashiki Shirt",
-    price: 24.99,
+    price: 60.00,
     category: "Men Shirts",
     brand: "African",
     imageUrl: "/blue-pink-shirt.jpg",
@@ -402,7 +403,7 @@ export const ProductsDb = [
    {
     id: 34,
     name: "Men's Striped Printed Shirt ",
-    price: 24.99,
+    price: 50.00,
     category: "Men Shirts",
     brand: "African",
     imageUrl: "/blue-orange-stripped-shirt.jpg",
@@ -414,7 +415,7 @@ export const ProductsDb = [
      {
     id: 35,
     name: "Traditional African Shirt",
-    price: 24.99,
+    price: 50.00,
     category: "Men Shirts",
     brand: "African",
     imageUrl: "/traditional-african-shirt.jpg",
@@ -426,10 +427,10 @@ export const ProductsDb = [
      {
     id: 36,
     name: "Timeless Heritage African Shirt",
-    price: 24.99,
+    price: 60.00,
     category: "Men Shirts",
     brand: "African",
-    imageUrl: "/african-ptinted-circles.jpg",
+    imageUrl: "/african-printed-circles.jpg",
     rating: 3,
     inStock: true,
     inStore: true,
@@ -441,8 +442,8 @@ export const ProductsDb = [
   {
     id: 37,
     name: "Cocoa Butter Whipped Shea Butter",
-    price: 24.99,
-    category: "Body Care",
+    price: 11.00,
+    category: "Body Products",
     brand: "Mine Botanicals",
     imageUrl: "/cocoa butter.webp",
     rating: 3,
@@ -453,8 +454,8 @@ export const ProductsDb = [
   {
     id: 38,
     name: "Mango Whipped Shea Butter",
-    price: 24.99,
-    category: "Body Care",
+    price: 11.00,
+    category: "Body Products",
     brand: "Mine Botanicals",
     imageUrl: "/Mango Butter.jpeg",
     rating: 3,
@@ -465,8 +466,8 @@ export const ProductsDb = [
   {
     id: 39,
     name: "Organic African Shea Butter",
-    price: 24.99,
-    category: "Body Care",
+    price: 9.00,
+    category: "Body Products",
     brand: "RA cosmetics",
     imageUrl: "/shea butter.webp",
     rating: 3,
@@ -477,8 +478,8 @@ export const ProductsDb = [
   {
     id: 40,
     name: "Strawberry Whipped Shea Butter",
-    price: 24.99,
-    category: "Body Care",
+    price: 10.00,
+    category: "Body Products",
     brand: "Mine Botanicals",
     imageUrl: "/strawberry whipped butter.png",
     rating: 3,
@@ -489,8 +490,8 @@ export const ProductsDb = [
    {
     id: 41,
     name: "Dudu-Osun Black Soap",
-    price: 24.99,
-    category: "Body Care",
+    price: 5.00,
+    category: "Body Products",
     brand: "Dudu-Osun",
     imageUrl: "/dudu soap.png",
     rating: 3,
@@ -501,8 +502,8 @@ export const ProductsDb = [
    {
     id: 42,
     name: "African Black Soap",
-    price: 24.99,
-    category: "Body Care",
+    price: 7.00,
+    category: "Body Products",
     brand: "By Natures Organics",
     imageUrl: "/african_black_soap.png",
     rating: 3,
@@ -513,8 +514,8 @@ export const ProductsDb = [
    {
     id: 43,
     name: "DHMS International Shea Butter",
-    price: 24.99,
-    category: "Body Care",
+    price: 8.00,
+    category: "Body Products",
     brand: "DHMS International",
     imageUrl: "/DHMS clear shea butter.png",
     rating: 3,
@@ -525,8 +526,8 @@ export const ProductsDb = [
    {
     id: 44,
     name: "DHMS International Shea Butter",
-    price: 24.99,
-    category: "Body Care",
+    price: 7.00,
+    category: "Body Products",
     brand: "",
     imageUrl: "/DHMS shea butter.png",
     rating: 3,
@@ -538,8 +539,8 @@ export const ProductsDb = [
    {
     id: 45,
     name: "Golden Sand Oil - Warm, Earthy and Seductive",
-    price: 24.99,
-    category: "Body Care",
+    price: 10.00,
+    category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/golden sand oil.png",
     rating: 3,
@@ -550,8 +551,8 @@ export const ProductsDb = [
    {
     id: 46,
     name: "FlowerBomb",
-    price: 24.99,
-    category: "Body Care",
+    price: 10.00,
+    category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/flower bomb oil.png",
     rating: 3,
@@ -562,8 +563,8 @@ export const ProductsDb = [
    {
     id: 47,
     name: "Dior Homme Oil",
-    price: 24.99,
-    category: "Body Care",
+    price: 10.00,
+    category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/dior homme oil.png",
     rating: 4,
@@ -574,8 +575,8 @@ export const ProductsDb = [
   {
     id: 48,
     name: "Patchouli Oil",
-    price: 24.99,
-    category: "Body Care",
+    price: 10.00,
+    category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/Patchouli oil.png",
     rating: 4,
@@ -586,7 +587,7 @@ export const ProductsDb = [
   {
     id: 49,
     name: "Paco Rabanne Oil",
-    price: 24.99,
+    price: 10.00,
     category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/paco rabanne oil.png",
@@ -598,7 +599,7 @@ export const ProductsDb = [
     {
     id: 44,
     name: "Peppermint Oil - Awaken the mind. Electrify the senses.",
-    price: 24.99,
+    price: 10.00,
     category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/peppermint oil.png",
@@ -610,7 +611,7 @@ export const ProductsDb = [
      {
     id: 44,
     name: "Seductress Body Oil - Unveil the essence of temptation",
-    price: 24.99,
+    price: 10.00,
     category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/lick me all over oil.png",
@@ -622,7 +623,7 @@ export const ProductsDb = [
      {
     id: 45,
     name: "Michelle Obama Inspired Oil - Inspired by the quiet power of presence.",
-    price: 24.99,
+    price: 10.00,
     category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/Michelle Obama oil.png",
@@ -634,7 +635,7 @@ export const ProductsDb = [
     {
     id: 46,
     name: "Mousuf Wardi Roll-On Perfume Oil",
-    price: 24.99,
+    price: 6.00,
     category: "Body Products",
     brand: "Mousuf Wardi",
     imageUrl: "/mousuf wardi.jpg",
@@ -646,7 +647,7 @@ export const ProductsDb = [
     {
     id: 47,
     name: "Guilty Intention – Inspired by Gucci Guilty Pour Homme",
-    price: 24.99,
+    price: 10.00,
     category: "Body Products",
     brand: "Fragrance Oil",
     imageUrl: "/gucci guilty.png",
@@ -659,7 +660,7 @@ export const ProductsDb = [
    {
     id: 48,
     name: "Lattafa Asad Eau de Parfum ",
-    price: 24.99,
+    price: 40.00,
     category: "Body Products",
     brand: "Fragrance",
     imageUrl: "/Lattafa black.png",
@@ -671,7 +672,7 @@ export const ProductsDb = [
    {
     id: 49,
     name: "Lattafa Asad Bourbon Eau de Parfum ",
-    price: 24.99,
+    price: 45.00,
     category: "Body Products",
     brand: "Fragrance",
     imageUrl: "/Lattafa brown.png",
@@ -683,7 +684,7 @@ export const ProductsDb = [
     {
     id: 50, 
     name: "Lattafa Asad Yara Eau de Parfum",
-    price: 24.99,
+    price: 40.00,
     category: "Body Products",
     brand: "Fragrance",
     imageUrl: "/Lattafa orange.png",
@@ -695,7 +696,7 @@ export const ProductsDb = [
    {
     id: 51, 
     name: "Lattafa Yara Moi Eau de Parfum",
-    price: 24.99,
+    price: 40.00,
     category: "Body Products",
     brand: "Fragrance",
     imageUrl: "/lattafa white.png",
@@ -711,26 +712,278 @@ export const ProductsDb = [
     price: 24.99,
     category: "Hair",
     brand: "Bonnet",
-    imageUrl: "/yellow-bonnet.png",
+    imageUrl: "/yellow-bonnet.jpg",
     rating: 4,
     inStock: true,
     inStore: true,
     description: "Wrap your hair in luxury while you sleep. Our 100% silk bonnet is designed to preserve moisture, reduce frizz, and protect delicate strands whether you're maintaining curls, coils, or a blowout."
   },
+  // {
+  //   id: 53, 
+  //   name: "Luxe Statement Silk Bonnet",
+  //   price: 24.99,
+  //   category: "Hair",
+  //   brand: "Bonnet",
+  //   imageUrl: "/orange-bonnet.jpg",
+  //   rating: 4,
+  //   inStock: true,
+  //   inStore: true,
+  //   description: "Designed to protect your hair while making a statement, this bonnet is crafted from high-quality silk for a smooth, friction-free finish that reduces breakage, preserves moisture, and maintains your style overnight."
+  // },
+  // Jewelry sets
   {
-    id: 53, 
-    name: "Luxe Statement Silk Bonnett",
-    price: 24.99,
-    category: "Hair",
-    brand: "Bonnet",
-    imageUrl: "/orange-bonnet.png",
+    id: 54, 
+    name: "Flower Bloom Gold Set",
+    price: 50.00,
+    category: " Jewelry",
+    brand: "DHMS",
+    imageUrl: "/flower-gold-necklace.png",
     rating: 4,
     inStock: true,
     inStore: true,
-    description: "Designed to protect your hair while making a statement, this bonnet is crafted from high-quality silk for a smooth, friction-free finish that reduces breakage, preserves moisture, and maintains your style overnight."
+    description: "A statement necklace featuring an intricate-floral inspired design with petal-shaped filigree details. A pair of matching stud earrings, gold bangle bracelet and gold ring to match."
+  },
+   {
+    id: 55, 
+    name: "Golden Orbit Mesh Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/circle-necklace.png",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Make a bold statement with a captivating 3-piece ensemble featuring intricate mesh circle detailing This set includes a radiant necklace, matching double-disc earrings, and a complementary bracelet. All crafted in a shimmering gold-tone finish."
+  },
+    {
+    id: 56, 
+    name: "Royal Drape Heritage Set",
+    price: 70.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/gold-circle-necklace.png",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Celebrate tradition and grandeur with the Royal Drape Heritage Set, featuring a double-layered gold necklace adorned with ornate, embossed discs and angular beads."
+  },
+   {
+    id: 57, 
+    name: "Aurelia Necklace",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/gold-spiral-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Elevate your elegance with the Aurelia Necklace, a stunning fusion of regal design and artisan craftsmanship. Whether styled for a formal gala or a refined bridal ensemble, the Aurelia Necklace embodies timeless opulence and sophistication."
+  },
+   {
+    id: 58, 
+    name: "Amora Royal Heart Set",
+    price: 70.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/heart-shaped-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Capture hearts with the Amora Royal Heart Set, a luxurious gold jewelry collection designed to celebrate love, power, and heritage. This 3 piece set features a bold heart-shaped necklace adorned with intricate cascading gold fringe, paied with a matching bracelet and statement ring."
+  },
+    {
+    id: 59, 
+    name: "Cleopatra Radiance Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/egyptian-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Turn heads with the Cleopatra Radiance Set, a bold gold jewelry collection inspired by ancient Egyptian royalty."
+  },
+    {
+    id: 59, 
+    name: "Golden Willow Necklace",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/leaf-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Add a touch of nature-inspired elegance with the Golden Willow Necklace. This 4-piece gold jewelry set featuring a graceful leaf motif, a curved collar-style necklace, matching leaf drop earrings, a coordinating cuff bracelet, and a delicate ring. Each piece blends silver and gold tones, perfect for weddings, formal outfits, or nature-themed fashion looks."
+  },
+   {
+    id: 60, 
+    name: "Athena Geometric Jewelry Set – Gold & Black",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/rose-gold-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Channel timeless elegance with the Athena Geometric Jewelry Set, a bold four-piece ensemble crafted in radiant gold with striking black enamel inlay. The collar necklace rests gracefully at the neckline with a front-pointed design and glittering accents for added glam."
+  },
+   {
+    id: 61, 
+    name: "Solara Multicolor Gold Jewelry Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/gold-colored-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Illuminate every moment with the Solara Radiance Set. A breathtaking blend of gold brilliance and vibrant multicolored accents. This four-piece collection features a statement collar necklace, coordinating drop earrings, a bold cuff bracelet, and a refined ring, all designed to dazzle."
+  },
+   {
+    id: 62, 
+    name: "Oceana Jewelry Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/shells-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Embrace the serenity of the sea with the Oceana Shell Whisper Jewelry Set. Inspired by the gentle curves of seashells and the shimmer of sunlight on waves, this elegant four-piece set includes a sculpted necklace, matching earrings, a bracelet, and a ring."
+  },
+   {
+    id: 63, 
+    name: "Luna Bloom Silver Floral Jewelry Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/silver-flower-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Delicate as moonlight and blooming with grace, the Luna Bloom Silver Floral Jewelry Set captures the essence of timeless femininity. The soft shimmer of silver meets petal-like detailing, creating a look that’s both romantic and refined."
+  },
+   {
+    id: 64, 
+    name: "Diamond Loop Elegance Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/square-silver-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Step into timeless glamour with the Diamond Loop Elegance Set, a radiant 4-piece silver jewelry collection designed to dazzle. This refined set includes a geometric link necklace with a statement buckle accent, matching double square drop earrings, a sleek hinged bracelet, and a square cut crystal ring."
+  },
+   {
+    id: 65, 
+    name: "Versa Gold Jewelry Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/designer-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "This 4-piece gold jewelry collection showcases an elegant Greek key motif etched into each piece with precision."
+  },
+// left off here add more
+  {
+    id: 66, 
+    name: "Celestia Wings Jewelry Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/gold-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Graceful and radiant, this set embodies the spirit of flight and freedom. This four-piece gold-toned jewelry collection features a wing-inspired choker necklace, a coordinating bangle, dangling earrings, and a matching ring, all accented with shimmering cubic zirconia."
+  },
+   {
+    id: 67, 
+    name: "Noire Jewelry Set",
+    price: 65.00,
+    category: "Jewlery",
+    brand: "DHMS",
+    imageUrl: "/black-diamond-gold-necklace.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Elevate your elegance with the  Noire Jewelry Set. a luxurious 5-piece ensemble featuring teardrop-shaped angel wing motifs in radiant gold finish. Adorned with black crystal accents, this set includes a twisted rope necklace, drop earrings, a matching cuff bracelet, and ring. Perfect for weddings, formal events or every day style."
+  },
+    {
+    id: 67, 
+    name: "Ankut Anklet",
+    price: 65.00,
+    category: "Jewelry",
+    brand: "DHMS",
+    imageUrl: "/crown-heart-anklet.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Add a touch of charm to your step with our Ankut Anklet. crafted from high-quality stainless steel for durability and shine. This elegant ankle bracelet features a playful combination of heart and crown charms that symbolize love and royalty, perfect for everyday wear or dressing up your look."
+  },
+  {
+    id: 68, 
+    name: "Anima Gold Hair Growth Oil",
+    price: 65.00,
+    category: "Hair",
+    brand: "Anima Gold",
+    imageUrl: "/hair-growth.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Stimulate hair growth from root to tip with AnimaGold Hair Growth Oil. This powerful 30ml elixir is infused with a blend of natural oils known to strengthen follicles, reduce breakage, and promote thicker, fuller hair. Perfect for edges, thinning spots, and dry scalps, it delivers intense hydration while encouraging new growth."
+  },
+   {
+    id: 69, 
+    name: "Batana Hair Pomade",
+    price: 65.00,
+    category: "Hair",
+    brand: "Mine Botanicals",
+    imageUrl: "/batana-hair-pomade.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Nourish and style your hair with Mine Botanicals Batana Hair Pomade with Amla Oil. This rich, creamy blend combines the regenerative power of Batana oil with the strengthening benefits of Amla oil to promote growth, restore shine, and protect against breakage. Ideal for edges, twist-outs, braids, and natural styles."
+  },
+   {
+    id: 70, 
+    name: "Batana Oil",
+    price: 65.00,
+    category: "Hair",
+    brand: "Mine Botanicals",
+    imageUrl: "/batana-oil.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Revitalize your hair naturally with Batana Oil by Mine Botanicals. Sourced directly from Honduras, this 100% pure oil is rich in essential fatty acids and antioxidants that deeply nourish the scalp, restore thinning edges, and promote stronger, healthier hair growth."
+  },
+   {
+    id: 71, 
+    name: "BadRuf Creme",
+    price: 8.00,
+    category: "Body",
+    brand: "Badruf Creme",
+    imageUrl: "/badruff-creme.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Soothe, heal, and protect your skin with BadRuf Crème. A powerful antifungal, antibacterial, and anti-inflammatory topical ointment. Specially formulated to target skin irritations such as ringworm, eczema, athlete’s foot, and rashes, this multipurpose cream provides fast relief from itching, redness, and inflammation. Gentle yet effective, it’s suitable for daily use on all skin types."
+  },
+  {
+    id: 72, 
+    name: "OlayBact Creme",
+    price: 8.00,
+    category: "Body",
+    brand: "OlayBact Creme",
+    imageUrl: "/olaybact-creme.jpg",
+    rating: 4,
+    inStock: true,
+    inStore: true,
+    description: "Defend your skin with the powerful healing formula of OLAYBACT Crème. This antibacterial and antifungal cream is designed to treat a variety of skin conditions, including eczema, ringworm, heat rashes, and irritations caused by bacteria and fungi. With fast-acting relief and a gentle touch, OLAYBACT helps calm inflammation, soothe itching, and restore healthy skin."
   },
 
 
-
 ];
-

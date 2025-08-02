@@ -32,11 +32,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
           </button>
 
           {/* Image */}
-          <div className="relative w-full h-[440px] sm:h-[400px] rounded-t-2xl overflow-hidden">
+          <div className="relative w-full h-[440px] sm:h-[480px] rounded-t-2xl overflow-hidden">
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-top transition-transform duration-500 group-hover:scale-105"
             />
 
             {product.inStore && (
