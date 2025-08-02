@@ -1,38 +1,23 @@
-import React, {useEffect} from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home, ShoppingBag } from 'lucide-react';
-import { useCart } from '../Context/CartContext';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+const CancelPage: React.FC = () => {
 
-const SuccessPage: React.FC = () => {
-  const {clearCart} = useCart()
-  const navigate = useNavigate();
-
-  useEffect(()=>{
-    const resetCart = async ()=>{
-      try{
-        await clearCart()
-      }
-      catch(error){
-        console.error("failed to clear cart", error)
-      }
-    }
-    resetCart()
-  }, [])
-
+    const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100">
       <div className="flex flex-col justify-center items-center bg-white rounded-2xl shadow-lg p-10 w-full max-w-3xl text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-slate-700 mb-4">
-          DHMS Received Your Order
+          Your Order was unsucessful 
         </h1>
         <p className="mt-2 text-xl text-gray-600 mb-6">
-          Your payment was successful.
+          Your payment was not completed. Please try again later.
         </p>
 
         <DotLottieReact
           className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mb-8"
-          src="https://lottie.host/7ee472a0-c1c8-4871-962f-bcec400a2f54/ZybOcezonI.lottie"
+          src="https://lottie.host/4b144667-1270-4d3e-8607-786a2a31fa2d/23IXgAdub9.lottie"
           loop
           autoplay
         />
@@ -59,4 +44,4 @@ const SuccessPage: React.FC = () => {
   );
 };
 
-export default SuccessPage;
+export default CancelPage;

@@ -45,9 +45,13 @@ const HeaderRevamp = () => {
         <div className='flex flex-col md:flex-row items-center justify-between gap-2'>
 
           {/* Logo */}
-          <div className='flex items-center space-x-2'>
+          <div 
+          onClick={()=> navigate('/home')}
+          className='flex items-center cursor-pointer space-x-2'>
             <img src={logo} alt='Logo' className='w-8 h-8 rounded-full p-1' />
-            <div className='leading-tight'>
+            <div
+            
+             className='leading-tight'>
               <span className='text-[#f3cb50] text-lg font-[satisfy]'>DHMS</span>
               <span className='block text-[#f3eae2] text-xs uppercase font-bold'>
                 International Limit
@@ -61,7 +65,7 @@ const HeaderRevamp = () => {
           </div>
 
           {/* Cart & Auth */}
-          <div className='flex items-center gap-8 text-white'>
+          <div className='flex items-center cursor-pointer gap-8 text-white'>
             <Link
               to='/cart'
               onClick={handleOnClick}
@@ -77,12 +81,12 @@ const HeaderRevamp = () => {
             </Link>
 
             {isAuthenticated ? (
-              <button onClick={handleLogout} className='flex flex-col items-center hover:scale-105'>
+              <button onClick={handleLogout} className='flex flex-col cursor-pointer items-center hover:scale-105'>
                 <User className='w-10 h-10' />
                 <span className='text-sm text-[#f3cb50]'>Sign Out</span>
               </button>
             ) : (
-              <Link to='/login' onClick={handleOnClick} className='flex flex-col items-center hover:scale-105'>
+              <Link to='/login' onClick={handleOnClick} className='flex flex-col cursor-pointer items-center hover:scale-105'>
                 <User className='w-10 h-10' />
                 <span className='text-sm text-[#f3cb50]'>Sign In</span>
               </Link>

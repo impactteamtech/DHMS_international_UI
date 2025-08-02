@@ -163,7 +163,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
             className="absolute top-3 right-3 text-white bg-black/40 hover:bg-black/70 p-1 rounded-full"
             title="Close"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 cursor-pointer" />
           </button>
         </div>
       </div>

@@ -4,7 +4,6 @@ import {
   LogOut,
   User,
   ShoppingBag,
-  // Heart,
   LayoutDashboard,
   ShoppingCart,
   BadgePercent,
@@ -51,9 +50,9 @@ const Dashboard = () => {
             <ShoppingCart size={18} />
             My Cart
           </Link>
-          <Link to="rewards" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
+          <Link to="favorites" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
             <Star size={18} />
-            Loyalty Points
+            Favorites
           </Link>
           <Link to="profile" className="flex items-center gap-2 hover:text-black hover:bg-white px-4 py-2 rounded-md transition">
             <User size={18} />

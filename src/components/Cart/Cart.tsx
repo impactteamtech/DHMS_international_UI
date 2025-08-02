@@ -52,7 +52,10 @@ const Cart: React.FC = () => {
       const res = await axios.post(`${API_URL}/checkout/create-checkout-session`, {
         ...data,
         line_items,
-      });
+      },
+      {withCredentials: true}
+    
+    );
 
       if (res.data.url) {
         window.location = res.data.url;

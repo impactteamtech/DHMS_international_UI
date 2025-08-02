@@ -32,7 +32,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
           </button>
 
           {/* Image */}
-          <div className="relative w-full h-[440px] sm:h-[480px] rounded-t-2xl overflow-hidden">
+          <div className="relative w-full h-[440px] sm:h-[500px] rounded-t-2xl overflow-hidden">
             <img
               src={product.imageUrl}
               alt={product.name}

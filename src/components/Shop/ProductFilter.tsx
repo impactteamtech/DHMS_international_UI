@@ -45,6 +45,7 @@ const ProductFilters: React.FC<Props> = ({
               onClick={() =>
                 setSelectedCategory((prev) =>
                   prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+                  
                 )
               }
             >
