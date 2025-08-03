@@ -46,7 +46,11 @@ const HeaderRevamp = () => {
 
           {/* Logo */}
           <div 
-          onClick={()=> navigate('/home')}
+          onClick={()=>{
+            setLoading(true)
+            navigate('/home')
+             setTimeout(() => setLoading(false), 1800);
+          }}
           className='flex items-center cursor-pointer space-x-2'>
             <img src={logo} alt='Logo' className='w-8 h-8 rounded-full p-1' />
             <div

@@ -86,7 +86,16 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }
     // clear cart on logout 
     const clearCart = async ()=> {
-        setCart([])
+        try{
+            await axios.delete(`${API_URL}/cart/clear`, {withCredentials: true}
+            )
+            setCart([])
+
+        }
+        catch (error) {
+            console.error("unable to clear cart.", error)
+            toast.error("Could not clear cart")
+        }
     }
 // this was causing it 
     // useEffect(() => {

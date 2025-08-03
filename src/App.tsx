@@ -12,9 +12,16 @@ import { Toaster } from 'react-hot-toast';
 import CheckOut from './components/CheckOut/CheckOut';
 import SuccessPage from './components/SuccessPage/SuccessPage';
 import CancelPage from './components/CancelPage/CancelPage';
+import OrderHistory from './components/Dashboard/SubPages/OrderHistory';
+import Overview from './components/Dashboard/SubPages/Overview';
+import Favorites from './components/Dashboard/SubPages/Favorites';
+import AccountInfo from './components/Dashboard/SubPages/AccountInfo';
+import ChangePassword from './components/Dashboard/SubPages/changePassword';
+// import PrivateRoute from './components/ProtectedRoute';
 // import { ScrollArrows } from './components/ScrollDownButton';
 // import { useScroll } from './components/Context/ScrollProvider';
 // import CheckOut from './components/CheckOut/CheckOut';
+
 
 function App() {
   // const {sectionRefs, activeIndex} = useScroll();
@@ -38,10 +45,19 @@ function App() {
           <Route path="login" element={<SignIn />} />
           <Route path="register" element={<SignUp />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="checkout" element={<CheckOut/>} />
-          <Route path="success" element={<SuccessPage/>} />
-          <Route path="cancel" element={<CancelPage/>} />
+          <Route path="checkout" element={<CheckOut />} />
+          <Route path="success" element={<SuccessPage />} />
+          <Route path="cancel" element={<CancelPage />} />
+          {/* NESTED DASHBOARD ROUTES */}
+
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route path="orders" element={<OrderHistory />} />
+            <Route path="overview" element={<Overview />} />
+             <Route path="favorites" element={<Favorites />} />
+             <Route path="profile" element={<AccountInfo />} />
+             <Route path="change-password" element={<ChangePassword/>} />
+          </Route>
+   
         </Route>
       </Routes>
     </>

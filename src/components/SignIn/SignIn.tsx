@@ -43,7 +43,7 @@ const SignIn: React.FC = () => {
         setIsAuthenticated(true);
         localStorage.setItem('username', user);
         await fetchCart();
-        navigate('/dashboard');
+        navigate('/dashboard/overview');
       } else {
         toast.error('Incorrect credentials');
         setError('Unable to sign in');

@@ -57,7 +57,7 @@ export default function NavigationMenuBeauty() {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <OffsetLink
-              to="/shop#top"
+              to="/shop"
               className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
             >
               Shop
@@ -82,7 +82,7 @@ export default function NavigationMenuBeauty() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <OffsetLink
-                to="/dashboard"
+                to="/dashboard/overview"
                 className="rounded-full px-3 py-1 hover:bg-[#f3cb50] transition"
               >
                 Dashboard

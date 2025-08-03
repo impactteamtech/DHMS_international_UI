@@ -61,7 +61,9 @@ const Cart: React.FC = () => {
         window.location = res.data.url;
       }
     } catch (error: any) {
-      toast.error(error.message || 'Failed to initiate checkout');
+      console.error(error.message);
+      toast.error("No items in cart, please add item.")
+
     }
   };
 
