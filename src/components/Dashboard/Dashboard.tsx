@@ -8,9 +8,12 @@ import {
   ShoppingCart,
   Star,
 } from 'lucide-react';
+import { useEffect } from 'react';
 
 
 const Dashboard = () => {
+
+  useEffect
   const { logout } = useAuth();
   const navigate = useNavigate();
 

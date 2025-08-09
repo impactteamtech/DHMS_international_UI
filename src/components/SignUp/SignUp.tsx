@@ -68,7 +68,7 @@ const SignUp: React.FC = () => {
         localStorage.setItem('user', JSON.stringify(response.data));
         localStorage.setItem('username', response.data.username);
         setIsAuthenticated(true);
-        navigate('/dashboard');
+        navigate('/dashboard/overview');
       }
     } catch (error) {
       console.error('Error during registration:', error);

@@ -8,7 +8,7 @@ import { useAuth } from '../Context/AuthContext';
 import { useCart } from '../Context/CartContext';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeOff } from 'lucide-react';
-
+import ForgotPassModal from './ForgetPassModal';
 interface FormData {
   username: string;
   password: string;
@@ -19,6 +19,8 @@ const SignIn: React.FC = () => {
   const { setIsAuthenticated } = useAuth();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false)
+
   const [error, setError] = useState<string>();
   const navigate = useNavigate();
 
@@ -60,7 +62,11 @@ const SignIn: React.FC = () => {
   return (
     <div className="relative flex flex-col md:flex-row gap-4 p-4 min-h-screen mt-5 bg-transparent pt-36 md:pt-28 lg:pt-24">
       {loading && <LoadingAnimation />}
-
+      {showModal && (
+        <>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40" />
+        <ForgotPassModal onClose={()=> setShowModal(false)}/>
+        </>) }
       {/* Background Video */}
       <video
         autoPlay
@@ -136,7 +142,7 @@ const SignIn: React.FC = () => {
                 </button>
 
                 <div className="flex gap-4 justify-center text-sm text-gray-400">
-                  <button className="hover:underline cursor-pointer" type="button">
+                  <button className="hover:underline cursor-pointer" type="button" onClick={()=>setShowModal(true)}>
                     Forgot password?
                   </button>
                   <Link to="/register" className="hover:underline cursor-pointer">
