@@ -17,24 +17,14 @@ import Overview from './components/Dashboard/SubPages/Overview';
 import Favorites from './components/Dashboard/SubPages/Favorites';
 import AccountInfo from './components/Dashboard/SubPages/AccountInfo';
 import ChangePassword from './components/Dashboard/SubPages/changePassword';
-// import PrivateRoute from './components/ProtectedRoute';
-// import { ScrollArrows } from './components/ScrollDownButton';
-// import { useScroll } from './components/Context/ScrollProvider';
-// import CheckOut from './components/CheckOut/CheckOut';
 
 
 function App() {
-  // const {sectionRefs, activeIndex} = useScroll();
+
   return (
     <>
       <Toaster position="top-center" />
       <ScrollToTop />
-      {/* <ScrollArrows
-      sectionRefs={sectionRefs}
-      currentIndex={activeIndex}
-      showLabels={true}
-      direction='vertical'
-      /> */}
 
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -53,11 +43,11 @@ function App() {
           <Route path="dashboard" element={<Dashboard />}>
             <Route path="orders" element={<OrderHistory />} />
             <Route path="overview" element={<Overview />} />
-             <Route path="favorites" element={<Favorites />} />
-             <Route path="profile" element={<AccountInfo />} />
-             <Route path="change-password" element={<ChangePassword/>} />
+            <Route path="favorites" element={<Favorites />} />
+            <Route path="profile" element={<AccountInfo />} />
+            <Route path="change-password" element={<ChangePassword />} />
           </Route>
-   
+
         </Route>
       </Routes>
     </>
