@@ -32,20 +32,20 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="shop" element={<Shop />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="login" element={<SignIn />} />
+          <Route path="login" element={<SignIn/>} />
           <Route path="register" element={<SignUp />} />
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<CheckOut />} />
-          <Route path="success" element={<SuccessPage />} />
-          <Route path="cancel" element={<CancelPage />} />
+          <Route path="success" element={<SuccessPage/>} />
+          <Route path="cancel" element={<CancelPage/>} />
           {/* NESTED DASHBOARD ROUTES */}
 
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route path="orders" element={<OrderHistory />} />
+          <Route path="dashboard" element={<Dashboard/>}>
+            <Route path="orders" element={<OrderHistory/>} />
             <Route path="overview" element={<Overview />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="profile" element={<AccountInfo />} />
-            <Route path="change-password" element={<ChangePassword />} />
+            <Route path="change-password" element={<ChangePassword/>} />
           </Route>
 
         </Route>
