@@ -38,7 +38,7 @@ function App() {
           <Route path="checkout" element={<CheckOut />} />
           <Route path="success" element={<SuccessPage/>} />
           <Route path="cancel" element={<CancelPage/>} />
-          {/* NESTED DASHBOARD ROUTES */}
+          {/* NESTED DASHBOARD routes*/}
 
           <Route path="dashboard" element={<Dashboard/>}>
             <Route path="orders" element={<OrderHistory/>} />
