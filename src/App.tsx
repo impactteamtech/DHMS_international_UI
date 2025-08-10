@@ -16,16 +16,14 @@ import OrderHistory from './components/Dashboard/SubPages/OrderHistory';
 import Overview from './components/Dashboard/SubPages/Overview';
 import Favorites from './components/Dashboard/SubPages/Favorites';
 import AccountInfo from './components/Dashboard/SubPages/AccountInfo';
-import ChangePassword from './components/Dashboard/SubPages/changePassword';
+import UpdatePassword from './components/Dashboard/ChangePassword';
 
 
 function App() {
-
   return (
     <>
       <Toaster position="top-center" />
       <ScrollToTop />
-
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -39,15 +37,13 @@ function App() {
           <Route path="success" element={<SuccessPage/>} />
           <Route path="cancel" element={<CancelPage/>} />
           {/* NESTED DASHBOARD routes*/}
-
           <Route path="dashboard" element={<Dashboard/>}>
             <Route path="orders" element={<OrderHistory/>} />
             <Route path="overview" element={<Overview />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="profile" element={<AccountInfo />} />
-            <Route path="change-password" element={<ChangePassword/>} />
+            <Route path="change-password" element={<UpdatePassword/>} />
           </Route>
-
         </Route>
       </Routes>
     </>
