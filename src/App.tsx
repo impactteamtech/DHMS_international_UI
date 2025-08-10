@@ -16,7 +16,7 @@ import OrderHistory from './components/Dashboard/SubPages/OrderHistory';
 import Overview from './components/Dashboard/SubPages/Overview';
 import Favorites from './components/Dashboard/SubPages/Favorites';
 import AccountInfo from './components/Dashboard/SubPages/AccountInfo';
-import ChangePassword from './components/Dashboard/SubPages/changePassword';
+import ChangePassword from './components/Dashboard/SubPages/ChangePassword';
 
 
 function App() {
