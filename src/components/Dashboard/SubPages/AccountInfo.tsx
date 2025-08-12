@@ -63,7 +63,7 @@ const AccountInfo: React.FC = () => {
               Full Name
             </label>
             <div className="text-lg font-semibold text-gray-700">
-              {userInfo?.name || 'N/A'}
+              {userInfo?.username || 'N/A'}
             </div>
           </div>
 

@@ -7,14 +7,14 @@ import { useScroll } from '../Context/ScrollProvider';
 const inStoreItems = [
   {
     name: 'Kaftan Dresses',
-    image: '/kaftan.jpg',
+    image: '/purple-kaftan.jpg',
     description: 'Hand-stitched elegance in vibrant prints for every body.',
     badge: 'Customer Favorite',
     category: 'Women Dresses',
   },
   {
     name: 'Body Oils',
-    image: '/body_oil.png',
+    image: '/Michelle Obama oil.png',
     description: 'Scented oils crafted for hydration and glow.',
     badge: 'Best Seller',
     category: 'Body Products',
@@ -28,7 +28,7 @@ const inStoreItems = [
   },
   {
     name: 'Shea & Black Soap Sets',
-    image: '/blacksoap.webp',
+    image: '/shea butter.webp',
     description: 'Gentle, natural cleansing straight from West Africa.',
     badge: 'New Arrival',
     category: 'Body Products',
@@ -42,7 +42,7 @@ const inStoreItems = [
   },
   {
     name: 'Men’s Dashiki Tops',
-    image: '/dashiki.webp',
+    image: '/blue-pink-shirt.jpg',
     description: 'Cultural pride meets modern tailoring.',
     badge: 'Hot Pick',
     category: 'Men Shirts',
@@ -136,10 +136,10 @@ const InStore: React.FC = () => {
         <p className="text-md sm:text-lg text-[#7d726a]">
           Feel the fabrics. Smell the scents. Find your fit.
         </p>
-        <p className="text-sm text-[#a19990] mt-2">
+        <p className="text-lg text-[#a19990] mt-2">
           Walk-ins welcome • Pickup hours: Mon–Sat, 10am – 6pm
         </p>
-        <p className="text-sm text-[#a19990] mt-1">
+        <p className="text-lg text-[#a19990] mt-2">
           Visit us at our Spotsylvania Mall location.
         </p>
       </div>

@@ -1,5 +1,6 @@
-import React from 'react';
+// import React, {useState} from 'react';
 import { Heart } from 'lucide-react';
+// import axios from 'axios';
 
 interface Product {
   id: string | number;
@@ -18,7 +19,16 @@ interface ProductGridProps {
   onProductClick: (product: Product) => void;
 }
 
+// const API_URL = import.meta.env.VITE_API_URL;
+
 const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) => {
+  // const [selectProduct, setSelectedProduct] = useState<{}>()
+
+  // const addToFav = async () => {
+  //   try{
+  //     await axios.post(`${API_URL}/add-favorites`, setSelectedProduct(products))
+  //   }
+  // }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 px-3 md:px-0">
       {products.map((product) => (
@@ -27,7 +37,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
           className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100  hover:shadow relative"
         >
           {/* Wishlist icon */}
-          <button className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-[#f3cb50]/90 transition">
+          <button  className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-[#f3cb50]/90 transition">
             <Heart className="w-4 h-4 text-gray-400 hover:text-[#2f2a28]" />
           </button>
 
@@ -36,6 +46,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
             <img
               src={product.imageUrl}
               alt={product.name}
+              loading='lazy'
               className="w-full h-full object-top transition-transform duration-500 group-hover:scale-105"
             />
 

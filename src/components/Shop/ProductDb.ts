@@ -36,7 +36,6 @@ export const ProductsDb = [
     inStore: true,
     description: "Elevate your everyday look with this stylish bucket shoulder bag, designed in a timeless tan and brown color palette. Wallet included in purchase."
   },
-  
   {
     id: 4,
     name: "Black Animal Print",
@@ -747,7 +746,7 @@ export const ProductsDb = [
     id: 55, 
     name: "Golden Orbit Mesh Set",
     price: 65.00,
-    category: "Jewlery",
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/circle-necklace.png",
     rating: 4,
@@ -759,7 +758,7 @@ export const ProductsDb = [
     id: 56, 
     name: "Royal Drape Heritage Set",
     price: 70.00,
-    category: "Jewlery",
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/gold-circle-necklace.png",
     rating: 4,
@@ -771,7 +770,7 @@ export const ProductsDb = [
     id: 57, 
     name: "Aurelia Necklace",
     price: 65.00,
-    category: "Jewlery",
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/gold-spiral-necklace.jpg",
     rating: 4,
@@ -782,8 +781,8 @@ export const ProductsDb = [
    {
     id: 58, 
     name: "Amora Royal Heart Set",
-    price: 70.00,
-    category: "Jewlery",
+    price: 65.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/heart-shaped-necklace.jpg",
     rating: 4,
@@ -795,7 +794,7 @@ export const ProductsDb = [
     id: 59, 
     name: "Cleopatra Radiance Set",
     price: 65.00,
-    category: "Jewlery",
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/egyptian-necklace.jpg",
     rating: 4,
@@ -806,8 +805,8 @@ export const ProductsDb = [
     {
     id: 59, 
     name: "Golden Willow Necklace",
-    price: 65.00,
-    category: "Jewlery",
+    price: 70.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/leaf-necklace.jpg",
     rating: 4,
@@ -818,8 +817,8 @@ export const ProductsDb = [
    {
     id: 60, 
     name: "Athena Geometric Jewelry Set – Gold & Black",
-    price: 65.00,
-    category: "Jewlery",
+    price: 50.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/rose-gold-necklace.jpg",
     rating: 4,
@@ -830,8 +829,8 @@ export const ProductsDb = [
    {
     id: 61, 
     name: "Solara Multicolor Gold Jewelry Set",
-    price: 65.00,
-    category: "Jewlery",
+    price: 60.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/gold-colored-necklace.jpg",
     rating: 4,
@@ -842,8 +841,8 @@ export const ProductsDb = [
    {
     id: 62, 
     name: "Oceana Jewelry Set",
-    price: 65.00,
-    category: "Jewlery",
+    price: 80.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/shells-necklace.jpg",
     rating: 4,
@@ -854,8 +853,8 @@ export const ProductsDb = [
    {
     id: 63, 
     name: "Luna Bloom Silver Floral Jewelry Set",
-    price: 65.00,
-    category: "Jewlery",
+    price: 60.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/silver-flower-necklace.jpg",
     rating: 4,
@@ -867,7 +866,7 @@ export const ProductsDb = [
     id: 64, 
     name: "Diamond Loop Elegance Set",
     price: 65.00,
-    category: "Jewlery",
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/square-silver-necklace.jpg",
     rating: 4,
@@ -878,8 +877,8 @@ export const ProductsDb = [
    {
     id: 65, 
     name: "Versa Gold Jewelry Set",
-    price: 65.00,
-    category: "Jewlery",
+    price: 60.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/designer-necklace.jpg",
     rating: 4,
@@ -887,12 +886,12 @@ export const ProductsDb = [
     inStore: true,
     description: "This 4-piece gold jewelry collection showcases an elegant Greek key motif etched into each piece with precision."
   },
-// left off here add more
+//  more
   {
     id: 66, 
     name: "Celestia Wings Jewelry Set",
-    price: 65.00,
-    category: "Jewlery",
+    price: 60.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/gold-necklace.jpg",
     rating: 4,
@@ -903,8 +902,8 @@ export const ProductsDb = [
    {
     id: 67, 
     name: "Noire Jewelry Set",
-    price: 65.00,
-    category: "Jewlery",
+    price: 60.00,
+    category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/black-diamond-gold-necklace.jpg",
     rating: 4,
@@ -913,9 +912,9 @@ export const ProductsDb = [
     description: "Elevate your elegance with the  Noire Jewelry Set. a luxurious 5-piece ensemble featuring teardrop-shaped angel wing motifs in radiant gold finish. Adorned with black crystal accents, this set includes a twisted rope necklace, drop earrings, a matching cuff bracelet, and ring. Perfect for weddings, formal events or every day style."
   },
     {
-    id: 67, 
+    id: 68, 
     name: "Ankut Anklet",
-    price: 65.00,
+    price: 15.00,
     category: "Jewelry",
     brand: "DHMS",
     imageUrl: "/crown-heart-anklet.jpg",
@@ -925,9 +924,9 @@ export const ProductsDb = [
     description: "Add a touch of charm to your step with our Ankut Anklet. crafted from high-quality stainless steel for durability and shine. This elegant ankle bracelet features a playful combination of heart and crown charms that symbolize love and royalty, perfect for everyday wear or dressing up your look."
   },
   {
-    id: 68, 
+    id: 69, 
     name: "Anima Gold Hair Growth Oil",
-    price: 65.00,
+    price: 15.00,
     category: "Hair",
     brand: "Anima Gold",
     imageUrl: "/hair-growth.jpg",
@@ -937,9 +936,9 @@ export const ProductsDb = [
     description: "Stimulate hair growth from root to tip with AnimaGold Hair Growth Oil. This powerful 30ml elixir is infused with a blend of natural oils known to strengthen follicles, reduce breakage, and promote thicker, fuller hair. Perfect for edges, thinning spots, and dry scalps, it delivers intense hydration while encouraging new growth."
   },
    {
-    id: 69, 
+    id: 70, 
     name: "Batana Hair Pomade",
-    price: 65.00,
+    price: 15.00,
     category: "Hair",
     brand: "Mine Botanicals",
     imageUrl: "/batana-hair-pomade.jpg",
@@ -949,9 +948,9 @@ export const ProductsDb = [
     description: "Nourish and style your hair with Mine Botanicals Batana Hair Pomade with Amla Oil. This rich, creamy blend combines the regenerative power of Batana oil with the strengthening benefits of Amla oil to promote growth, restore shine, and protect against breakage. Ideal for edges, twist-outs, braids, and natural styles."
   },
    {
-    id: 70, 
+    id: 71, 
     name: "Batana Oil",
-    price: 65.00,
+    price: 10.00,
     category: "Hair",
     brand: "Mine Botanicals",
     imageUrl: "/batana-oil.jpg",
@@ -961,10 +960,10 @@ export const ProductsDb = [
     description: "Revitalize your hair naturally with Batana Oil by Mine Botanicals. Sourced directly from Honduras, this 100% pure oil is rich in essential fatty acids and antioxidants that deeply nourish the scalp, restore thinning edges, and promote stronger, healthier hair growth."
   },
    {
-    id: 71, 
+    id: 72, 
     name: "BadRuf Creme",
     price: 8.00,
-    category: "Body",
+    category: "Body Products",
     brand: "Badruf Creme",
     imageUrl: "/badruff-creme.jpg",
     rating: 4,
@@ -973,10 +972,10 @@ export const ProductsDb = [
     description: "Soothe, heal, and protect your skin with BadRuf Crème. A powerful antifungal, antibacterial, and anti-inflammatory topical ointment. Specially formulated to target skin irritations such as ringworm, eczema, athlete’s foot, and rashes, this multipurpose cream provides fast relief from itching, redness, and inflammation. Gentle yet effective, it’s suitable for daily use on all skin types."
   },
   {
-    id: 72, 
+    id: 73, 
     name: "OlayBact Creme",
     price: 8.00,
-    category: "Body",
+    category: "Body Products",
     brand: "OlayBact Creme",
     imageUrl: "/olaybact-creme.jpg",
     rating: 4,
