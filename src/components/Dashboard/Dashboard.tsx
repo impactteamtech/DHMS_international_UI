@@ -14,10 +14,10 @@ import { useEffect } from 'react';
 const Dashboard = () => {
 
   useEffect
-  const { logout } = useAuth();
+  const { logout, username, loading } = useAuth();
   const navigate = useNavigate();
 
-  const username = localStorage.getItem("username");
+
 
   const handleLogout = async () => {
     await logout();
@@ -32,7 +32,7 @@ const Dashboard = () => {
       <aside className="w-full md:w-72 bg-gradient-to-b from-black to-gray-900 mt-4 text-white p-6 shadow-xl">
         <div className="mb-12 mt-10 text-center md:text-left">
           <h1 className="text-3xl font-bold text-[#f3cb50]">DHMS Dashboard</h1>
-          <p className="text-sm text-gray-300">Signed in as <span className="text-[#f3cb50]">{username}</span></p>
+          <p className="text-sm text-gray-300">Signed in as <span className="text-[#f3cb50]">{loading ? '...' : username}</span></p>
         </div>
 
         <nav className="space-y-5">

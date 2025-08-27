@@ -15,13 +15,14 @@ interface FormData {
 }
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
   const { fetchCart } = useCart();
   const { login, fetchSession } = useAuth();
+
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [error, setError] = useState<string>();
-  const navigate = useNavigate();
 
   const {
     register,
@@ -33,36 +34,35 @@ const SignIn: React.FC = () => {
     setError('');
     setLoading(true);
     try {
-      // 1) Trim inputs
       const creds = {
         username: data.username.trim(),
         password: data.password.trim(),
       };
 
-      // 2) Try login (no optimistic UI)
+      // 1) Attempt login (this sets the session cookie server-side)
       const ok = await login(creds);
       if (!ok) {
         setError('Incorrect username or password.');
         toast.error('Sign in failed');
-        return; // stop here
+        return;
       }
 
-      // 3) Verify session with the server
+      // 2) Confirm session & get user (reads /me)
       const user = await fetchSession();
       if (!user) {
         setError('Could not verify session. Please try again.');
         toast.error('Could not verify session');
-        return; // stop here (don’t navigate or fetch cart)
+        return;
       }
 
-      // 4) Hydrate cart after the session is valid
+      // 3) Hydrate cart AFTER the session is valid
       await fetchCart();
 
-      // 5) Route by role
+      // 4) Route by role
       if (user.role === 'admin') {
-        navigate('/dashboard/admin');
+        navigate('/dashboard/admin', { replace: true });
       } else {
-        navigate('/dashboard/overview');
+        navigate('/dashboard/overview', { replace: true });
       }
     } catch (err) {
       console.error('Sign in error:', err);
@@ -76,6 +76,7 @@ const SignIn: React.FC = () => {
   return (
     <div className="relative flex flex-col md:flex-row gap-4 p-4 min-h-screen mt-5 bg-transparent pt-36 md:pt-28 lg:pt-24">
       {loading && <LoadingAnimation />}
+
       {showModal && (
         <>
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40" />
@@ -110,48 +111,63 @@ const SignIn: React.FC = () => {
 
             {/* Right Side */}
             <div className="flex flex-col justify-center items-center space-y-4">
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#f3cb50]">We've missed you!</h2>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#f3cb50]">
+                We&apos;ve missed you!
+              </h2>
               <p className="text-lg text-white">Shop all your cultural needs</p>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm text-center space-y-4 relative">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="w-full max-w-sm text-center space-y-4 relative"
+              >
                 <input
                   {...register('username', { required: 'Username is required!' })}
                   type="text"
                   placeholder="Username"
+                  autoComplete="username"
                   className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
-                {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
+                {errors.username && (
+                  <p className="text-red-500 text-sm">{errors.username.message}</p>
+                )}
 
                 <div className="relative">
                   <input
                     {...register('password', { required: 'Password is required!' })}
                     type={showPassword ? 'text' : 'password'}
                     placeholder="Password"
+                    autoComplete="current-password"
                     className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   />
                   <button
                     type="button"
                     aria-label="Toggle password visibility"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowPassword((s) => !s)}
                     className="absolute top-3 right-4 text-white cursor-pointer"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
-                {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+                {errors.password && (
+                  <p className="text-red-500 text-sm">{errors.password.message}</p>
+                )}
 
                 {error && <p className="text-red-500 text-sm">{error}</p>}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-yellow-500 cursor-pointer text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200"
+                  className="w-full py-3 bg-yellow-500 cursor-pointer text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200 disabled:opacity-70"
                 >
                   {loading ? 'Signing In...' : 'Sign In'}
                 </button>
 
                 <div className="flex gap-4 justify-center text-sm text-gray-400">
-                  <button className="hover:underline cursor-pointer" type="button" onClick={() => setShowModal(true)}>
+                  <button
+                    className="hover:underline cursor-pointer"
+                    type="button"
+                    onClick={() => setShowModal(true)}
+                  >
                     Forgot password?
                   </button>
                   <Link to="/register" className="hover:underline cursor-pointer">

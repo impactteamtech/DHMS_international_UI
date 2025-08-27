@@ -1,3 +1,4 @@
+// src/components/Context/AuthContext.tsx
 import React, {
   createContext,
   useContext,
@@ -10,12 +11,6 @@ import axios from 'axios';
 import { useCart } from './CartContext';
 
 const API_URL = import.meta.env.VITE_API_URL as string;
-
-/** Always use one axios instance with credentials for auth flows */
-const api = axios.create({
-  baseURL: API_URL,
-  withCredentials: true,
-});
 
 export type SessionUser = {
   id?: string;
@@ -33,7 +28,7 @@ interface AuthContextType {
   logout: () => Promise<void>;
   /** Returns the server user or undefined if not logged in */
   fetchSession: () => Promise<SessionUser | undefined>;
-  /** Returns true if login request succeeded (cookie set on server) */
+  /** Returns true if login request succeeded */
   login: (formData: { username: string; password: string }) => Promise<boolean>;
 }
 
@@ -47,50 +42,54 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const { clearCart } = useCart();
 
+  const resetAuthState = useCallback(async () => {
+    setIsAuthenticated(false);
+    setUsername('');
+    setIsAdmin(false);
+    localStorage.removeItem('username');
+    await clearCart();
+  }, [clearCart]);
+
   const fetchSession = useCallback(async (): Promise<SessionUser | undefined> => {
     try {
       setLoading(true);
-      const res = await api.get('/me');
-      const user: SessionUser | undefined = res.data?.user;
+
+      const res = await axios.get(`${API_URL}/me`, { withCredentials: true });
+
+      // Support both { user: {...} } and top-level user fields
+      const user: SessionUser | undefined = res.data?.user ?? res.data;
 
       if (res.status === 200 && user) {
         setIsAuthenticated(true);
         setUsername(user.username ?? '');
-        setIsAdmin((user.role ?? '') === 'admin'); 
+        setIsAdmin((user.role ?? '') === 'admin');
         if (user.username) localStorage.setItem('username', user.username);
         return user;
       }
 
-      setIsAuthenticated(false);
-      setUsername('');
-      setIsAdmin(false);
-      localStorage.removeItem('username');
+      await resetAuthState();
       return undefined;
     } catch (error: any) {
       if (error?.response?.status === 401) {
-        setIsAuthenticated(false);
-        setUsername('');
-        setIsAdmin(false);
-        localStorage.removeItem('username');
-        await clearCart();
+        await resetAuthState();
         return undefined;
       }
       console.error('fetchSession error:', error);
-      setIsAuthenticated(false);
-      setIsAdmin(false);
+      await resetAuthState();
       return undefined;
     } finally {
       setLoading(false);
     }
-  }, [clearCart]);
+  }, [API_URL, resetAuthState]);
 
   const login = async (formData: { username: string; password: string }): Promise<boolean> => {
     try {
-
-      const res = await api.post('/login', {
-        username: formData.username,
-        password: formData.password,
-      },);
+      const res = await axios.post(
+        `${API_URL}/login`,
+        { username: formData.username, password: formData.password },
+        { withCredentials: true }
+      );
+      // Do NOT set auth state here; let fetchSession read the server user.
       return res.status === 200;
     } catch (err) {
       console.error('Login failed:', err);
@@ -100,15 +99,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const logout = async (): Promise<void> => {
     try {
-      await api.get('/logout');
+      await axios.get(`${API_URL}/logout`, { withCredentials: true });
     } catch (error) {
-      console.error('Logout failed (proceeding to clear state):', error);
+      console.error('Logout failed (continuing to clear state):', error);
     } finally {
-      setIsAuthenticated(false);
-      setUsername('');
-      setIsAdmin(false);
-      localStorage.removeItem('username');
-      await clearCart();
+      await resetAuthState();
     }
   };
 

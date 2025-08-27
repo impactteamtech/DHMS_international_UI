@@ -1,40 +1,30 @@
 
 // this file will contain all the files related to the AuthFolder
-import axios from 'axios'
+// import axios from 'axios'
 // we import axios to make HTTP requests
-import { api } from "../../api";
-// This file contains all the auth-related API functions
+
+import axios from "axios";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-// User login authentication
-export const userLogin = async (FormData: any) => {
-   api.post("/login", FormData);
- 
+// User login (needs credentials for session cookie)
+export const userLogin = (formData: any) => {
+  return axios.post(`${API_URL}/login`, formData, { withCredentials: true });
 };
 
-// User registration authentication
-export const userRegister = async (FormData: any) => {
-  return axios.post(`${API_URL}/register`, FormData, {
-    headers: { "Content-Type": "application/json" },
-    withCredentials: true
-  });
+// User registration
+export const userRegister = (formData: any) => {
+  return axios.post(`${API_URL}/register`, formData);
 };
 
-// fetch all products 
-export const fetchProducts = async ()=> {
-  return axios.get(`${API_URL}/products`, {
-    headers: {'Content-Type': "application/json"
-    },
-  withCredentials:true,
-  
-})
-}
+// Fetch all products
+export const fetchProducts = () => {
+  return axios.get(`${API_URL}/products`);
+};
 
-// reset password 
+// Reset password request (no session required; credentials optional)
+export const resetPassword = (email: string) => {
+  return axios.post(`${API_URL}/reset-password-request`, { email });
+};
 
-export const resetPassword = async (email:string) => {
-  return axios.post(`${API_URL}/reset-password-request`, 
-    {email},
-    {withCredentials: true}
-  )
-}
+

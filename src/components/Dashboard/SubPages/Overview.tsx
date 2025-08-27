@@ -1,17 +1,19 @@
 import React from 'react';
 import { useCart } from '@/components/Context/CartContext';
+import { useAuth } from '@/components/Context/AuthContext';
 import { ShoppingBag, Star, Gift, ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Overview: React.FC = () => {
   const { cartQuantity } = useCart();
-  const username = localStorage.getItem("username");
+  const { username, loading } = useAuth();
+
 
   return (
     <main className="flex-1 overflow-y-auto space-y-10">
       {/* Header */}
       <section className="text-center md:text-left">
-        <h2 className="text-4xl font-extrabold text-gray-800 mb-2">Welcome, {username} 👋</h2>
+        <h2 className="text-4xl font-extrabold text-gray-800 mb-2">Welcome, {loading ? '...' : username} 👋</h2>
         <p className="text-gray-600 text-base">Here's your personalized dashboard summary.</p>
       </section>
 
