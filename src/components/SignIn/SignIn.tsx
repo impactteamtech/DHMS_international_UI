@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import signinpng from '../../assets/signin1.jpg';
 import { useForm } from 'react-hook-form';
-import { userLogin } from '../AuthFolder/AuthFiles';
 import { useNavigate, Link } from 'react-router-dom';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
 import { useAuth } from '../Context/AuthContext';
@@ -9,6 +8,7 @@ import { useCart } from '../Context/CartContext';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeOff } from 'lucide-react';
 import ForgotPassModal from './ForgetPassModal';
+
 interface FormData {
   username: string;
   password: string;
@@ -16,11 +16,10 @@ interface FormData {
 
 const SignIn: React.FC = () => {
   const { fetchCart } = useCart();
-  const { setIsAuthenticated } = useAuth();
+  const { login, fetchSession } = useAuth();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [showModal, setShowModal] = useState<boolean>(false)
-
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [error, setError] = useState<string>();
   const navigate = useNavigate();
 
@@ -34,25 +33,40 @@ const SignIn: React.FC = () => {
     setError('');
     setLoading(true);
     try {
-      const response = await userLogin({
+      // 1) Trim inputs
+      const creds = {
         username: data.username.trim(),
         password: data.password.trim(),
-      });
+      };
 
-      if (response.status === 200) {
-        const user = response.data.username;
-        console.log('Logged in as:', user);
-        setIsAuthenticated(true);
-        localStorage.setItem('username', user);
-        await fetchCart();
-        navigate('/dashboard/overview');
-      } else {
-        toast.error('Incorrect credentials');
-        setError('Unable to sign in');
+      // 2) Try login (no optimistic UI)
+      const ok = await login(creds);
+      if (!ok) {
+        setError('Incorrect username or password.');
+        toast.error('Sign in failed');
+        return; // stop here
       }
-    } catch (err: any) {
-      console.error('Error occurred:', err);
-      setError(err?.message || 'Sign in failed');
+
+      // 3) Verify session with the server
+      const user = await fetchSession();
+      if (!user) {
+        setError('Could not verify session. Please try again.');
+        toast.error('Could not verify session');
+        return; // stop here (don’t navigate or fetch cart)
+      }
+
+      // 4) Hydrate cart after the session is valid
+      await fetchCart();
+
+      // 5) Route by role
+      if (user.role === 'admin') {
+        navigate('/dashboard/admin');
+      } else {
+        navigate('/dashboard/overview');
+      }
+    } catch (err) {
+      console.error('Sign in error:', err);
+      setError('Sign in failed');
       toast.error('Sign in error, please try again');
     } finally {
       setLoading(false);
@@ -64,9 +78,11 @@ const SignIn: React.FC = () => {
       {loading && <LoadingAnimation />}
       {showModal && (
         <>
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40" />
-        <ForgotPassModal onClose={()=> setShowModal(false)}/>
-        </>) }
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40" />
+          <ForgotPassModal onClose={() => setShowModal(false)} />
+        </>
+      )}
+
       {/* Background Video */}
       <video
         autoPlay
@@ -94,15 +110,10 @@ const SignIn: React.FC = () => {
 
             {/* Right Side */}
             <div className="flex flex-col justify-center items-center space-y-4">
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#f3cb50]">
-                We've missed you!
-              </h2>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#f3cb50]">We've missed you!</h2>
               <p className="text-lg text-white">Shop all your cultural needs</p>
 
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="w-full max-w-sm text-center space-y-4 relative"
-              >
+              <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm text-center space-y-4 relative">
                 <input
                   {...register('username', { required: 'Username is required!' })}
                   type="text"
@@ -127,22 +138,20 @@ const SignIn: React.FC = () => {
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
-                {errors.password && (
-                  <p className="text-red-500 text-sm">{errors.password.message}</p>
-                )}
+                {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
                 {error && <p className="text-red-500 text-sm">{error}</p>}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-yellow-500 cursor-pointer  text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200"
+                  className="w-full py-3 bg-yellow-500 cursor-pointer text-black font-semibold rounded-lg hover:bg-yellow-600 transition duration-200"
                 >
                   {loading ? 'Signing In...' : 'Sign In'}
                 </button>
 
                 <div className="flex gap-4 justify-center text-sm text-gray-400">
-                  <button className="hover:underline cursor-pointer" type="button" onClick={()=>setShowModal(true)}>
+                  <button className="hover:underline cursor-pointer" type="button" onClick={() => setShowModal(true)}>
                     Forgot password?
                   </button>
                   <Link to="/register" className="hover:underline cursor-pointer">

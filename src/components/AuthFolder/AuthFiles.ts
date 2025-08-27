@@ -2,16 +2,13 @@
 // this file will contain all the files related to the AuthFolder
 import axios from 'axios'
 // we import axios to make HTTP requests
-
+import { api } from "../../api";
 // This file contains all the auth-related API functions
 const API_URL = import.meta.env.VITE_API_URL;
 
 // User login authentication
 export const userLogin = async (FormData: any) => {
-  return axios.post(`${API_URL}/login`, FormData, {
-    headers: { "Content-Type": "application/json" },
-    withCredentials: true
-  });
+   api.post("/login", FormData);
  
 };
 

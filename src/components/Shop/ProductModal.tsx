@@ -99,7 +99,7 @@ const ProductModal: React.FC<ProductModalProps> = ({
                 <p className="text-xl font-semibold text-yellow-600 mt-3">${product.price?.toFixed(2)}</p>
                 <p className="text-sm text-gray-600">
                   {'★'.repeat(product.rating)}{' '}
-                  <span className="text-[12px] text-red-500">(125 customer reviews)</span>
+                  
                 </p>
 
                 <p className="text-sm text-gray-700 mt-3 leading-relaxed">

@@ -3,107 +3,118 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useCallback,
   ReactNode,
 } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { userLogin } from '../AuthFolder/AuthFiles';
 import { useCart } from './CartContext';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL as string;
+
+/** Always use one axios instance with credentials for auth flows */
+const api = axios.create({
+  baseURL: API_URL,
+  withCredentials: true,
+});
+
+export type SessionUser = {
+  id?: string;
+  username?: string;
+  role?: 'admin' | 'user' | string;
+};
 
 interface AuthContextType {
   isAuthenticated: boolean;
   setIsAuthenticated: (isAuth: boolean) => void;
+  isAdmin: boolean;
+  setIsAdmin: (isAuth: boolean) => void;
   username: string;
   loading: boolean;
-  logout: () => void;
-  login: (formData: any) => Promise<boolean>;
-  fetchSession: () => void;
+  logout: () => Promise<void>;
+  /** Returns the server user or undefined if not logged in */
+  fetchSession: () => Promise<SessionUser | undefined>;
+  /** Returns true if login request succeeded (cookie set on server) */
+  login: (formData: { username: string; password: string }) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // const navigate = useNavigate();
-  
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState('');
-  
-  useEffect(() => {
-  
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setIsAuthenticated(true);
-      setUsername(storedUsername);
-      fetchSession();
-    } else {
-      setUsername('');
-      setIsAuthenticated(false)
-    }
-  }, []);
-  
-  const { clearCart } = useCart()
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
-  //verify session still exist if not clear user
-  const fetchSession = async () => {
+  const { clearCart } = useCart();
+
+  const fetchSession = useCallback(async (): Promise<SessionUser | undefined> => {
     try {
-      const res = await axios.get(`${API_URL}/me`, {
-        withCredentials: true,
-      });
+      setLoading(true);
+      const res = await api.get('/me');
+      const user: SessionUser | undefined = res.data?.user;
 
-      if (res.status === 200) {
-        console.log('found session', res.data);
+      if (res.status === 200 && user) {
         setIsAuthenticated(true);
-        setUsername(res.data.user.username);
-        localStorage.setItem('username', res.data.user.username);
-      } else {
-        setIsAuthenticated(false);
+        setUsername(user.username ?? '');
+        setIsAdmin((user.role ?? '') === 'admin'); 
+        if (user.username) localStorage.setItem('username', user.username);
+        return user;
       }
+
+      setIsAuthenticated(false);
+      setUsername('');
+      setIsAdmin(false);
+      localStorage.removeItem('username');
+      return undefined;
     } catch (error: any) {
-      if (error.response?.status === 401) {
-        await logout();
-        await clearCart();
-        // navigate('/login');
+      if (error?.response?.status === 401) {
         setIsAuthenticated(false);
-      } else {
-        console.error('Other error:', error);
+        setUsername('');
+        setIsAdmin(false);
+        localStorage.removeItem('username');
+        await clearCart();
+        return undefined;
       }
+      console.error('fetchSession error:', error);
+      setIsAuthenticated(false);
+      setIsAdmin(false);
+      return undefined;
     } finally {
       setLoading(false);
     }
-  };
+  }, [clearCart]);
 
-  const logout = async (): Promise<void> => {
+  const login = async (formData: { username: string; password: string }): Promise<boolean> => {
     try {
-      await axios.get(`${API_URL}/logout`, { withCredentials: true });
-      setIsAuthenticated(false);
-      setUsername('');
-      localStorage.removeItem("username")
-      await clearCart();
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
 
-  const login = async (formData: any): Promise<boolean> => {
-    try {
-      const res = await userLogin(formData);
-      if (res.status === 200) {
-        setIsAuthenticated(true);
-        setUsername(formData.username);
-        localStorage.setItem('username', formData.username);
-        return true;
-      } else {
-        return false;
-      }
+      const res = await api.post('/login', {
+        username: formData.username,
+        password: formData.password,
+      },);
+      return res.status === 200;
     } catch (err) {
       console.error('Login failed:', err);
       return false;
     }
   };
 
+  const logout = async (): Promise<void> => {
+    try {
+      await api.get('/logout');
+    } catch (error) {
+      console.error('Logout failed (proceeding to clear state):', error);
+    } finally {
+      setIsAuthenticated(false);
+      setUsername('');
+      setIsAdmin(false);
+      localStorage.removeItem('username');
+      await clearCart();
+    }
+  };
+
+  useEffect(() => {
+    void fetchSession();
+  }, [fetchSession]);
 
   return (
     <AuthContext.Provider
@@ -111,10 +122,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         isAuthenticated,
         setIsAuthenticated,
         username,
+        isAdmin,
+        setIsAdmin,
         loading,
         logout,
-        login,
         fetchSession,
+        login,
       }}
     >
       {children}
@@ -123,9 +136,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 };
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error('useAuth must be used within an AuthProvider');
+  return ctx;
 };

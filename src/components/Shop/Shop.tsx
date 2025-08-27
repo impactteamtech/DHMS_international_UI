@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import ProductContent from './ProductContent';
 import { useLocation } from 'react-router-dom';
 
+
 const Shop: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
   const [selectRating, setSelectRating] = useState<number>(0);
-  const [order, setOrder] = useState<string>('Price: High to Low'); // default sort
+  const [order, setOrder] = useState<string>('Price: High to Low'); 
   const [availabilityFilter, setAvailabilityFilter] = useState<string[]>([]);
   const [isDesktopOpen, setIsDesktopOpen] = useState(true);
+  // const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
+  // const [inFlightIds, setInFlightIds] = useState<Set<string>>(new Set());
 
   const location = useLocation();
   const categoryFromHeader = location.state?.category;
@@ -19,12 +22,14 @@ const Shop: React.FC = () => {
     }
   }, [categoryFromHeader]);
 
+
+
   return (
     <section
       id="shop"
       className="p-2 min-h-screen mt-2 overflow-hidden bg-[#fdf9f3] pt-36 md:pt-28 lg:pt-24"
     >
-      <div className="flex-1 p-2 cursor-pointer">
+      <div className="flex-1 p-2 ">
         <ProductContent
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
@@ -38,6 +43,7 @@ const Shop: React.FC = () => {
           setAvailabilityFilter={setAvailabilityFilter}
           isDesktopOpen={isDesktopOpen}
           setIsDesktopOpen={setIsDesktopOpen}
+         
         />
       </div>
     </section>

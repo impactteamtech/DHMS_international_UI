@@ -22,22 +22,19 @@ interface ProductGridProps {
 // const API_URL = import.meta.env.VITE_API_URL;
 
 const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) => {
-  // const [selectProduct, setSelectedProduct] = useState<{}>()
-
-  // const addToFav = async () => {
-  //   try{
-  //     await axios.post(`${API_URL}/add-favorites`, setSelectedProduct(products))
-  //   }
-  // }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 px-3 md:px-0">
-      {products.map((product) => (
+      {products.map((product, index) => (
         <div
-          key={product.id}
-          className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100  hover:shadow relative"
+          key={`${product.id}-${index}`} // ensure uniqueness even if some ids repeat
+          className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100 hover:shadow relative"
         >
           {/* Wishlist icon */}
-          <button  className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-[#f3cb50]/90 transition">
+          <button
+            type="button"
+            aria-label="Add to favorites"
+            className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-[#f3cb50]/90 transition"
+          >
             <Heart className="w-4 h-4 text-gray-400 hover:text-[#2f2a28]" />
           </button>
 
@@ -46,7 +43,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
             <img
               src={product.imageUrl}
               alt={product.name}
-              loading='lazy'
+              loading="lazy"
               className="w-full h-full object-top transition-transform duration-500 group-hover:scale-105"
             />
 
@@ -59,6 +56,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
             {/* Overlay Button */}
             <div className="absolute inset-0 bg-black/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <button
+                type="button"
                 onClick={() => onProductClick(product)}
                 className="bg-white text-[#2f2a28] text-xs px-4 cursor-pointer py-1.5 rounded-full font-semibold shadow hover:bg-[#f3cb50] hover:text-black transition"
               >
@@ -79,10 +77,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
               </p>
             )}
 
+            {/* Stars: stable keys per product */}
             <div className="flex items-center gap-0.5">
               {Array.from({ length: 5 }, (_, i) => (
                 <span
-                  key={i}
+                  key={`${product.id}-star-${i}`}
                   className={`text-xs ${i < product.rating ? 'text-yellow-500' : 'text-gray-300'}`}
                 >
                   ★
@@ -90,15 +89,15 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
               ))}
             </div>
 
-            {/* Colors */}
-            {product.colors?.length && (
+            {/* Colors: stable keys using value (with fallback index) */}
+            {!!product.colors?.length && (
               <div className="flex gap-1 mt-1">
                 {product.colors.map((color, i) => (
                   <span
-                    key={i}
+                    key={`${product.id}-color-${color ?? 'x'}-${i}`}
                     className="w-3.5 h-3.5 rounded-full border border-gray-300"
                     style={{ backgroundColor: color }}
-                  ></span>
+                  />
                 ))}
               </div>
             )}
