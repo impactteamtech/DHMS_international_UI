@@ -42,9 +42,17 @@ type CartCtx = {
 };
 
 const CartContext = createContext<CartCtx | undefined>(undefined);
+const LS_KEY = 'dhms_cart';
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  const hydrateFromLocal = useCallback(() => {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (raw) setCart(JSON.parse(raw));
+    } catch {}
+  }, []);
 
   const fetchCart = useCallback(async () => {
     try {
@@ -54,6 +62,26 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Fetch cart failed', err);
     }
   }, []);
+
+  useEffect(() => {
+    hydrateFromLocal();
+    void fetchCart();
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === LS_KEY && e.newValue) {
+        try {
+          setCart(JSON.parse(e.newValue));
+        } catch {}
+      }
+    };
+    window.addEventListener('storage', onStorage);
+    return () => window.removeEventListener('storage', onStorage);
+  }, [hydrateFromLocal, fetchCart]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify(cart));
+    } catch {}
+  }, [cart]);
 
   const addToCart = useCallback(async (p: ProductInput) => {
     try {
@@ -84,7 +112,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         totalPrice: (Number.isFinite(price) ? price : 0) * qty,
       });
 
-      setCart(res.data?.cart ?? []);           //
+      setCart(res.data?.cart ?? []);
       toast.success('Added to cart');
     } catch (err) {
       console.error('Add to cart failed', err);
@@ -96,7 +124,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const res = await api.delete(`/cart/remove/${itemId}`);
       const next = res.data?.cart ?? res.data?.items ?? [];
-      setCart(next);                            //
+      setCart(next);
       toast.success('Item removed');
     } catch (err) {
       console.error('Remove failed', err);
@@ -104,39 +132,36 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-const updateQty = useCallback(async (itemId: string, qty: number) => {
- 
-  setCart(prev =>
-    prev.map(i => i._id === itemId ? { ...i, quantity: qty, totalPrice: i.price * qty } : i)
-  );
-
-  try {
-    const res = await api.patch(`/cart/update/${itemId}`, { quantity: Number(qty) });
-    setCart(res.data?.cart ?? []); 
-  } catch (err) {
-    console.error('Update qty failed', err);
-    toast.error('Could not update quantity');
-    await fetchCart();
-  }
-}, [fetchCart]);
-
+  const updateQty = useCallback(async (itemId: string, qty: number) => {
+    setCart(prev =>
+      prev.map(i => (i._id === itemId ? { ...i, quantity: qty, totalPrice: i.price * qty } : i))
+    );
+    try {
+      const res = await api.patch(`/cart/update/${itemId}`, { quantity: Number(qty) });
+      setCart(res.data?.cart ?? []);
+    } catch (err) {
+      console.error('Update qty failed', err);
+      toast.error('Could not update quantity');
+      await fetchCart();
+    }
+  }, [fetchCart]);
 
   const clearCart = useCallback(async () => {
     try {
       const res = await api.delete('/cart/clear');
-      setCart(res.data?.cart ?? []);           // <
+      setCart(res.data?.cart ?? []);
     } catch (err) {
       console.error('Clear cart failed', err);
       toast.error('Could not clear cart');
     }
   }, []);
 
-  useEffect(() => { void fetchCart(); }, [fetchCart]);
-
   const cartQuantity = cart.reduce((sum, i) => sum + (i.quantity || 0), 0);
 
   return (
-    <CartContext.Provider value={{ cart, cartQuantity, fetchCart, addToCart, removeFromCart, updateQty, clearCart }}>
+    <CartContext.Provider
+      value={{ cart, cartQuantity, fetchCart, addToCart, removeFromCart, updateQty, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
