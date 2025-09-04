@@ -84,7 +84,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         totalPrice: (Number.isFinite(price) ? price : 0) * qty,
       });
 
-      setCart(res.data?.cart ?? []);           // <-- update immediately
+      setCart(res.data?.cart ?? []);           //
       toast.success('Added to cart');
     } catch (err) {
       console.error('Add to cart failed', err);
@@ -96,7 +96,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const res = await api.delete(`/cart/remove/${itemId}`);
       const next = res.data?.cart ?? res.data?.items ?? [];
-      setCart(next);                            // <-- update immediately
+      setCart(next);                            //
       toast.success('Item removed');
     } catch (err) {
       console.error('Remove failed', err);
@@ -104,20 +104,27 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const updateQty = useCallback(async (itemId: string, qty: number) => {
-    try {
-      const res = await api.patch(`/cart/update/${itemId}`, { quantity: qty });
-      setCart(res.data?.cart ?? []);           // <-- update immediately
-    } catch (err) {
-      console.error('Update qty failed', err);
-      toast.error('Could not update quantity');
-    }
-  }, []);
+const updateQty = useCallback(async (itemId: string, qty: number) => {
+ 
+  setCart(prev =>
+    prev.map(i => i._id === itemId ? { ...i, quantity: qty, totalPrice: i.price * qty } : i)
+  );
+
+  try {
+    const res = await api.patch(`/cart/update/${itemId}`, { quantity: Number(qty) });
+    setCart(res.data?.cart ?? []); 
+  } catch (err) {
+    console.error('Update qty failed', err);
+    toast.error('Could not update quantity');
+    await fetchCart();
+  }
+}, [fetchCart]);
+
 
   const clearCart = useCallback(async () => {
     try {
       const res = await api.delete('/cart/clear');
-      setCart(res.data?.cart ?? []);           // <-- update immediately
+      setCart(res.data?.cart ?? []);           // <
     } catch (err) {
       console.error('Clear cart failed', err);
       toast.error('Could not clear cart');
