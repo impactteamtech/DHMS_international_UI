@@ -31,17 +31,17 @@ type ProductInput = {
   quantity?: number | string;
 };
 
-type CartContextShape = {
+type CartCtx = {
   cart: CartItem[];
   cartQuantity: number;
   fetchCart: () => Promise<void>;
-  addToCart: (product: ProductInput) => Promise<void>;
+  addToCart: (p: ProductInput) => Promise<void>;
   removeFromCart: (itemId: string) => Promise<void>;
   updateQty: (itemId: string, qty: number) => Promise<void>;
   clearCart: () => Promise<void>;
 };
 
-const CartContext = createContext<CartContextShape | undefined>(undefined);
+const CartContext = createContext<CartCtx | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -72,67 +72,64 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return;
       }
 
-      await api.post('/cart/add', {
+      const res = await api.post('/cart/add', {
         productId: pid,
         name,
         price: Number.isFinite(price) && price > 0 ? price : 0,
         image,
-        color: p.color,
+        color: p.color ?? '',
         quantity: qty,
         rating: p.rating,
         category: p.category,
         totalPrice: (Number.isFinite(price) ? price : 0) * qty,
       });
 
-      await fetchCart();
+      setCart(res.data?.cart ?? []);           // <-- update immediately
       toast.success('Added to cart');
     } catch (err) {
       console.error('Add to cart failed', err);
       toast.error('Could not add to cart');
     }
-  }, [fetchCart]);
+  }, []);
 
   const removeFromCart = useCallback(async (itemId: string) => {
     try {
-      await api.delete(`/cart/remove/${itemId}`);
-      await fetchCart();
+      const res = await api.delete(`/cart/remove/${itemId}`);
+      const next = res.data?.cart ?? res.data?.items ?? [];
+      setCart(next);                            // <-- update immediately
       toast.success('Item removed');
     } catch (err) {
       console.error('Remove failed', err);
       toast.error('Could not remove item');
     }
-  }, [fetchCart]);
+  }, []);
 
   const updateQty = useCallback(async (itemId: string, qty: number) => {
     try {
-      await api.patch(`/cart/update/${itemId}`, { quantity: qty });
-      await fetchCart();
+      const res = await api.patch(`/cart/update/${itemId}`, { quantity: qty });
+      setCart(res.data?.cart ?? []);           // <-- update immediately
     } catch (err) {
       console.error('Update qty failed', err);
       toast.error('Could not update quantity');
     }
-  }, [fetchCart]);
+  }, []);
 
   const clearCart = useCallback(async () => {
     try {
-      await api.delete('/cart/clear');
-      setCart([]);
+      const res = await api.delete('/cart/clear');
+      setCart(res.data?.cart ?? []);           // <-- update immediately
     } catch (err) {
       console.error('Clear cart failed', err);
       toast.error('Could not clear cart');
     }
   }, []);
 
-  useEffect(() => {
-    void fetchCart();
-  }, [fetchCart]);
+  useEffect(() => { void fetchCart(); }, [fetchCart]);
 
   const cartQuantity = cart.reduce((sum, i) => sum + (i.quantity || 0), 0);
 
   return (
-    <CartContext.Provider
-      value={{ cart, cartQuantity, fetchCart, addToCart, removeFromCart, updateQty, clearCart }}
-    >
+    <CartContext.Provider value={{ cart, cartQuantity, fetchCart, addToCart, removeFromCart, updateQty, clearCart }}>
       {children}
     </CartContext.Provider>
   );
