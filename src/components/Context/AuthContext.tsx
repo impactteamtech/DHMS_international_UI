@@ -7,10 +7,8 @@ import React, {
   useCallback,
   ReactNode,
 } from 'react';
-import axios from 'axios';
 import { useCart } from './CartContext';
-
-const API_URL = import.meta.env.VITE_API_URL as string;
+import api from '../setUpAxios';
 
 export type SessionUser = {
   id?: string;
@@ -53,12 +51,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const fetchSession = useCallback(async (): Promise<SessionUser | undefined> => {
     try {
       setLoading(true);
-
-      const res = await axios.get(`${API_URL}/me`, { withCredentials: true });
-
-      // Support both { user: {...} } and top-level user fields
+      const res = await api.get('/me');
       const user: SessionUser | undefined = res.data?.user ?? res.data;
-
       if (res.status === 200 && user) {
         setIsAuthenticated(true);
         setUsername(user.username ?? '');
@@ -66,7 +60,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         if (user.username) localStorage.setItem('username', user.username);
         return user;
       }
-
       await resetAuthState();
       return undefined;
     } catch (error: any) {
@@ -80,17 +73,20 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     } finally {
       setLoading(false);
     }
-  }, [API_URL, resetAuthState]);
+  }, [resetAuthState]);
 
   const login = async (formData: { username: string; password: string }): Promise<boolean> => {
     try {
-      const res = await axios.post(
-        `${API_URL}/login`,
-        { username: formData.username, password: formData.password },
-        { withCredentials: true }
-      );
-      // Do NOT set auth state here; let fetchSession read the server user.
-      return res.status === 200;
+      const res = await api.post('/login', {
+        username: formData.username.trim(),
+        password: formData.password,
+      });
+
+      if (res.status === 200) {
+        await fetchSession();
+        return true;
+      }
+      return false;
     } catch (err) {
       console.error('Login failed:', err);
       return false;
@@ -99,7 +95,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const logout = async (): Promise<void> => {
     try {
-      await axios.get(`${API_URL}/logout`, { withCredentials: true });
+      await api.get('/logout'); // 
     } catch (error) {
       console.error('Logout failed (continuing to clear state):', error);
     } finally {

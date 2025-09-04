@@ -80,7 +80,7 @@ const ProductContent: React.FC<ProductProps> = ({
     fetchData();
   }, []);
 
-  // Reset pagination on filter change
+
   useEffect(() => {
     setCurrentPage(1);
   }, [

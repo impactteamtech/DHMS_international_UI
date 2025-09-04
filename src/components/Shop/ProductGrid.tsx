@@ -1,5 +1,4 @@
 // import React, {useState} from 'react';
-import { Heart } from 'lucide-react';
 // import axios from 'axios';
 
 interface Product {
@@ -26,18 +25,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 px-3 md:px-0">
       {products.map((product, index) => (
         <div
-          key={`${product.id}-${index}`} // ensure uniqueness even if some ids repeat
+          key={`${product.id}-${index}`} 
           className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100 hover:shadow relative"
         >
-          {/* Wishlist icon */}
-          <button
-            type="button"
-            aria-label="Add to favorites"
-            className="absolute top-2 right-2 z-10 p-1 bg-white/90 rounded-full hover:bg-[#f3cb50]/90 transition"
-          >
-            <Heart className="w-4 h-4 text-gray-400 hover:text-[#2f2a28]" />
-          </button>
-
+         
           {/* Image */}
           <div className="relative w-full h-[440px] sm:h-[500px] rounded-t-2xl overflow-hidden">
             <img
@@ -77,7 +68,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
               </p>
             )}
 
-            {/* Stars: stable keys per product */}
+  
             <div className="flex items-center gap-0.5">
               {Array.from({ length: 5 }, (_, i) => (
                 <span
@@ -88,8 +79,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
                 </span>
               ))}
             </div>
-
-            {/* Colors: stable keys using value (with fallback index) */}
+ 
             {!!product.colors?.length && (
               <div className="flex gap-1 mt-1">
                 {product.colors.map((color, i) => (

@@ -1,35 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useState,  } from 'react';
 import logo from '../../../public/logo.png';
 import SearchBar from './SearchBar';
-import { User, ShoppingCart } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import NavigationMenuBeauty from './HeaderLinks';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
-import { useAuth } from '../Context/AuthContext';
+// import { useAuth } from '../Context/AuthContext';
 import { useCart } from '../Context/CartContext';
 
 const HeaderRevamp = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const { isAuthenticated, setIsAuthenticated, logout } = useAuth();
+  // const { isAuthenticated, setIsAuthenticated, logout } = useAuth();
   const { cartQuantity } = useCart();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkAuth = () => {
-      const username = localStorage.getItem('username');
-      setIsAuthenticated(!!username);
-    };
-    checkAuth();
-    window.addEventListener('storage', checkAuth);
-    return () => window.removeEventListener('storage', checkAuth);
-  }, [setIsAuthenticated]);
+  // useEffect(() => {
+  //   const checkAuth = () => {
+  //     const username = localStorage.getItem('username');
+  //     setIsAuthenticated(!!username);
+  //   };
+  //   checkAuth();
+  //   window.addEventListener('storage', checkAuth);
+  //   return () => window.removeEventListener('storage', checkAuth);
+  // }, [setIsAuthenticated]);
 
-  const handleLogout = async () => {
-    setLoading(true);
-    await logout();
-    navigate('/login');
-    setLoading(false);
-  };
+  // const handleLogout = async () => {
+  //   setLoading(true);
+  //   await logout();
+  //   navigate('/login');
+  //   setLoading(false);
+  // };
 
   const handleOnClick = () => {
     setLoading(true);
@@ -58,7 +58,7 @@ const HeaderRevamp = () => {
              className='leading-tight'>
               <span className='text-[#f3cb50] text-lg font-[satisfy]'>DHMS</span>
               <span className='block text-[#f3eae2] text-xs uppercase font-bold'>
-                International Limit
+                International Limit LLC
               </span>
             </div>
           </div>
@@ -84,7 +84,7 @@ const HeaderRevamp = () => {
               )}
             </Link>
 
-            {isAuthenticated ? (
+            {/* {isAuthenticated ? (
               <button onClick={handleLogout} className='flex flex-col cursor-pointer items-center hover:scale-105'>
                 <User className='w-10 h-10' />
                 <span className='text-sm text-[#f3cb50]'>Sign Out</span>
@@ -94,7 +94,7 @@ const HeaderRevamp = () => {
                 <User className='w-10 h-10' />
                 <span className='text-sm text-[#f3cb50]'>Sign In</span>
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       </div>
