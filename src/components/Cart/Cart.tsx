@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
     return acc + price * quantity;
   }, 0);
 
-  const deliveryFee = 4.99; // NOTE: if you charge this, include in Stripe (see onSubmit)
+  const deliveryFee = 4.99; // N
   const total = subtotal + deliveryFee;
 
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormData>();
@@ -35,8 +35,6 @@ const Cart: React.FC = () => {
     }
 
     try {
-      // Keep client-side line_items only if your backend expects them for now.
-      // Long-term: build these on the server from cartId to avoid price tampering.
       const line_items = [
         ...cartItems.map((item: any) => ({
           price_data: {
@@ -46,7 +44,6 @@ const Cart: React.FC = () => {
           },
           quantity: Number(item.quantity),
         })),
-        // Include delivery fee so Stripe total matches your UI
         ...(deliveryFee > 0 ? [{
           price_data: {
             currency: 'usd',
