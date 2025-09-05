@@ -49,7 +49,7 @@ const SuccessPage: React.FC = () => {
           <button
             onClick={() => {
               setLoadingAnimation(true)
-              navigate('/dashboard/overview')
+              navigate('/home')
               setTimeout(()=> setLoadingAnimation(false), 1800)
             
             }
@@ -58,7 +58,7 @@ const SuccessPage: React.FC = () => {
             className="flex items-center gap-2 cursor-pointer bg-slate-700 text-white px-5 py-3 rounded-md hover:bg-slate-800 transition"
           >
             <Home className="w-5 h-5" />
-            Dashboard
+            Home
           </button>
 
           <button

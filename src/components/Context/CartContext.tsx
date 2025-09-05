@@ -141,7 +141,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setCart(res.data?.cart ?? []);
     } catch (err) {
       console.error('Update qty failed', err);
-      toast.error('Could not update quantity');
       await fetchCart();
     }
   }, [fetchCart]);
@@ -152,7 +151,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setCart(res.data?.cart ?? []);
     } catch (err) {
       console.error('Clear cart failed', err);
-      toast.error('Could not clear cart');
     }
   }, []);
 

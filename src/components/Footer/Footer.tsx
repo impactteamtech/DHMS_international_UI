@@ -17,8 +17,14 @@ const Footer: React.FC = () => {
             Celebrating African beauty with hair, skin, and self-care essentials rooted in heritage.
           </p>
           <div className="flex items-center gap-2 text-[#f3cb50] text-sm mt-3">
-            <Phone className="w-4 h-4" />
-            <span>+1-234-567-8901</span>
+            <a
+              href="tel:+15407574563"
+              aria-label="Call +1 (540) 757-4563"
+              className="inline-flex items-center gap-2 cursor-pointer hover:opacity-90"
+            >
+              <Phone className="w-4 h-4" aria-hidden="true" />
+              <span>+1 (540) 757-4563</span>
+            </a>
           </div>
         </div>
 
@@ -45,23 +51,33 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Subscribe */}
+        {/* Updates */}
         <div>
-          <h3 className="text-[#d5a86b] text-sm uppercase font-bold tracking-wide mb-4">Subscribe to Our Glowlist</h3>
-          <p className="text-sm text-[#e0d6c8] mb-3">Get updates on exclusive drops and in-store events.</p>
+          <h3 className="text-[#d5a86b] text-sm uppercase font-bold tracking-wide mb-4">
+            Be First to Know
+          </h3>
+          <p className="text-sm text-[#e0d6c8] mb-3">
+            Get alerts for new drops, restocks, and in-store events.
+          </p>
           <form className="flex flex-col sm:flex-row items-center gap-3">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Enter your best email"
               className="p-2 rounded-md bg-white text-black w-full sm:w-auto flex-1"
+              aria-label="Email address"
             />
             <button
               type="submit"
               className="bg-[#d5a86b] text-black px-4 py-2 rounded-md hover:brightness-110 transition"
             >
-              Subscribe
+              Get Updates
             </button>
           </form>
+          <p className="text-xs text-[#a19990] mt-2">
+            We’ll only email when it matters. Unsubscribe anytime.
+          </p>
         </div>
+
       </div>
 
       {/* Divider */}

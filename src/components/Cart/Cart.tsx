@@ -10,7 +10,7 @@ type FormData = {
   homeAddress: string;
   city: string;
   state: string;
-  zipCode: string; // string to preserve leading zeros
+  zipCode: string; 
 };
 
 const Cart: React.FC = () => {
@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
     return acc + price * quantity;
   }, 0);
 
-  const deliveryFee = 4.99; // N
+  const deliveryFee = 4.99; // 
   const total = subtotal + deliveryFee;
 
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormData>();
