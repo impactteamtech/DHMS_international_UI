@@ -118,7 +118,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, onAddToCa
                         <button
                           key={color}
                           onClick={() => setSelectedColor(color)}
-                          className={`w-8 h-8 rounded-full border-2 transition-all duration-200 ${
+                          className={`w-8 h-8 rounded-full cursor-pointer border-2 transition-all duration-200 ${
                             selectedColor === color ? 'ring-2 ring-offset-2 ring-yellow-500 border-black' : 'border-gray-300'
                           }`}
                           style={{ backgroundColor: color }}

@@ -25,10 +25,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 px-3 md:px-0">
       {products.map((product, index) => (
         <div
-          key={`${product.id}-${index}`} 
+          key={`${product.id}-${index}`}
           className="group bg-white shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] border border-gray-100 hover:shadow relative"
         >
-         
+
           {/* Image */}
           <div className="relative w-full h-[440px] sm:h-[500px] rounded-t-2xl overflow-hidden">
             <img
@@ -45,7 +45,16 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
             )}
 
             {/* Overlay Button */}
-            <div className="absolute inset-0 bg-black/10 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div className="
+  absolute inset-0 
+  opacity-100       
+  flex items-center justify-center
+  transition-opacity duration-300
+
+  lg:bg-black/10  
+  lg:backdrop-blur-md
+  lg:opacity-0  
+  lg:group-hover:opacity-100">
               <button
                 type="button"
                 onClick={() => onProductClick(product)}
@@ -68,7 +77,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
               </p>
             )}
 
-  
+
             <div className="flex items-center gap-0.5">
               {Array.from({ length: 5 }, (_, i) => (
                 <span
@@ -79,7 +88,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onProductClick }) =
                 </span>
               ))}
             </div>
- 
+
             {!!product.colors?.length && (
               <div className="flex gap-1 mt-1">
                 {product.colors.map((color, i) => (

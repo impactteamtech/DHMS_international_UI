@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Home, ShoppingBag } from 'lucide-react';
 import { useCart } from '../Context/CartContext';
 import LoadingAnimation from '../LoadingAnimation/LoadingAnimation';
-// import { useAuth } from '../Context/AuthContext';
-// import toast from 'react-hot-toast';
 
+ 
 const SuccessPage: React.FC = () => {
   const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false)
   const {clearCart} = useCart();
