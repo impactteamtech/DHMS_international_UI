@@ -10,12 +10,13 @@ type FormData = {
   homeAddress: string;
   city: string;
   state: string;
-  zipCode: string; 
+  zipCode: string;
 };
 
 const Cart: React.FC = () => {
   const { cart, fetchCart, removeFromCart, updateQty } = useCart();
   const cartItems = cart || [];
+
 
   const subtotal = cartItems.reduce((acc: number, item: any) => {
     const price = Number(item.price) || 0;
@@ -31,6 +32,7 @@ const Cart: React.FC = () => {
   const onSubmit = async (data: FormData) => {
     if (!cartItems.length) {
       toast.error('Your cart is empty.');
+      console.log(cart) // trying to see how cart name is 
       return;
     }
     try {
@@ -109,15 +111,17 @@ const Cart: React.FC = () => {
                 />
 
                 {/* Name + (mobile price) */}
-                <div className="min-w-0 md:contents">
+                <div className="min-w-0">
                   {/* Mobile name + price stacked */}
                   <div className="md:hidden flex flex-col">
                     <span className="font-medium truncate">{item.name}</span>
-                    <span className="text-sm text-gray-500">${(Number(item.price) || 0).toFixed(2)}</span>
+                    <span className="text-sm text-gray-500">
+                      ${(Number(item.price) || 0).toFixed(2)}
+                    </span>
                   </div>
 
                   {/* Desktop name cell */}
-                  <span className="hidden md:block truncate pr-4">{item.name}</span>
+                  <span className="hidden md:block truncate pr-4 min-w-0 text-black">{item.name}</span>
                 </div>
 
                 {/* Quantity (mobile: right column; desktop: dedicated column) */}

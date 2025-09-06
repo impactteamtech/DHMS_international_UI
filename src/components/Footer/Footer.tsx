@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
         {/* Company Info */}
         <div className="space-y-4">
           <h2 className="text-[#d5a86b] text-2xl font-[satisfy]">
-            DHMS International
+            DHMS International LLC 
           </h2>
           <p className="text-sm text-[#e0d6c8] leading-relaxed">
             Celebrating African beauty with hair, skin, and self-care essentials rooted in heritage.

@@ -75,7 +75,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, onAddToCa
         })
       );
       toast.dismiss(t);
-      toast.success('Added to cart');
+     
       navigate('/cart');
     } catch {
       toast.error('Could not add to cart');
