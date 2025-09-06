@@ -46,7 +46,7 @@ const ProductContent: React.FC<ProductProps> = ({
   order,
   setOrder,
   availabilityFilter,
-  setAvailabilityFilter,
+
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -156,8 +156,6 @@ const ProductContent: React.FC<ProductProps> = ({
         setSelectRating={setSelectRating}
         order={order}
         setOrder={setOrder}
-        availabilityFilter={availabilityFilter}
-        setAvailabilityFilter={setAvailabilityFilter}
       />
 
       <ProductGrid products={paginatedProducts} onProductClick={openModal} />
