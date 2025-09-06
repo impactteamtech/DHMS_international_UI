@@ -113,7 +113,7 @@ const ProductContent: React.FC<ProductProps> = ({
     );
   });
 
-  // Sort products by price
+  // Sort products by price 1232
   const sortProducts = [...filteredProducts].sort((a, b) => {
     const priceA = typeof a.price === 'number' ? a.price : 0;
     const priceB = typeof b.price === 'number' ? b.price : 0;
@@ -165,7 +165,7 @@ const ProductContent: React.FC<ProductProps> = ({
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
-
+      
       {selectedProduct && (
         <ProductModal
           product={selectedProduct}
