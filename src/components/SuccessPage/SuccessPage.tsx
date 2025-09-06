@@ -34,7 +34,7 @@ const SuccessPage: React.FC = () => {
           DHMS Received Your Order
         </h1>
         <p className="mt-2 text-xl text-gray-600 mb-6">
-          Your payment was successful.
+          Your payment was successful. You will be receiving a receipt in your email shortly.
         </p>
 
         <DotLottieReact
