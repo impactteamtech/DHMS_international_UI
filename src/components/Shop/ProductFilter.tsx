@@ -14,8 +14,8 @@ interface Props {
   setSelectRating: React.Dispatch<React.SetStateAction<number>>;
   order: string;
   setOrder: React.Dispatch<React.SetStateAction<string>>;
-  availabilityFilter: string[];
-  setAvailabilityFilter: React.Dispatch<React.SetStateAction<string[]>>;
+  // availabilityFilter: string[];
+  // setAvailabilityFilter: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const ProductFilters: React.FC<Props> = ({
@@ -25,11 +25,11 @@ const ProductFilters: React.FC<Props> = ({
   setSelectRating,
   order,
   setOrder,
-  availabilityFilter,
-  setAvailabilityFilter
+  // availabilityFilter,
+  // setAvailabilityFilter
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-6 mb-10 p-4 items-start sm:items-center justify-center rounded-2xl border border-gray-100 shadow-2xl">
+    <div className="flex flex-col sm:flex-row  sm:flex-wrap gap-6 mb-10 p-4 items-start sm:items-center justify-center rounded-2xl border border-gray-100 shadow-2xl">
       {/* Category Filter */}
       <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
         <h4 className="text-xs font-bold text-[#d5a86b] uppercase">Category</h4>
@@ -94,7 +94,7 @@ const ProductFilters: React.FC<Props> = ({
       </div>
 
       {/* Availability */}
-      <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
+      {/* <div className="w-full sm:w-auto flex flex-col items-start space-y-2">
         <h4 className="text-xs font-bold text-[#d5a86b] uppercase">Availability</h4>
         <div className="flex flex-wrap gap-2">
           {['In Stock', 'Out of Stock', 'In Store Only'].map((status) => (
@@ -117,7 +117,7 @@ const ProductFilters: React.FC<Props> = ({
             </button>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

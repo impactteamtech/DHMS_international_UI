@@ -27,7 +27,7 @@ const SuccessPage: React.FC = () => {
   }, [])
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex flex-col mt-12 justify-center items-center min-h-screen bg-gray-100">
       {loadingAnimation && <LoadingAnimation/>}
       <div className="flex flex-col justify-center items-center bg-white rounded-2xl shadow-lg p-10 w-full max-w-3xl text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-slate-700 mb-4">

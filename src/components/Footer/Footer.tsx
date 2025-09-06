@@ -3,10 +3,10 @@ import { Phone } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 import { scrollWithOffset } from '@/scrollHelpers/ScrollOffset';
 import emailjs from '@emailjs/browser';
-
-const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+import toast from 'react-hot-toast'
+const PUBLIC_KEY  = import.meta.env.VITE_EMAIL_JS as string;
+const SERVICE_ID  = import.meta.env.VITE_SERVICE_ID as string;
+const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID as string;
 
 const Footer: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
     if (!formRef.current) return;
     if (!PUBLIC_KEY || !SERVICE_ID || !TEMPLATE_ID) {
       console.error('EmailJS env vars missing');
+      toast.error("error finding email server")
       setStatus('err');
       return;
     }
@@ -33,7 +34,6 @@ const Footer: React.FC = () => {
       console.error('EmailJS error:', err);
       setStatus('err');
     } finally {
-      // Optionally return to idle after a few seconds
       setTimeout(() => setStatus('idle'), 4000);
     }
   };
